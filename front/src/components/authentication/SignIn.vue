@@ -1,6 +1,6 @@
 <template>
     <div>
-        <sign-in></sign-in>
+        <h1>First start</h1>
     </div>
 </template>
 
@@ -10,6 +10,6 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style >
 
 </style>
