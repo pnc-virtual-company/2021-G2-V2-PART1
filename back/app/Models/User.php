@@ -18,9 +18,12 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'phone_number',
         'email',
         'password',
+        'confirm_password'
     ];
 
     /**
@@ -42,3 +45,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 }
+
+
+// first_name: Lyden
+// last_name: Chai
+// phone_number: 0974006649
+// email: lyden@gmail.com
+// password: !@#$%^&*()
+// confirm_password: !@#$%^&*()
+// Token: "1|foEFcv7JXfEG0322NZwEpTkp0zJwSQLotBhrfSre"
