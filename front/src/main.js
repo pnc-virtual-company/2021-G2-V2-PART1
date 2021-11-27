@@ -14,7 +14,7 @@ app.component("sign-up", SignUp);
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/', component: SignUp},
+        { path: '/', component: SignIn},
         { path: '/sigin', component: SignIn},
         { path: '/signup', component: SignUp },
     ],

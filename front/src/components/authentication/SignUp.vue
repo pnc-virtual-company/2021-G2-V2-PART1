@@ -12,20 +12,21 @@
                 </div>
                 <div class="form-input">
                     <div class="left">
-                        <input type="text" placeholder="First Name">
-                        <input type="text" placeholder="Last Name">
-                        <input type="number" placeholder="Phone Number">
+                        <input type="text" placeholder="First Name" v-model="first_name">
+                        <input type="text" placeholder="Last Name" v-model="last_name">
+                        <input type="number" placeholder="Phone Number" v-model="phone_number">
                     </div>
                     <div class="right">
-                        <input type="email" placeholder="Email">
-                        <input type="password" placeholder="Password">
-                        <input type="password" placeholder="Confirm Password">
+                        <input type="email" placeholder="Email" v-model="email">
+                        <input type="password" placeholder="Password" v-model="password">
+                        <input type="password" placeholder="Confirm Password" v-model="confirm_password">
                     </div>
                 </div>
-                <button id="loginBtn" class="hvr-grow">Sign Up</button>
+                <button id="loginBtn" class="hvr-grow" @click="signUp">Sign Up</button>
                 <p>- OR -</p>
                 <div class="to-login"> 
-                    <a href="">Log In</a>
+                    <p>Already have account?  </p> 
+                    <router-link to='/sigin'>Sign in</router-link>
                 </div>
             </form>
         </div>
@@ -34,7 +35,28 @@
 
 <script>
     export default {
-        
+        emits: ['sing-up'],
+        data() {
+            return {
+                first_name: '',
+                last_name: '',
+                phone_number: '',
+                email: '',
+                password: '',
+                confirm_password: '',
+            }
+        }, 
+        methods: {
+            signUp(){
+                this.$emit('sing-up', this.first_name, this.last_name, this.phone_number, this.email, this.password, this.confirm_password)
+                this.first_name = "";
+                this.last_name = "";
+                this.phone_number = "";
+                this.email = "";
+                this.password = "";
+                this.confirm_password = "";
+            }
+        },       
     }
 </script>
 
@@ -79,50 +101,50 @@
 
     .form-signup{
         box-shadow: 0px 8px 8px 5px rgba(0, 0, 0, 0.25);
+        text-align: center;
         box-sizing: border-box;
         border-radius:20px;
         background: #fff;
-        margin-left: 3%;
+        margin-left: 4%;
         margin-top: 2%;
         height: 90vh;
-        width: 50%;             
+        width: 45%;        
     }
 
     .form-signup > form > .txt-signup > h2{
         font-family: 'PT Serif', serif;
+        color: rgb(255, 153, 0);
         text-align: center;
-        margin-top: 35px;
+        margin-top: 60px;
         font-size: 45px;
     }
 
     .form-signup > form > p {
         margin-top: 20px;
-        margin-left: 46%;
     }
 
     .form-signup > form > .form-input{
-        display: flex;
         margin: 5px;
-        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
 
     }
-    .form-signup > form > .form-input > .left, .right{
-        margin-right: 2%;
-        margin-left: 1%;
+    .form-signup > form > .form-input > .left, 
+    .form-signup > form > .form-input > .right{
+        width: 45%;
+        
     }
     input[type="text"],
     input[type="email"],
-    input[type="number"],
-    input[type="password"]{
-        background: #C4C4C4;
-        border-radius: 10px;
+    input[type="password"],
+    input[type="number"]{
+        background: #d1d1d1;
+        border-radius: 15px;
         margin-top: 15px;
         font-size: 20px;
-        margin-left: 7%;
         padding: 15px;
-        color: #000;
         outline: none;
-        height: 30px;
+        height: 40px;
         border: none;
         width: 80%;  
     }
@@ -132,28 +154,34 @@
         background: rgb(255, 153, 0);
          justify-content: center;
         align-items: center;        
-        border-radius: 10px;
+        border-radius: 15px;
         text-align: center;
-        margin-top: 20px;
+        margin-top: 15px;
         cursor: pointer;
-        margin-left:30%;
-        font-size: 30px;
+        font-size: 35px;
         outline: none;
         color: #fff;
-        height: 50px;
+        height: 60px;
         border: none;
         width: 40%;
     }
 
     .to-login{
         margin: 5px;
-        margin-left: 46%;
+        margin-left: 34%;
+        display: flex;
         width: 100%;
     }
 
+    .form-signup > form >.to-login > p{
+        color: rgb(255, 153, 0);
+        margin-top: 0px;
+        font-size: 20px;
+    }
     .form-signup > form >.to-login > a{
         color: rgb(0, 162, 255);
         font-weight: bold;
+        font-size: 20px;
     }
 
 </style>

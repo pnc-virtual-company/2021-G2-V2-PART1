@@ -8,16 +8,16 @@
         <div class="form-login">
             <form action="">
                 <div class="txt-signin">
-                    <h2>LOGIN</h2>
+                    <h2>SIGN IN</h2>
                 </div>
                 <input type="text" placeholder="Username *"><br>
                 <input type="email" placeholder="Email * "><br>
                 <input type="password" placeholder="Password * ">
-                <button id="signBtn">Log In</button>
+                <button id="signBtn">Sign In</button>
                 <p>- OR -</p>
                 <div class="to-signup">
                     <p>Don't have account yet?</p> 
-                    <a href="">Go to Sign Up</a>
+                    <router-link to="/signup">Go to sign up</router-link>
                 </div>
             </form>
         </div>
@@ -70,77 +70,79 @@
 
     .form-login{
         box-shadow: 0px 8px 8px 5px rgba(0, 0, 0, 0.25);
+        text-align: center;
         box-sizing: border-box;
         border-radius:20px;
         background: #fff;
         margin-left: 4%;
         margin-top: 2%;
         height: 90vh;
-        width: 40%;             
+        width: 45%;   
+        /* padding: 25px;  */
+                
     }
 
     .form-login > form > .txt-signin > h2{
         font-family: 'PT Serif', serif;
+        color: rgb(255, 153, 0);
         text-align: center;
-        margin-top: 35px;
+        margin-top: 60px;
         font-size: 45px;
     }
 
     .form-login > form > p {
         margin-top: 20px;
-        margin-left: 46%;
     }
 
     input[type="text"],
     input[type="email"],
     input[type="password"]{
-        background: #C4C4C4;
-        border-radius: 10px;
+        background: #d1d1d1;
+        border-radius: 15px;
         margin-top: 20px;
         font-size: 20px;
-        margin-left: 7%;
         padding: 15px;
-        color: #000;
         outline: none;
-        height: 30px;
+        height: 40px;
         border: none;
-        padding: 10;
-        width: 80%;  
+        padding: 10px;
+        width: 100%;  
     }
 
     #signBtn{
         font-family: 'PT Serif', serif;
         background: rgb(255, 153, 0);
-         justify-content: center;
+        justify-content: center;
         align-items: center;        
-        border-radius: 10px;
+        border-radius: 15px;
         text-align: center;
         margin-top: 20px;
         cursor: pointer;
-        margin-left:30%;
-        font-size: 30px;
+        font-size: 35px;
         outline: none;
         color: #fff;
-        height: 50px;
+        height: 60px;
         border: none;
         width: 40%;
     }
 
     .to-signup{
-        margin: 5px;
-        margin-left: 25%;
+        justify-content: center;
         display: flex;
+        margin: 5px;
         width: 100%;
     }
 
     .form-login > form >.to-signup > p {
         color: rgb(255, 153, 0);
         margin-top: -0.1px;
+        font-size: 20px;
     }
 
     .form-login > form >.to-signup > a{
         color: rgb(0, 162, 255);
         font-weight: bold;
+        font-size: 20px;
     }
 
 </style>
