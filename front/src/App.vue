@@ -5,14 +5,13 @@
 </template>
 
 <script>
-  // import Navigation from "./components/menu/Navigation.vue";
-  // export default {
-  //   components: { Navigation },
-  // };
+  export default { 
+       
+    } 
 </script>
 
 <style>
-    body {
+  body {
     background: silver;
-    }
+  }
 </style>
