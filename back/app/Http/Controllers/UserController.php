@@ -24,7 +24,7 @@ class UserController extends Controller
         $request->validate([
             'first_name' => 'min:3|max:10',
             'last_name' => 'min:3|max:10',
-            'phone_number' => 'min:9|max:15',
+            'phone_number' => 'min:8|max:15',
             'email' => 'min:8|max:20',
             'password' => 'min:8|max:20',
             'confirm_password' => 'min:8|max:20',
