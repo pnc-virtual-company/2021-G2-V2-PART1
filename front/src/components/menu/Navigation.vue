@@ -6,7 +6,7 @@
           <router-link to='/myevent'>Username</router-link> 
         </li> 
         <li> 
-          <router-link to='/event'>Events</router-link> 
+          <router-link to='/events'>Events</router-link> 
         </li> 
         <li> 
           <router-link to='/myevent'>My events</router-link> 
