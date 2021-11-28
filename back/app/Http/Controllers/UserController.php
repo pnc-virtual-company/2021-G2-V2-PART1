@@ -6,25 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\User;
 
 class UserController extends Controller
-<<<<<<< HEAD
-{   
-    // public function getUser()
-    // {
-    //     return User::get();
-    // }
-=======
 {
     public function index()
     {
         return User::all();
     }
->>>>>>> 0d0424fce4c1d70d1bcaddfe366d196dee7ba871
     public function register(Request $request)
     {
         $request->validate([
             'first_name' => 'min:3|max:10',
             'last_name' => 'min:3|max:10',
-            'phone_number' => 'min:8|max:15',
+            'phone_number' => 'min:9|max:15',
             'email' => 'min:8|max:20',
             'password' => 'min:8|max:20',
             'confirm_password' => 'min:8|max:20',
