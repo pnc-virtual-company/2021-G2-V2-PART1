@@ -6,16 +6,19 @@
           <h3>Username</h3>
         </li>
         <li>
-          <a href="">My events</a>
+          <router-link to='/'></router-link>
         </li>
         <li>
-          <a href="">Find events</a>
+          <router-link to='/myevent'>My events</router-link>
         </li>
         <li>
-          <a href="">Categories</a>
+          <router-link to='/findevent'>Find Events</router-link>
         </li>
         <li>
-          <span class="glyphicon">&#xe163;</span>
+          <router-link to='/categories'>Categories</router-link>
+        </li>
+        <li>
+          <router-link to='/signout'><span class="glyphicon">&#xe163;</span></router-link>
         </li>
       </ul>
     </nav>

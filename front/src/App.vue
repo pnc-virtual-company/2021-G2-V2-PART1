@@ -1,14 +1,14 @@
 <template>
   <section>
-    <navigation></navigation>
+    <router-view></router-view>
   </section>
 </template>
 
 <script>
-import Navigation from "./components/menu/Navigation.vue";
-export default {
-  components: { Navigation },
-};
+  // import Navigation from "./components/menu/Navigation.vue";
+  // export default {
+  //   components: { Navigation },
+  // };
 </script>
 
 <style>
