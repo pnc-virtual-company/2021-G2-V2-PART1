@@ -7,12 +7,16 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        return User::all();
+    }
     public function register(Request $request)
     {
         $request->validate([
             'first_name' => 'min:3|max:10',
             'last_name' => 'min:3|max:10',
-            // 'phone_number' => 'min:9|max:15',
+            'phone_number' => 'min:9|max:15',
             'email' => 'min:8|max:20',
             'password' => 'min:8|max:20',
             'confirm_password' => 'min:8|max:20',
