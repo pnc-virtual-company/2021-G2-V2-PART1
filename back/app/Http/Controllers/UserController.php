@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\User;
 
 class UserController extends Controller
-{
+{   
+    // public function getUser()
+    // {
+    //     return User::get();
+    // }
     public function register(Request $request)
     {
         $request->validate([
