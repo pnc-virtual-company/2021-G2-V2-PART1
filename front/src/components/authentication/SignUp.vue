@@ -22,7 +22,7 @@
                         <input type="password" placeholder="Confirm Password" v-model="confirm_password">
                     </div>
                 </div>
-                <button id="loginBtn" class="hvr-grow" @click="signUp">Sign Up</button>
+                <button id="loginBtn" class="hvr-grow"><router-link to="#" id="sing-up">Sign Up</router-link></button>
                 <p>- OR -</p>
                 <div class="to-login"> 
                     <p>Already have account?  </p> 
@@ -116,7 +116,7 @@
         color: rgb(255, 153, 0);
         text-align: center;
         margin-top: 60px;
-        font-size: 45px;
+        font-size: 40px;
     }
 
     .form-signup > form > p {
@@ -144,23 +144,25 @@
         font-size: 20px;
         padding: 15px;
         outline: none;
-        height: 40px;
+        height: 35px;
         border: none;
         width: 80%;  
     }
-
+    #sing-up{
+        text-decoration: none;
+        color: #fff;
+    }
     #loginBtn{
         font-family: 'PT Serif', serif;
         background: rgb(255, 153, 0);
-         justify-content: center;
+        justify-content: center;
         align-items: center;        
         border-radius: 15px;
         text-align: center;
         margin-top: 15px;
         cursor: pointer;
-        font-size: 35px;
+        font-size: 30px;
         outline: none;
-        color: #fff;
         height: 60px;
         border: none;
         width: 40%;
@@ -176,12 +178,12 @@
     .form-signup > form >.to-login > p{
         color: rgb(255, 153, 0);
         margin-top: 0px;
-        font-size: 20px;
+        font-size: 15px;
     }
     .form-signup > form >.to-login > a{
         color: rgb(0, 162, 255);
         font-weight: bold;
-        font-size: 20px;
+        font-size: 15px;
     }
 
 </style>
