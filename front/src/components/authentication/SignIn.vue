@@ -13,7 +13,7 @@
                 <input type="text" placeholder="Username *"><br>
                 <input type="email" placeholder="Email * "><br>
                 <input type="password" placeholder="Password * ">
-                <button id="signBtn">Sign In</button>
+                <button id="signBtn"><router-link to="#" id="sing-ip">Sign In</router-link></button>
                 <p>- OR -</p>
                 <div class="to-signup">
                     <p>Don't have account yet?</p> 
@@ -26,7 +26,15 @@
 
 <script>
     export default {
-        
+        data() {
+        return {
+            userList: [],
+            first_name: "",
+            email: "",
+            password: "",
+            };
+        },
+        methods: {},
     }
 </script>
 
@@ -87,7 +95,7 @@
         color: rgb(255, 153, 0);
         text-align: center;
         margin-top: 60px;
-        font-size: 45px;
+        font-size: 40px;
     }
 
     .form-login > form > p {
@@ -103,10 +111,15 @@
         font-size: 20px;
         padding: 15px;
         outline: none;
-        height: 40px;
+        height: 35px;
         border: none;
         padding: 10px;
         width: 100%;  
+    }
+
+    #sing-ip{
+        text-decoration: none;
+        color: #fff;
     }
 
     #signBtn{
@@ -118,9 +131,8 @@
         text-align: center;
         margin-top: 20px;
         cursor: pointer;
-        font-size: 35px;
+        font-size: 30px;
         outline: none;
-        color: #fff;
         height: 60px;
         border: none;
         width: 40%;
@@ -136,13 +148,13 @@
     .form-login > form >.to-signup > p {
         color: rgb(255, 153, 0);
         margin-top: -0.1px;
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .form-login > form >.to-signup > a{
         color: rgb(0, 162, 255);
         font-weight: bold;
-        font-size: 20px;
+        font-size: 15px;
     }
 
 </style>
