@@ -14,13 +14,7 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-<<<<<<< HEAD
             'username' => 'min:3|max:15',
-=======
-            'first_name' => 'min:3|max:10',
-            'last_name' => 'min:3|max:10',
-            'phone_number' => 'min:8|max:15',
->>>>>>> 9ab6d793e1dbeed2e65489872cdffd4d3d4642d0
             'email' => 'min:8|max:20',
             'password' => 'min:8|max:20',
             'confirm_password' => 'min:8|max:20',
@@ -57,7 +51,6 @@ class UserController extends Controller
             'token' => $token
         ]);
     }
-<<<<<<< HEAD
 
     public function logout(Request $request)
     {
@@ -65,6 +58,3 @@ class UserController extends Controller
         return response()->json(['Message' => 'Logouted']);
     }
 }
-=======
-}
->>>>>>> 9ab6d793e1dbeed2e65489872cdffd4d3d4642d0
