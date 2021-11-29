@@ -12,14 +12,26 @@
                 </div>
                 <div class="form-input">
                     <div class="left">
-                        <input type="text" placeholder="First Name" v-model="first_name">
-                        <input type="text" placeholder="Last Name" v-model="last_name">
-                        <input type="number" placeholder="Phone Number" v-model="phone_number">
+                        <div> 
+                            <label for="username" id="username">Username</label><br>
+                            <input type="text" id="username" v-model="first_name">
+                        </div><br>
+                        
+                        <div>
+                            <label for="email" id="email">Email</label>
+                            <input type="text" id="email" v-model="last_name">
+                        </div>
                     </div>
                     <div class="right">
-                        <input type="email" placeholder="Email" v-model="email">
-                        <input type="password" placeholder="Password" v-model="password">
-                        <input type="password" placeholder="Confirm Password" v-model="confirm_password">
+                        <div>
+                            <label for="password" id="password">Password</label><br>
+                            <input type="password" id="password" v-model="last_name">
+                        </div><br>
+                        <div >
+                            <label for="c-password" id="c-password">Confirm Password</label><br>
+                            <input type="password" id="c-password" v-model="confirm_password">
+                        </div>
+                        
                     </div>
                 </div>
                 <button id="loginBtn" class="hvr-grow"><router-link to="#" id="sing-up">Sign Up</router-link></button>
@@ -101,7 +113,6 @@
 
     .form-signup{
         box-shadow: 0px 8px 8px 5px rgba(0, 0, 0, 0.25);
-        text-align: center;
         box-sizing: border-box;
         border-radius:20px;
         background: #fff;
@@ -112,7 +123,6 @@
     }
 
     .form-signup > form > .txt-signup > h2{
-        font-family: 'PT Serif', serif;
         color: rgb(255, 153, 0);
         text-align: center;
         margin-top: 60px;
@@ -121,44 +131,50 @@
 
     .form-signup > form > p {
         margin-top: 20px;
+        margin-left: 47%;
     }
 
     .form-signup > form > .form-input{
         margin: 5px;
         display: flex;
-        justify-content: center;
 
     }
     .form-signup > form > .form-input > .left, 
     .form-signup > form > .form-input > .right{
         width: 45%;
-        
     }
     input[type="text"],
     input[type="email"],
-    input[type="password"],
-    input[type="number"]{
+    input[type="password"]{
         background: #d1d1d1;
-        border-radius: 15px;
+        border-radius: 10px;
         margin-top: 15px;
         font-size: 20px;
         padding: 15px;
         outline: none;
         height: 35px;
         border: none;
-        width: 80%;  
+        width: 82%;  
+        margin-left: 4%;
     }
+
+    #username,
+    #email,
+    #password,
+    #c-password{
+        font-size: 20px;
+        margin-left: 15%;
+        margin-top: 0%;
+    }
+
     #sing-up{
         text-decoration: none;
         color: #fff;
     }
+    
     #loginBtn{
-        font-family: 'PT Serif', serif;
-        background: rgb(255, 153, 0);
-        justify-content: center;
-        align-items: center;        
+        background: rgb(255, 153, 0);       
         border-radius: 15px;
-        text-align: center;
         margin-top: 15px;
         cursor: pointer;
         font-size: 30px;
@@ -166,6 +182,7 @@
         height: 60px;
         border: none;
         width: 40%;
+        margin-left: 31%;
     }
 
     .to-login{

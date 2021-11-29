@@ -6,13 +6,20 @@
             <p>©Copyright by PNC 2021 VC Team 2</p>
         </div>
         <div class="form-login">
-            <form action="">
+            <form action="#">
                 <div class="txt-signin">
                     <h2>SIGN IN</h2>
                 </div>
-                <input type="text" placeholder="Username *"><br>
-                <input type="email" placeholder="Email * "><br>
-                <input type="password" placeholder="Password * ">
+                <div class="form-input">
+                     <div>
+                        <label for="email" id="email">Email</label><br>
+                        <input type="email" id="email" required>
+                    </div><br>
+                    <div>
+                        <label for="password" id="password">Password</label><br>
+                        <input type="password" id="password" required>
+                    </div>
+                </div>
                 <button id="signBtn"><router-link to="#" id="sing-ip">Sign In</router-link></button>
                 <p>- OR -</p>
                 <div class="to-signup">
@@ -78,20 +85,16 @@
 
     .form-login{
         box-shadow: 0px 8px 8px 5px rgba(0, 0, 0, 0.25);
-        text-align: center;
         box-sizing: border-box;
         border-radius:20px;
         background: #fff;
         margin-left: 4%;
         margin-top: 2%;
         height: 90vh;
-        width: 45%;   
-        /* padding: 25px;  */
-                
+        width: 45%;                   
     }
 
     .form-login > form > .txt-signin > h2{
-        font-family: 'PT Serif', serif;
         color: rgb(255, 153, 0);
         text-align: center;
         margin-top: 60px;
@@ -100,13 +103,18 @@
 
     .form-login > form > p {
         margin-top: 20px;
+        margin-left: 47%;
     }
 
-    input[type="text"],
+    .form-login > form > .form-input{
+        margin-left: -7.6%;
+        margin-right: 9%;
+    }
+
     input[type="email"],
     input[type="password"]{
         background: #d1d1d1;
-        border-radius: 15px;
+        border-radius: 10px;
         margin-top: 20px;
         font-size: 20px;
         padding: 15px;
@@ -115,6 +123,14 @@
         border: none;
         padding: 10px;
         width: 100%;  
+        margin-right: 5%;
+    }
+
+    #email,
+    #password{
+        margin-left: 1%;
+        font-size: 20px;
+        margin-top: 2%;
     }
 
     #sing-ip{
@@ -123,12 +139,8 @@
     }
 
     #signBtn{
-        font-family: 'PT Serif', serif;
-        background: rgb(255, 153, 0);
-        justify-content: center;
-        align-items: center;        
+        background: rgb(255, 153, 0);     
         border-radius: 15px;
-        text-align: center;
         margin-top: 20px;
         cursor: pointer;
         font-size: 30px;
@@ -136,6 +148,7 @@
         height: 60px;
         border: none;
         width: 40%;
+        margin-left: 31%;
     }
 
     .to-signup{
