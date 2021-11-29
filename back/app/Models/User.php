@@ -33,22 +33,14 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    
     /**
      * The attributes that should be cast.
      *
      * @var array
      */
+    
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 }
-
-
-// first_name: Lyden
-// last_name: Chai
-// phone_number: 0974006649
-// email: lyden@gmail.com
-// password: !@#$%^&*()
-// confirm_password: !@#$%^&*()
-// Token: "1|foEFcv7JXfEG0322NZwEpTkp0zJwSQLotBhrfSre"

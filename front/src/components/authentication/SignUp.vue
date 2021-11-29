@@ -6,7 +6,7 @@
             <p>©Copyright by PNC 2021 VC Team 2</p>
         </div>
         <div class="form-signup">
-            <form action="">
+            <form @submit.prevent="singUp()">
                 <div class="txt-signup">
                     <h2>SIGN UP</h2>
                 </div>
@@ -34,7 +34,7 @@
                         
                     </div>
                 </div>
-                <button id="loginBtn" class="hvr-grow"><router-link to="#" id="sing-up">Sign Up</router-link></button>
+                <button id="loginBtn" class="hvr-grow"><router-link to="#" @click="register" id="sing-up">Sign Up</router-link></button>
                 <p>- OR -</p>
                 <div class="to-login"> 
                     <p>Already have account?  </p> 
@@ -46,26 +46,39 @@
 </template>
 
 <script>
+    import axios from 'axios';
+    const url = "http://127.0.0.1:8000/api/register";
     export default {
-        emits: ['sing-up'],
         data() {
             return {
-                username: 'Den Li',
-                email: 'lyden@gmail.com',
-                password: '!@#$%^&*()',
-                confirm_password: '!@#$%^&*()',
-            }
-        }, 
+            usernme: "",
+            email: "",
+            password: "",
+            confirm_password: "",
+            messageError: ""
+            };
+        },
         methods: {
-            signUp(){
-                this.$emit('sing-up', this.username, this.email, this.password, this.confirm_password)
-                this.username = "";
-                this.email = "";
-                this.password = "";
-                this.confirm_password = "";
+            register() {
+                let newUser = {
+                    usernme: usernme,
+                    email: email,
+                    password: password,
+                    confirm_password: confirm_password
+                };
+                axios.post(url, newUser).then(res => {
+                    this.$router.push('/signin');
+                    this.messageError = '';
+                    console.log(res.data);
+                }).catch(error => {
+                    let errorStatus = error.response.status;
+                    if(errorStatus === 422) {
+                        this.messageError = 'Invalid data, please try again';
+                    }
+                })
             }
-        },       
-    }
+        },
+    };
 </script>
 
 <style>

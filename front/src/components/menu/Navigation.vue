@@ -5,15 +5,9 @@
         <li> 
           <router-link to='/myevent'>Username</router-link> 
         </li> 
-        <li> 
-          <router-link to='/events'>Events</router-link> 
-        </li> 
-        <li> 
-          <router-link to='/myevent'>My events</router-link> 
-        </li> 
-        <li> 
-          <router-link to='/categories'>Categories</router-link> 
-        </li> 
+        <li><router-link to='/myevent'>My events</router-link></li> 
+        <li><router-link to='/events'>Events</router-link></li> 
+        <li><router-link to='/category'>Categories</router-link></li> 
         <li> 
           <router-link to='/signout'><span class="glyphicon">&#xe163;</span></router-link> 
         </li> 

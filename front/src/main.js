@@ -1,30 +1,31 @@
-import { createApp } from "vue";
+import { createApp } from 'vue'
+import App from './App.vue'
+import {createRouter, createWebHistory} from 'vue-router';
 
-import App from "./App.vue";
-import { createRouter, createWebHistory } from "vue-router";
-import Navigation from "./components/menu/Navigation.vue";
-import MyEventViews from "./components/myEvent/MyEventViews.vue";
-import EventViews from "./components/events/EventViews.vue";
-import CategoryViews from "./components/categories/CategoryViews.vue";
-import SignOut from "./components/signOut/SignOut.vue";
-
+import SignIn from './components/authentication/SignIn.vue';
+import SignUp from './components/authentication/SignUp.vue';
+import Navbar from './components/menu/Navigation.vue';
+import Category from './components/pages/categories/CategoryViews.vue';
+import Events from './components/pages/events/EventViews.vue';
+import MyEvents from './components/pages/myEent/MyEventViews.vue';
 
 const app = createApp(App);
-app.component("navigation", Navigation);
-app.component("my-event", MyEventViews);
-app.component("event", EventViews);
-app.component("categories", CategoryViews);
-app.component("sign-Out", SignOut);
+app.component("navbar", Navbar);
+app.component("sign-in", SignIn);
+app.component("sign-up", SignUp);
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/', component: Navigation},
-        { path: '/myevent', component: MyEventViews},
-        { path: '/events', component: EventViews},
-        { path: '/categories', component: CategoryViews },
-        { path: '/signout', component: SignOut },
-    ],
-});
-app.use(router)
-app.mount("#app");
+        {path: '/',component: SignIn},
+        {path: '/signin',component: SignIn},
+        {path: '/signup',component: SignUp},
+        {path: '/category',component: Category},
+        {path: '/events',component: Events},
+        {path: '/myevents',component: MyEvents},
+        {path: '/navbar',component: Navbar},
+    ]
+})
+
+app.use(router);
+app.mount('#app');
