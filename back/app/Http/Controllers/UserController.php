@@ -3,58 +3,55 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class UserController extends Controller
 {
+    //
     public function index()
     {
-        return User::all();
+        return User::get();
     }
     public function register(Request $request)
     {
         $request->validate([
-            'username' => 'min:3|max:15',
-            'email' => 'min:8|max:20',
-            'password' => 'min:8|max:20',
-            'confirm_password' => 'min:8|max:20',
+            'password' => 'required|confirmed',
         ]);
         $user = new User();
-        $user->username = $request->username;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-        $user->confirm_password = bcrypt($request->confirm_password);
-
+        $user->phone_number = $request->phone_number;
         $user->save();
-        $token = $user->createToken('MyToken')->plainTextToken;
+
+        $token = $user->createToken('mytoken')->plainTextToken;
 
         return response()->json([
-            'Message' => 'Created',
-            'data' => $user,
-            'token' => $token
-        ], 201);
-    }
+            'user' => $user,
+            'token' => $token,
 
+        ]);
+    }
     public function login(Request $request)
     {
+
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json(['message' => 'Bad login'], 401);
         }
-
-        $token = $user->createToken('MyToken')->plainTextToken;
+        $token = $user->createToken('mytoken')->plainTextToken;
 
         return response()->json([
-            'Message' => 'Logined',
-            'data' => $user,
-            'token' => $token
+            'user' => $user,
+            'token' => $token,
         ]);
     }
-
     public function logout(Request $request)
     {
         auth()->user()->tokens()->delete();
-        return response()->json(['Message' => 'Logouted']);
+        return response()->json(['messange' => 'Sining out']);
     }
 }
