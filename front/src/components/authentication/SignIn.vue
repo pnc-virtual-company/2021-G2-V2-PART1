@@ -36,7 +36,6 @@
         data() {
         return {
             userList: [],
-            first_name: "",
             email: "",
             password: "",
             };

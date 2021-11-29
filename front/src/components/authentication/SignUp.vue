@@ -13,22 +13,22 @@
                 <div class="form-input">
                     <div class="left">
                         <div> 
-                            <label for="username" id="username">Username</label><br>
-                            <input type="text" id="username" v-model="first_name">
+                            <label for="username" class="username">Username</label><br>
+                            <input type="text" id="username" v-model="username">
                         </div><br>
                         
                         <div>
-                            <label for="email" id="email">Email</label>
-                            <input type="text" id="email" v-model="last_name">
+                            <label for="email" class="email">Email</label>
+                            <input type="text" id="email" v-model="email">
                         </div>
                     </div>
                     <div class="right">
                         <div>
-                            <label for="password" id="password">Password</label><br>
-                            <input type="password" id="password" v-model="last_name">
+                            <label for="password" class="password">Password</label><br>
+                            <input type="password" id="password" v-model="password">
                         </div><br>
                         <div >
-                            <label for="c-password" id="c-password">Confirm Password</label><br>
+                            <label for="c-password" class="c-password">Confirm Password</label><br>
                             <input type="password" id="c-password" v-model="confirm_password">
                         </div>
                         
@@ -50,20 +50,16 @@
         emits: ['sing-up'],
         data() {
             return {
-                first_name: '',
-                last_name: '',
-                phone_number: '',
-                email: '',
-                password: '',
-                confirm_password: '',
+                username: 'Den Li',
+                email: 'lyden@gmail.com',
+                password: '!@#$%^&*()',
+                confirm_password: '!@#$%^&*()',
             }
         }, 
         methods: {
             signUp(){
-                this.$emit('sing-up', this.first_name, this.last_name, this.phone_number, this.email, this.password, this.confirm_password)
-                this.first_name = "";
-                this.last_name = "";
-                this.phone_number = "";
+                this.$emit('sing-up', this.username, this.email, this.password, this.confirm_password)
+                this.username = "";
                 this.email = "";
                 this.password = "";
                 this.confirm_password = "";
@@ -165,6 +161,14 @@
         font-size: 20px;
         margin-left: 15%;
         margin-top: 0%;
+    }
+
+    .username,
+    .email,
+    .password,
+    .c-password{
+        margin-left: 15%;
+        font-size: 20px;
     }
 
     #sing-up{
