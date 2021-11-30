@@ -6,7 +6,7 @@
             <p>©Copyright by PNC 2021 VC Team 2</p>
         </div>
         <div class="form-signup">
-            <form @submit.prevent="singUp()">
+            <form href="#">
                 <div class="txt-signup">
                     <h2>SIGN UP</h2>
                 </div>
@@ -14,31 +14,32 @@
                     <div class="left">
                         <div> 
                             <label for="username" class="username">Username</label><br>
-                            <input type="text" id="username" v-model="username">
+                            <input type="text" id="username" v-model="username" required>
                         </div><br>
-                        
                         <div>
                             <label for="email" class="email">Email</label>
-                            <input type="text" id="email" v-model="email">
+                            <input type="text" id="email" v-model="email" required>
                         </div>
                     </div>
                     <div class="right">
                         <div>
                             <label for="password" class="password">Password</label><br>
-                            <input type="password" id="password" v-model="password">
+                            <input type="password" id="password" v-model="password" required>
                         </div><br>
                         <div >
-                            <label for="c-password" class="c-password">Confirm Password</label><br>
-                            <input type="password" id="c-password" v-model="confirm_password">
-                        </div>
-                        
+                            <label for="c-password" class="c-password" >Confirm Password</label><br>
+                            <input type="password" id="c-password">
+                        </div>   
                     </div>
                 </div>
-                <button id="loginBtn" class="hvr-grow"><router-link to="#" @click="register" id="sing-up">Sign Up</router-link></button>
+                <div class="error" v-if="messageError">
+                    <p v-text="messageError"></p>
+                </div>
+                <button id="loginBtn" class="hvr-grow"><router-link @click="signUp" to="/navbar" id="sing-up">Sign Up</router-link></button>
                 <p>- OR -</p>
                 <div class="to-login"> 
-                    <p>Already have account?  </p> 
-                    <router-link to='/sigin'>Sign in</router-link>
+                    <p>Already have account? </p> 
+                    <router-link to='/signin'>Sign in</router-link>
                 </div>
             </form>
         </div>
@@ -46,43 +47,28 @@
 </template>
 
 <script>
-    import axios from 'axios';
-    const url = "http://127.0.0.1:8000/api/register";
     export default {
+        emits: ['sign-up'],
         data() {
             return {
-            usernme: "",
-            email: "",
-            password: "",
-            confirm_password: "",
-            messageError: ""
-            };
-        },
-        methods: {
-            register() {
-                let newUser = {
-                    usernme: usernme,
-                    email: email,
-                    password: password,
-                    confirm_password: confirm_password
-                };
-                axios.post(url, newUser).then(res => {
-                    this.$router.push('/signin');
-                    this.messageError = '';
-                    console.log(res.data);
-                }).catch(error => {
-                    let errorStatus = error.response.status;
-                    if(errorStatus === 422) {
-                        this.messageError = 'Invalid data, please try again';
-                    }
-                })
+                username: '',
+                email: '',
+                password: '',
             }
-        },
-    };
+        }, 
+        methods: {
+            signUp(){
+                this.$emit('sign-up', this.username, this.email, this.password)
+                this.username = "";
+                this.email = "";
+                this.password = "";
+            }
+        },       
+    }
 </script>
 
-<style>
-     body{
+<style scope>
+    body{
         font-family: sans-serif;
         overflow-y: hidden;
         overflow-x: hidden;
@@ -191,7 +177,7 @@
     
     #loginBtn{
         background: rgb(255, 153, 0);       
-        border-radius: 15px;
+        border-radius: 10px;
         margin-top: 15px;
         cursor: pointer;
         font-size: 30px;
@@ -218,6 +204,10 @@
         color: rgb(0, 162, 255);
         font-weight: bold;
         font-size: 15px;
+    }
+    .error{
+        text-align: center;
+        color: red;
     }
 
 </style>

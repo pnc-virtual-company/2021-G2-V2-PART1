@@ -6,8 +6,8 @@ import SignIn from './components/authentication/SignIn.vue';
 import SignUp from './components/authentication/SignUp.vue';
 import Navbar from './components/menu/Navigation.vue';
 import Category from './components/pages/categories/CategoryViews.vue';
-import Events from './components/pages/events/EventViews.vue';
-import MyEvents from './components/pages/myEent/MyEventViews.vue';
+import Events from './components/pages/Event/Event.vue';
+import MyEvents from './components/pages/myEvent/MyEvent.vue';
 
 const app = createApp(App);
 app.component("navbar", Navbar);

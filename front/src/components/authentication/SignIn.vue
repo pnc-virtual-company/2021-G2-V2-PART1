@@ -20,7 +20,10 @@
                         <input type="password" id="password" required>
                     </div>
                 </div>
-                <button id="signBtn"><router-link to="#" @click="signIn" id="sing-ip">Sign In</router-link></button>
+                <div class="error" v-if="messageError">
+                    <p v-text="messageError"></p>
+                </div>
+                <button id="signBtn"><router-link to="#" id="sing-ip">Sign In</router-link></button>
                 <p>- OR -</p>
                 <div class="to-signup">
                     <p>Don't have account yet?</p> 
@@ -32,43 +35,21 @@
 </template>
 
 <script>
-    import axios from 'axios';
-    const url = "http://127.0.0.1:8000/api/login";
     export default {
         data() {
-            return {
-                userData: {},
-                email: "",
-                password: "",
-                errorMessage: "",
+        return {
+            userList: [],
+            email: "",
+            password: "",
             };
         },
-        methods: {
-            signIn() {
-                let userData = {
-                    email: this.email,
-                    password: this.password,
-                };
-                axios.post(url, userData).then(res => {
-                    this.userData = res.data.user;
-                    this.$router.push('/navbar');
-                    this.errorMessage = '';
-                    console.log(this.userData);
-                }).catch(error => {
-                    let errorStatus = error.response.status;
-                    if(errorStatus === 401) {
-                        this.errorMessage = 'Invalid data, please try again';
-                    }
-                })
-            }
-        },
-        provide() {
-            return {userData: this.userData};
-        }
-    };
+        methods: {},
+    }
 </script>
 
-<style >
+
+
+<style scope>
     body{
         font-family: sans-serif;
         overflow-y: hidden;
@@ -163,7 +144,7 @@
 
     #signBtn{
         background: rgb(255, 153, 0);     
-        border-radius: 15px;
+        border-radius: 10px;
         margin-top: 20px;
         cursor: pointer;
         font-size: 30px;
@@ -191,6 +172,10 @@
         color: rgb(0, 162, 255);
         font-weight: bold;
         font-size: 15px;
+    }
+    .error{
+        text-align: center;
+        color: red;
     }
 
 </style>

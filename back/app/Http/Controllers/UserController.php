@@ -12,17 +12,16 @@ class UserController extends Controller
     }
     public function register(Request $request)
     {   
-        $request->validate([
-            'username' => 'required|max:50|regex:/^[a-zA-Z]/',
-            'email' => 'required|email',
-            'password' => 'required|min:8|confirmed',
-            'confirm_password' => 'required|min:8|confirmed',
-        ]);
+        // $request->validate([
+        //     'username' => 'required|max:50|regex:/^[a-zA-Z]/',
+        //     'email' => 'required|email',
+        //     'password' => 'required|min:8',
+        // ]);
+        
         $user = new User();
         $user->username = $request->username;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->confirm_password = $request->confirm_password;
+        $user->password = $request->password;
         $user->save();
 
         return response()->json([
