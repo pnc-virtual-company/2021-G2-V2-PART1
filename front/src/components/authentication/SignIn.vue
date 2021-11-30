@@ -6,24 +6,24 @@
             <p>©Copyright by PNC 2021 VC Team 2</p>
         </div>
         <div class="form-login">
-            <form action="#">
+            <form @submit.prevent="" action="#">
                 <div class="txt-signin">
                     <h2>SIGN IN</h2>
                 </div>
                 <div class="form-input">
                      <div>
                         <label for="email" id="email">Email</label><br>
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" v-model="email">
                     </div><br>
                     <div>
                         <label for="password" id="password">Password</label><br>
-                        <input type="password" id="password" required>
+                        <input type="password" id="password" v-model="password">
                     </div>
                 </div>
-                <div class="error" v-if="messageError">
-                    <p v-text="messageError"></p>
+                <div class="error">
+                    <p>{{errorMessage}}</p>
                 </div>
-                <button id="signBtn"><router-link to="#" id="sing-ip">Sign In</router-link></button>
+                <button id="signBtn" @click="Signin">Sign In</button>
                 <p>- OR -</p>
                 <div class="to-signup">
                     <p>Don't have account yet?</p> 
@@ -35,15 +35,37 @@
 </template>
 
 <script>
+    import axios from 'axios'
+    const URL_API = "http://127.0.0.1:8000/api/"
     export default {
         data() {
-        return {
-            userList: [],
-            email: "",
-            password: "",
+            return {
+                email: "",
+                password: "",
+                errorMessage: "",
             };
         },
-        methods: {},
+        methods: {
+            Signin() {
+                const login = {
+                    email : this.email,
+                    password : this.password,
+                }
+                axios.post(URL_API + "login" , login).then(res => {
+                    this.$router.push('/navbar');
+                    this.errorMessage = "";
+                    console.log(res.data.user);
+                })
+                .catch(error => {
+                    let statusCode = error.response.status;
+                    if(statusCode === 404) {
+                        this.errorMessage = 'Your input is not valid, please try again!';
+                    }
+                })
+                this.email = "";
+                this.password = "";
+            }
+        },
     }
 </script>
 
@@ -150,6 +172,7 @@
         font-size: 30px;
         outline: none;
         height: 60px;
+        color: #fff;
         border: none;
         width: 40%;
         margin-left: 31%;

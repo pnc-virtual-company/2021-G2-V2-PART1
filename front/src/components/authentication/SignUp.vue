@@ -6,7 +6,7 @@
             <p>©Copyright by PNC 2021 VC Team 2</p>
         </div>
         <div class="form-signup">
-            <form href="#">
+            <form @submit.prevent="" action="#">
                 <div class="txt-signup">
                     <h2>SIGN UP</h2>
                 </div>
@@ -14,28 +14,28 @@
                     <div class="left">
                         <div> 
                             <label for="username" class="username">Username</label><br>
-                            <input type="text" id="username" v-model="username" required>
+                            <input type="text" id="username" v-model="username">
                         </div><br>
                         <div>
                             <label for="email" class="email">Email</label>
-                            <input type="text" id="email" v-model="email" required>
+                            <input type="text" id="email" v-model="email">
                         </div>
                     </div>
                     <div class="right">
                         <div>
                             <label for="password" class="password">Password</label><br>
-                            <input type="password" id="password" v-model="password" required>
+                            <input type="password" id="password" v-model="password">
                         </div><br>
                         <div >
                             <label for="c-password" class="c-password" >Confirm Password</label><br>
-                            <input type="password" id="c-password">
+                            <input type="password" id="c-password" v-model="password_confirmation">
                         </div>   
                     </div>
                 </div>
-                <div class="error" v-if="messageError">
-                    <p v-text="messageError"></p>
+                <div class="error">
+                    <p>{{errorMessage}}</p>
                 </div>
-                <button id="loginBtn" class="hvr-grow"><router-link @click="signUp" to="/navbar" id="sing-up">Sign Up</router-link></button>
+                <button @click="signUp" id="loginBtn" class="hvr-grow">Sign Up</button>
                 <p>- OR -</p>
                 <div class="to-login"> 
                     <p>Already have account? </p> 
@@ -47,6 +47,8 @@
 </template>
 
 <script>
+    import axios from 'axios'
+    const URL_API = "http://127.0.0.1:8000/api/"
     export default {
         emits: ['sign-up'],
         data() {
@@ -54,14 +56,34 @@
                 username: '',
                 email: '',
                 password: '',
+                password_confirmation: "",
+                errorMessage: "",
             }
         }, 
         methods: {
             signUp(){
-                this.$emit('sign-up', this.username, this.email, this.password)
+                const newUser = {
+                    username: this.username,
+                    email: this.email,
+                    password: this.password,
+                    password_confirmation: this.password_confirmation
+                }
+                axios.post(URL_API + "register", newUser).then(res => {
+                    this.$router.push('/navbar');
+                    this.userLists.push(res.data.data);
+                    console.log(this.userLists)
+                    this.errorMessage = "";
+                })
+                .catch(error => {
+                    let statusCode = error.response.status;
+                    if(statusCode === 422) {
+                        this.errorMessage = 'Your input is not valid, please try again!';
+                    }
+                })
                 this.username = "";
                 this.email = "";
                 this.password = "";
+                this.password_confirmation = "";
             }
         },       
     }
@@ -184,6 +206,7 @@
         outline: none;
         height: 60px;
         border: none;
+        color: #fff;
         width: 40%;
         margin-left: 31%;
     }
