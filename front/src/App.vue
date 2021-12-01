@@ -7,6 +7,7 @@
 
 <script>
 import CategoryView from "./components/categories/CategoryView.vue";
+// import CategoryForm from "./components/categories/CategoryForm.vue"
   export default {
   components: {CategoryView},
   data() {

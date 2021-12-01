@@ -2,8 +2,8 @@
   <section>
     <h3>{{ category.name }}</h3>
     <div>
-      <span class="edit-icon" >&#9998;</span>
-      <span class="delete-icon">&#9249;</span>
+      <span class="edit-icon" >Edit</span>
+      <span class="delete-icon">Delete</span>
     </div>
   </section>
 </template>
@@ -45,8 +45,10 @@ export default {
 
   .edit-icon {
     color: blue;
+    cursor: pointer;
   }
   .delete-icon {
     color: red;
+    cursor: pointer;
   }
 </style>

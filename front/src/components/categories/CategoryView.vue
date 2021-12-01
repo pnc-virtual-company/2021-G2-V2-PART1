@@ -2,9 +2,9 @@
   <div>
     <form>
       <label for="gsearch"> Categories </label>
-      <input type="search" name = "gsearch" value=" &#128269;  Search ..." />
+      <input type="text" placeholder="Search..." />
     </form> 
-    <button> + Create </button>
+    <button class="createCategory"> + Create </button>
     <div>
       <category-card
         v-for="category of categories"
@@ -13,12 +13,14 @@
       >
       </category-card>
     </div>
+    <category-form></category-form>
   </div>
 </template>
 <script>
 import CategoryCard from "./CategoryCard.vue";
+import CategoryForm from "./CategoryForm.vue";
 export default {
-  components: {CategoryCard},
+  components: {CategoryCard, CategoryForm},
   inject: ["categories"],
 };
 </script>
@@ -53,7 +55,9 @@ export default {
     letter-spacing:1px
   }
 
-
+  .createCategory{
+    cursor: pointer;
+  }
   button {
     width: 8%;
     background-color: rgb(47, 177, 252);
