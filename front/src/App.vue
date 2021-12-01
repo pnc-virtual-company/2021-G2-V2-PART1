@@ -1,20 +1,19 @@
 <template>
   <section>
-    <navigation></navigation>
-    <router-view></router-view>
+    <category-view></category-view>
+    <!-- <category-card></category-card> -->
   </section>
 </template>
 
 <script>
-import Navigation from './components/menu/Navigation.vue';
+import CategoryView from "./components/categories/CategoryView.vue";
   export default {
-  components: { Navigation },
-  // components: { Navigation },
+  components: {CategoryView},
   data() {
     return {
       categories: [
-        { id: 1, name: "Manuel Lorenz", age: 21 },
-        { id: 2, name: "Julie Jone", age: 31 },
+        { id: 1, name: "Manuel Lorenz"},
+        { id: 2, name: "Julie Jone"},
       ],
     };
   },

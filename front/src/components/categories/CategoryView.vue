@@ -16,7 +16,9 @@
   </div>
 </template>
 <script>
+import CategoryCard from "./CategoryCard.vue";
 export default {
+  components: {CategoryCard},
   inject: ["categories"],
 };
 </script>
