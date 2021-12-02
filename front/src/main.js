@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import {createRouter, createWebHistory} from 'vue-router';
 
+<<<<<<< HEAD
 import SignIn from './components/authentication/SignIn.vue';
 import SignUp from './components/authentication/SignUp.vue';
 import Navbar from './components/menu/Navigation.vue';
@@ -28,4 +29,16 @@ const router = createRouter({
 })
 
 app.use(router);
+=======
+import CategoryForm from './components/categories/CategoryForm';
+import Search from './components/categories/Search';
+import CategoryCard from './components/categories/CategoryCard';
+import CategoryView from './components/categories/CategoryView';
+
+const app = createApp(App);
+app.component("category-card", CategoryCard);
+app.component("category-form", CategoryForm);
+app.component("search", Search);
+app.component("category-view", CategoryView);
+>>>>>>> Categories
 app.mount('#app');

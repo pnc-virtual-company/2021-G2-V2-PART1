@@ -14,7 +14,7 @@ class UserController extends Controller
     {   
         $request->validate([
             'username' => 'required|max:50|regex:/^[a-zA-Z]/',
-            'email' => 'required|email',
+            'email' => 'required|unique:users',
             'password' => 'required|min:8|confirmed',
         ]);
         
