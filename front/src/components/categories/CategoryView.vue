@@ -1,28 +1,32 @@
 <template>
-  <div>
-    <form>
-      <label for="gsearch"> Categories </label>
-      <input type="text" placeholder="Search..." />
-    </form> 
-    <button class="createCategory"> + Create </button>
+  <section>
     <div>
-      <category-card
-        v-for="category of categories"
-        :key="category.id"
-        :category="category"
-      >
-      </category-card>
+      <search @showForm='showFormCategory'></search>
+      <category-form v-if="addFormShow" :isShowForm='addFormShow' :isEdit='isEdit' @hideForm="hideCategoryForm"></category-form>
+      <section>
+        <category-card v-for="category of categories" :key="category.id" :category="category"></category-card>
+      </section>
     </div>
-    <category-form></category-form>
-  </div>
+  </section>
 </template>
 <script>
-import CategoryCard from "./CategoryCard.vue";
-import CategoryForm from "./CategoryForm.vue";
-export default {
-  components: {CategoryCard, CategoryForm},
-  inject: ["categories"],
-};
+  export default {
+    props: ['categories'],
+    data() {
+      return {
+        addFormShow: 0,
+        isEdit: 0,
+      }
+    },
+    methods: {
+      showFormCategory() {
+        this.addFormShow = 1;
+      },
+      hideCategoryForm() {
+        this.addFormShow = 0;
+      }
+    },
+  }
 </script>
 
 <style scoped>
@@ -30,44 +34,7 @@ export default {
     margin-left: 200px;
     margin-top: 30px;
   }
-  input { 
-    margin: auto; 
-    margin-top: 15px;
-    margin-left: 27px;
-    width: 58.5%; 
-    height: 4.5rem; 
-    border-radius: 15px; 
-    background-color: #f4f4f5; 
-    border: none; 
-    outline:none;
-    font-size: 2rem; 
-    font-family: Sans-serif; 
-  } 
-
-  ::placeholder {
-    padding: 25px;
-  }
-
-  label, ::placeholder {
-    font-family: Sans-serif; 
-    font-size: 2rem;
-    background: transparent; 
-    letter-spacing:1px
-  }
-
   .createCategory{
     cursor: pointer;
   }
-  button {
-    width: 8%;
-    background-color: rgb(47, 177, 252);
-    margin-top: 10px;
-    margin-left: 200px;
-    border-radius: 6px;
-    padding: 5px;
-    font-size: 20px;
-    border: none;
-  }
-
-
 </style>

@@ -1,31 +1,25 @@
 <template>
-  <section>
-    <category-view></category-view>
-    <!-- <category-card></category-card> -->
-  </section>
+  <div>
+    <category-view :categories='categories'></category-view>
+  </div>
 </template>
-
 <script>
-import CategoryView from "./components/categories/CategoryView.vue";
-// import CategoryForm from "./components/categories/CategoryForm.vue"
-  export default {
-  components: {CategoryView},
+export default {
   data() {
     return {
       categories: [
-        { id: 1, name: "Manuel Lorenz"},
-        { id: 2, name: "Julie Jone"},
-      ],
-    };
+        {id: 1, name: 'Sport'},
+        {id: 2, name: 'Hiking'},
+        {id: 3, name: 'Party'},
+        {id: 4, name: 'Meetingdfghjkl'},
+      ]
+    }
   },
-  provide() {
-    return { categories: this.categories };
-  },
-};
+}
 </script>
 
 <style>
   body {
-    background: silver;
+    background: rgb(216, 216, 216);
   }
 </style>
