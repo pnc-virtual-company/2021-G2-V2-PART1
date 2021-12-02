@@ -1,59 +1,68 @@
 <template>
-    <form action="#">
+    <form action="" class="create-category-form">
         <div>
-          <input type="text" placeholder="Event category"  autofocus/>
+            <br>
+            <input class="txt-input-category" type="text" placeholder="Event category"  v-model="categoryName"/>
         </div>
         <div class="actionBtn">
-            <button @click="discard" class="discard">Discard</button>
-            <button @click="add" class="add">Add Category</button>
+            <button class="discard" @click="discard" >DISCARD</button>
+            <button class="add" @click="create" v-if="!isEdit">CREATE</button>
         </div>
     </form>
 </template>
 <script>
     export default {
-        
+        emit: ['create', 'cancel'],
+        props: ['isShowForm', 'isEditing'],
+        data() {
+            return {
+            categoryName: '',
+            }
+        },
+        methods: {
+            create() {
+            this.$emit('addCategory', this.categoryName);
+            },
+            discard() {
+            this.$emit('hideForm')
+            }
+        },
     }
 </script>
 <style scoped>
-    form {
-        margin: 2rem auto;
-        max-width: 40rem;
-        padding: 1rem;
-        border-radius: 12px;
-        background: rgb(206, 206, 206);
-        height: 20vh;
-        width: 500px;
-    }
 
-    form div {
-        margin: 1rem 0;
-    }
-
-    input {
-        padding: 0.6rem;
-        width: 98.5%;
-        box-sizing: border-box;
+    .create-category-form{
+        width: 688px;
+        height: 22vh;
+        background: rgb(255, 255, 255);
+        margin-left: 25%;
         border-radius: 10px;
+        margin-top: -50px;
+        box-sizing: border-box;
+    }
+
+    .txt-input-category{
+        border-radius: 10px;
+        width: 92.5%;
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin: 25px;
+        margin-left: 2%;
+        margin-top: 2%;
         border: none;
         outline: none;
-        height: 10vh;
-    }
-    label {
-        margin-right: 1rem;
-        width: 7rem;
-        display: inline-block;
-        color: #777;
-        font-size: 15px;
-        padding: 10px 0;
-    }
-    ::placeholder {
-        letter-spacing:1px
+        padding: 10px;
+        font-size: 20px;
+        background: rgb(201, 201, 201);
     }
     .actionBtn{
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        margin-top: -10px;
+        margin-top: -25px;
+        margin-right: 1%;
     }
     .discard,
     .add{
