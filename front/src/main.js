@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import {createRouter, createWebHistory} from 'vue-router';
-
 import SignIn from './components/authentication/SignIn.vue';
 import SignUp from './components/authentication/SignUp.vue';
 import Navbar from './components/menu/Navigation.vue';

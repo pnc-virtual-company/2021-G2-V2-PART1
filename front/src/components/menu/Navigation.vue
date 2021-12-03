@@ -1,5 +1,6 @@
 <template> 
   <header> 
+    <router-view></router-view>
     <nav> 
       <ul> 
         <li> 
