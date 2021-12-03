@@ -100,6 +100,6 @@
     display: table;
     }
     #btnSearch{
-        height: 6.5vh;
+        height: 6.1vh;
     }
 </style>

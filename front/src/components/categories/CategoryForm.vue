@@ -33,7 +33,7 @@
 <style scoped>
 
     .create-category-form{
-        width: 688px;
+        width: 51%;
         height: 22vh;
         background: rgb(255, 255, 255);
         margin-left: 25%;
@@ -45,7 +45,7 @@
     .txt-input-category{
         border-radius: 10px;
         width: 92.5%;
-        height: 40px;
+        height: 50px;
         justify-content: center;
         align-items: center;
         display: flex;
