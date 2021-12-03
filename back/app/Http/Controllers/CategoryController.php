@@ -56,7 +56,10 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
+        $request->validate([
+            'name' => 'required|unique:categories',
+        ]);
         $category = Category::findOrFail($id);
         $category->name = $request->name;
         $category->save();
