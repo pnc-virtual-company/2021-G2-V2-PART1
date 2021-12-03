@@ -1,31 +1,36 @@
 <template>
     <section>
-        <form action="#">
             <div class="txt-category-right">
                 <div class="c-txt">
                     <h1>Categories</h1>
                 </div>
-                <div class="searchInput">
-                    <input id="search-category" type="text" placeholder="What are you looking for?"/> 
-                </div>
+               
+                <form class="example" @submit.prevent="search">
+                    <input type="text" placeholder="Search.." name="search" v-model="name">
+                    <button  type="submit" class="fa fa-search" id="btnSearch"></button>
+                </form>
             </div>
             <div class="add">
                 <button class="btn-add" @click="showFormCategory">+ Create</button>
             </div>
-        </form>
     </section>
 </template>
 
 <script>
     export default {
-    emit: ["showFormCategory"],
+    emit: ["showFormCategory", "addName"],
         data() {
-            return {};
+            return {
+                name: ''
+            };
         },
         methods: {
             showFormCategory() {
             this.$emit("showForm");
             },
+            search(){
+                this.$emit('addName', this.name);
+            }
         },
     };
 </script>
@@ -34,14 +39,17 @@
 
     .txt-category-right{
         display: flex;
-        width: 750px;
-        margin-left: 6%;
-        padding: 20px;
-        margin-top: -10px;
+        justify-content: space-between;
+        width: 90%;
+        margin: auto;
+        margin-left: 7%;
     }
 
     .add{
         margin-left: 7%;
+    }
+    .c-txt {
+        width: 30%;
     }
     .c-txt > h1{
         font-size: 30px;
@@ -56,20 +64,42 @@
         outline: none;
         border-radius: 10px;
     }
-    .searchInput {
-        margin-top: 15px;
-        margin-left: 13%;
-        width: 350%; 
-        height: 60px;
+    .example{
+        display: flex;
+        width: 80%;
+        align-items: center;
     }
-    #search-category {
-        width: 135%;
-        box-sizing: border-box;
-        border-radius: 10px;
-        border: none;
-        outline: none;
-        height: 10vh;
-        padding: 20px;
-        font-size: 20px;
+    form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 50%;
+    background: #f1f1f1;
+    }
+
+    form.example button {
+    float: left;
+    width: 5%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    }
+
+    form.example button:hover {
+    background: #0b7dda;
+    }
+
+    form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+    }
+    #btnSearch{
+        height: 6.5vh;
     }
 </style>

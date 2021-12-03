@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::get()->all();
+        return Category::latest()->get();
     }
 
     /**
@@ -77,14 +77,14 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $isDeleted = Category::deistroy($id);
+        $isDeleted = Category::destroy($id);
         if($isDeleted == 1){
             return response()->json(['massage'=>'Deleted'], 200);
         }else{
             return response()->json(['massage'=>'Not Found'], 404);
         }
     }
-    public function search($id)
+    public function search($name)
     {
         return Category::where('name', 'like', '%'.$name.'%')->get();
     }
