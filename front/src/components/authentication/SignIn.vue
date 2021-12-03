@@ -12,11 +12,11 @@
                 </div>
                 <div class="form-input">
                      <div>
-                        <label for="email" id="email">Email</label><br>
+                        <label for="email" class="email">Email</label><br>
                         <input type="email" id="email" v-model="email">
                     </div><br>
                     <div>
-                        <label for="password" id="password">Password</label><br>
+                        <label for="password" class="password">Password</label><br>
                         <input type="password" id="password" v-model="password">
                     </div>
                 </div>
@@ -145,17 +145,17 @@
         font-size: 20px;
         padding: 15px;
         outline: none;
-        height: 35px;
+        height: 30px;
         border: none;
         padding: 10px;
         width: 100%;  
         margin-right: 5%;
     }
 
-    #email,
-    #password{
+    .email,
+    .password{
         margin-left: 1%;
-        font-size: 20px;
+        font-size: 15px;
         margin-top: 2%;
     }
 

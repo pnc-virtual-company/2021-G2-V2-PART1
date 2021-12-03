@@ -3,7 +3,7 @@
     <nav> 
       <ul> 
         <li> 
-          <router-link to='/myevents'>USERNAME</router-link> 
+          <h2>USERNAME</h2> 
         </li> 
         <li><router-link to='/myevents'>MY EVENTS</router-link></li> 
         <li><router-link to='/events'>EVENTS</router-link></li> 
@@ -60,9 +60,8 @@
  
   a:hover, 
   a:active { 
-    color: #0c0c0c; 
-    border-color: #0c0c0c; 
     background-color: yellow; 
+    font-weight: bold;
     height: 1.5rem;
     align-items: center;
     justify-content: center;

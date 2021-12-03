@@ -169,7 +169,7 @@
         font-size: 20px;
         padding: 15px;
         outline: none;
-        height: 35px;
+        height: 30px;
         border: none;
         width: 82%;  
         margin-left: 4%;
@@ -189,7 +189,7 @@
     .password,
     .c-password{
         margin-left: 15%;
-        font-size: 20px;
+        font-size: 15px;
     }
 
     #sing-up{

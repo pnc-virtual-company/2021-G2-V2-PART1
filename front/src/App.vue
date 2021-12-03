@@ -1,17 +1,11 @@
 <template>
-<<<<<<< HEAD
     <div>
-        <router-view 
-        ></router-view>
+        <router-view></router-view>
+        <category-view :categories='categories'></category-view>
     </div>
-=======
-  <div>
-    <category-view :categories='categories'></category-view>
-  </div>
->>>>>>> Categories
+    
 </template>
 <script>
-<<<<<<< HEAD
     import axios from 'axios'
     const URL_API = "http://127.0.0.1:8000/api/"
     export default { 
@@ -19,6 +13,12 @@
             return {
                 userLists: [],
                 messageError: "",
+                categories: [
+                  {id: 1, name: 'Sport'},
+                  {id: 2, name: 'Hiking'},
+                  {id: 3, name: 'Party'},
+                  {id: 4, name: 'Meetingdfghjkl'},
+                ]
             }
         },
         methods: {    },
@@ -31,25 +31,7 @@
 </script>
 
 <style scoped>
-
-=======
-export default {
-  data() {
-    return {
-      categories: [
-        {id: 1, name: 'Sport'},
-        {id: 2, name: 'Hiking'},
-        {id: 3, name: 'Party'},
-        {id: 4, name: 'Meetingdfghjkl'},
-      ]
-    }
-  },
-}
-</script>
-
-<style>
   body {
-    background: rgb(216, 216, 216);
+    background: rgb(231, 231, 231);
   }
->>>>>>> Categories
 </style>
