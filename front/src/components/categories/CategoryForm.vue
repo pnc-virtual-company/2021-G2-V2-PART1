@@ -6,7 +6,7 @@
         </div>
         <div class="actionBtn">
             <button class="discard" @click="discard" >DISCARD</button>
-            <button class="add" @click="create" v-if="!isEdit">CREATE</button>
+            <button class="add" @click="create">CREATE</button>
         </div>
     </form>
 </template>
@@ -16,16 +16,17 @@
         props: ['isShowForm', 'isEditing'],
         data() {
             return {
-            categoryName: '',
+                categoryName: '',
             }
         },
         methods: {
             create() {
-            this.$emit('addCategory', this.categoryName);
+                this.$emit('addCategory', this.categoryName);
+                this.categoryName = ""
             },
             discard() {
-            this.$emit('hideForm')
-            }
+                this.$emit('hideForm')
+            },
         },
     }
 </script>

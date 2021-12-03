@@ -1,12 +1,12 @@
 <template>
   <section>  
-    <div class="card-categories">
+    <div class="card-categories" v-for="ctr of category" :key="ctr.id">
       <div class="c-name">
-        <h2>{{ category.name }}</h2>
+        <h2>{{ ctr.name }}</h2>
       </div>
       <div class="change">
         <button class="edit-icon">Edit</button>
-        <button class="delete-icon">Delete</button>
+        <button class="delete-icon" @click="$emit('deleteCategory', ctr.id)" >Delete</button>
       </div>
     </div>
   </section>
@@ -14,6 +14,9 @@
 <script>
 export default {
   props: ['category'],
+  emits:['deleteCategory'],
+  methods: {
+  },
 };
 </script>
 
@@ -39,22 +42,24 @@ export default {
   .edit-icon{
     cursor: pointer;
     color: #fff;
-    background: rgba(38, 252, 102, 0.842);
+    background: rgb(38, 252, 102);
     border: none;
     outline: none;
     width: 50px;
     height: 30px;
-    margin: 5px;
+    margin: 10px;
     font-size: 15px;
+    text-align: center;
   }
   .delete-icon{
     cursor: pointer;
     color:#fff;
     border: none;
     outline: none;
-    width: 50px;
+    width: 53px;
     height: 30px;
     font-size: 15px;
-    background: rgba(248, 32, 32, 0.774);
+    background: rgb(248, 32, 32);
+    text-align: center;
   }
 </style>

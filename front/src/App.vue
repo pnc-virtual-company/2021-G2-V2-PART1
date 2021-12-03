@@ -8,10 +8,6 @@ export default {
   data() {
     return {
       categories: [
-        {id: 1, name: 'Sport'},
-        {id: 2, name: 'Hiking'},
-        {id: 3, name: 'Party'},
-        {id: 4, name: 'Meetingdfghjkl'},
       ]
     }
   },
