@@ -1,12 +1,12 @@
 <template>
   <section>  
-    <div class="card-categories" v-for="ctr of category" :key="ctr.id">
+    <div class="card-categories">
       <div class="c-name">
-        <h2>{{ ctr.name }}</h2>
+        <h2>{{ category.name }}</h2>
       </div>
       <div class="change">
-        <button class="edit-icon">Edit</button>
-        <button class="delete-icon" @click="$emit('deleteCategory', ctr.id)" >Delete</button>
+        <i id="edit-icon" class="fa fa-pencil"></i>
+        <i id="delete-icon" @click="$emit('deleteCategory', category.id)" class="fa fa-trash"></i>
       </div>
     </div>
   </section>
@@ -15,14 +15,17 @@
 export default {
   props: ['category'],
   emits:['deleteCategory'],
-  methods: {
-  },
+  methods: {},
+  mounted(){
+    console.log(this.category)
+  }
 };
 </script>
 
 <style scoped>
   .card-categories{
     background: rgb(255, 255, 255);
+    box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
     width: 50%;
     height: 60px;
     border-radius: 10px;
@@ -33,33 +36,41 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
+  }
+  .card-categories:hover .change #edit-icon{
+    display: inline-block;
   }
 
+  .card-categories:hover .change #delete-icon{
+    display: inline-block;
+  }
+  
   .c-name{
     justify-content: flex-start;
   }
 
-  .edit-icon{
+  #edit-icon{
     cursor: pointer;
-    color: #fff;
-    background: rgb(38, 252, 102);
+    color: rgb(21, 76, 255);
     border: none;
     outline: none;
     width: 50px;
     height: 30px;
-    margin: 10px;
-    font-size: 15px;
+    font-size: 25px;
     text-align: center;
+    display: none;
   }
-  .delete-icon{
+
+  #delete-icon{
     cursor: pointer;
-    color:#fff;
+    color:rgb(255, 10, 10);
     border: none;
     outline: none;
     width: 53px;
     height: 30px;
-    font-size: 15px;
-    background: rgb(248, 32, 32);
+    font-size: 25px;
     text-align: center;
-  }
+    display: none;
+  }  
 </style>

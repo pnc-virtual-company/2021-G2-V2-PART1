@@ -1,5 +1,5 @@
 <template> 
-    <div> 
+    <div class="myevent-container"> 
         <h1>My event</h1> 
     </div> 
 </template> 
@@ -11,5 +11,10 @@
 </script> 
  
 <style scoped> 
- 
+    .myevent-container{
+        margin: 20px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
 </style>

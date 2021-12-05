@@ -1,14 +1,15 @@
 <template>
-    <form action="" class="create-category-form">
-        <div>
-            <br>
-            <input class="txt-input-category" type="text" placeholder="Event category"  v-model="categoryName"/>
-        </div>
-        <div class="actionBtn">
-            <button class="discard" @click="discard" >DISCARD</button>
-            <button class="add" @click="create">CREATE</button>
-        </div>
-    </form>
+    <div>
+        <form action="">
+            <div>
+                <input id="create-category" type="text" placeholder="Event title"  v-model="categoryName"/>
+                <div class="changeBtn">
+                    <button class="discard" @click="discard" >DISCARD</button>
+                    <button class="add" @click="create">CREATE</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </template>
 <script>
     export default {
@@ -31,56 +32,58 @@
     }
 </script>
 <style scoped>
-
-    .create-category-form{
-        width: 688px;
-        height: 22vh;
-        background: rgb(255, 255, 255);
+    form{
+        width: 51.5%;
+        height: 25%;
+        background: rgb(187, 187, 187);
         margin-left: 25%;
         border-radius: 10px;
-        margin-top: -50px;
-        box-sizing: border-box;
     }
 
-    .txt-input-category{
-        border-radius: 10px;
-        width: 92.5%;
-        height: 40px;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        margin: 25px;
-        margin-left: 2%;
-        margin-top: 2%;
-        border: none;
-        outline: none;
-        padding: 10px;
-        font-size: 20px;
-        background: rgb(201, 201, 201);
+    #create-category{
+       background: rgb(255, 255, 255);
+       width: 94%;
+       height: 50px;
+       margin-left: 1.5%;
+       margin-top: 10px;
+       border: none;
+       outline: none;
+       padding: 10px;
+       font-size: 20px;
+       border-radius: 5px;
     }
-    .actionBtn{
-        display: flex;
-        align-items: center;
+
+    .changeBtn{
         justify-content: flex-end;
-        margin-top: -25px;
-        margin-right: 1%;
+        margin-left: 80%;
+        display: flex;
     }
+
     .discard,
     .add{
         width: 100px;
-        height: 30px;
+        height: 35px;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .discard{
+        background: rgb(243, 36, 36);
+        border-radius: 5px;
+        text-align: center;
         border: none;
         outline: none;
-        margin: 10px;
-        border-radius: 5px;
+        color: #fff;
         cursor: pointer;
     }
-    .discard{
-        background: rgb(248, 16, 16);
-        color: #fff;
-    }
+
     .add{
-        background: rgb(14, 243, 82);
+        background: rgb(36, 91, 243);
+        border-radius: 5px;
+        text-align: center;
+        border: none;
+        outline: none;
         color: #fff;
+        cursor: pointer;
     }
 </style>

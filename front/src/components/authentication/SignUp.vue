@@ -39,7 +39,7 @@
                 <p>- OR -</p>
                 <div class="to-login"> 
                     <p>Already have account? </p> 
-                    <router-link to='/signin'>Sign in</router-link>
+                    <router-link :to="{name: 'SignIn'}">Sign in</router-link>
                 </div>
             </form>
         </div>
@@ -50,7 +50,7 @@
     import axios from 'axios'
     const URL_API = "http://127.0.0.1:8000/api/"
     export default {
-        emits: ['sign-up'],
+        emits: ['signup'],
         data() {
             return {
                 username: '',
@@ -58,6 +58,7 @@
                 password: '',
                 password_confirmation: "",
                 errorMessage: "",
+                signup : true,
             }
         }, 
         methods: {
@@ -69,9 +70,10 @@
                     password_confirmation: this.password_confirmation
                 }
                 axios.post(URL_API + "register", newUser).then(res => {
+                    localStorage.setItem('username', res.data.data.username);
+                    this.$emit('signup', this.signup);
                     this.$router.push('/navbar');
-                    this.userLists.push(res.data.data);
-                    console.log(this.userLists)
+                    this.userLists.push(res.data.data.username);
                     this.errorMessage = "";
                 })
                 .catch(error => {
@@ -89,72 +91,59 @@
     }
 </script>
 
-<style scope>
-    body{
-        font-family: sans-serif;
-        overflow-y: hidden;
-        overflow-x: hidden;
-        padding: 0;
-        margin: 0;
-    }
-
+<style scoped>
     .login-page{
+       height: 98.6vh;
+        width: 216vh;
+        margin-top: -7px;
+        margin-left: -1%;
         background-image: url('images/Inkedbg_LI.jpg');
-        background-position: center;
         background-size: cover;
-        height: 100vh;
+        background-position: center;
         display: flex;
-        width: 220vh;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
-
     .start-page{
         margin-left: 6%;
         margin-top: 9%;
     }
-
     .start-page > h1{
         color: rgb(255, 153, 0);
         margin-left: -3%;
         font-size: 50px;
     }
-
     .start-page > p{
         margin-left: 5%;
         font-size: 25px;
     }
-
     .start-page > #welcome{
         margin-left: 25%;
         font-size: 25px;
     }
-
     .form-signup{
         box-shadow: 0px 8px 8px 5px rgba(0, 0, 0, 0.25);
         box-sizing: border-box;
         border-radius:20px;
         background: #fff;
-        margin-left: 4%;
-        margin-top: 2%;
-        height: 90vh;
-        width: 45%;        
+        margin-top: 4%;
+        height: 80vh;
+        width: 40%; 
+        margin-left: 4%;      
     }
-
     .form-signup > form > .txt-signup > h2{
         color: rgb(255, 153, 0);
         text-align: center;
         margin-top: 60px;
         font-size: 40px;
     }
-
     .form-signup > form > p {
         margin-top: 20px;
         margin-left: 47%;
     }
-
     .form-signup > form > .form-input{
         margin: 5px;
         display: flex;
-
     }
     .form-signup > form > .form-input > .left, 
     .form-signup > form > .form-input > .right{
@@ -169,12 +158,11 @@
         font-size: 20px;
         padding: 15px;
         outline: none;
-        height: 30px;
+        height: 20px;
         border: none;
         width: 82%;  
         margin-left: 4%;
     }
-
     #username,
     #email,
     #password,
@@ -183,7 +171,6 @@
         margin-left: 15%;
         margin-top: 0%;
     }
-
     .username,
     .email,
     .password,
@@ -191,7 +178,6 @@
         margin-left: 15%;
         font-size: 15px;
     }
-
     #sing-up{
         text-decoration: none;
         color: #fff;
@@ -210,14 +196,12 @@
         width: 40%;
         margin-left: 31%;
     }
-
     .to-login{
         margin: 5px;
         margin-left: 34%;
         display: flex;
         width: 100%;
     }
-
     .form-signup > form >.to-login > p{
         color: rgb(255, 153, 0);
         margin-top: 0px;
@@ -232,5 +216,4 @@
         text-align: center;
         color: red;
     }
-
 </style>
