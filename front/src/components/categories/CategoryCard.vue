@@ -4,9 +4,9 @@
       <div class="c-name">
         <h2>{{ ctr.name }}</h2>
       </div>
-      <div class="change">
-        <button class="edit-icon">Edit</button>
-        <button class="delete-icon" @click="$emit('deleteCategory', ctr.id)" >Delete</button>
+      <div class="change" >
+        <button class="edit-icon" @click="showFormCategory(ctr)">Edit</button>
+        <button class="delete-icon" @click="$emit('deleteCategory', ctr.id)">Delete</button>
       </div>
     </div>
   </section>
@@ -14,9 +14,12 @@
 <script>
 export default {
   props: ['category'],
-  emits:['deleteCategory'],
+  emits:['deleteCategory', 'editCategory', "showFormCate", "showForm"],
   methods: {
-  },
+            showFormCategory(ctr) {
+            this.$emit("showFormCate",ctr);
+            },
+        },
 };
 </script>
 

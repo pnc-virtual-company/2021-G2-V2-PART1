@@ -6,14 +6,15 @@
         </div>
         <div class="actionBtn">
             <button class="discard" @click="discard" >DISCARD</button>
-            <button class="add" @click="create">CREATE</button>
+            <button class="add" v-if="this.isCreated" @click="create">CREATE</button>
+            <button class="add" v-else @click.prevent="edit">UPDATE</button>
         </div>
     </form>
 </template>
 <script>
     export default {
-        emit: ['create', 'cancel'],
-        props: ['isShowForm', 'isEditing'],
+        emit: ['create', 'edit', 'discard'],
+        props: ['isShowForm', 'isEditing',"cateName","cate","isCreated"],
         data() {
             return {
                 categoryName: '',
@@ -24,10 +25,21 @@
                 this.$emit('addCategory', this.categoryName);
                 this.categoryName = ""
             },
+            edit() {
+                this.$emit('editCategory',this.categoryName, this.cate.id);
+                console.log(this.cate)
+                this.categoryName = ""
+            },
             discard() {
                 this.$emit('hideForm')
+                this.categoryName =''
+            
             },
         },
+        mounted(){
+        
+            this.categoryName = this.cateName;
+        }
     }
 </script>
 <style scoped>

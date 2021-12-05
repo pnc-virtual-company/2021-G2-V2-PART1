@@ -1,24 +1,22 @@
 <template>
     <section>
-            <div class="txt-category-right">
-                <div class="c-txt">
-                    <h1>Categories</h1>
-                </div>
-               
-                <form class="example" @submit.prevent="search">
-                    <input type="text" placeholder="Search.." name="search" v-model="name">
-                    <button  type="submit" class="fa fa-search" id="btnSearch"></button>
-                </form>
-            </div>
-            <div class="add">
-                <button class="btn-add" @click="showFormCategory">+ Create</button>
+        <div class="txt-category-right">
+            <div class="c-txt">
+            <h1>Categories</h1>
+        </div>
+            <form class="example" @submit.prevent="search">
+                <input type="text" placeholder="Search.." name="search" v-model="name">
+                <button  type="submit" class="fa fa-search" id="btnSearch"></button>
+            </form>
+        </div>
+        <div class="add">
+            <button class="btn-add" @click="showFormCategory">+ Create</button>
             </div>
     </section>
 </template>
-
 <script>
     export default {
-    emit: ["showFormCategory", "addName"],
+    emits: ["showFormCategory", "addName"],
         data() {
             return {
                 name: ''
