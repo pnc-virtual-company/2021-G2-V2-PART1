@@ -77,7 +77,6 @@
     
 </script>
 <style scoped>
-
     .login-page{
         height: 98.6vh;
         width: 216vh;
@@ -90,28 +89,23 @@
         overflow-x: hidden;
         overflow-y: hidden;
     }
-
     .start-page{
         margin-left: 6%;
         margin-top: 9%;
     }
-
     .start-page > h1{
         color: rgb(255, 174, 0);
         margin-left: -3%;
         font-size: 50px;
     }
-
     .start-page > p{
          margin-left: 5%;
         font-size: 25px;
     }
-
     .start-page > #welcome{
          margin-left: 25%;
         font-size: 25px;
     }
-
     .form-login{
         box-shadow: 0px 8px 8px 5px rgba(0, 0, 0, 0.25);
         box-sizing: border-box;
@@ -122,14 +116,12 @@
         width: 40%;
         margin-left: 4%; 
     }
-
     .form-login > form > .txt-signin > h2{
         color: #f8a917;
         text-align: center;
         margin-top: 60px;
         font-size: 40px;
     }
-
     .form-login > form > p {
         margin-top: 20px;
         margin-left: 47%;
@@ -138,7 +130,6 @@
     .form-login > form > .form-input{
         margin: 5px;
     }
-
     input[type="email"],
     input[type="password"]{
         background: #d1d1d1;
@@ -152,24 +143,20 @@
         width: 81.7%;  
         margin-left: 7%;
     }
-
     .email,
     .password{
         margin-left: 7%;
         font-size: 15px;
     }
-
     #email,
     #password{
         font-size: 20px;
         margin-top: 0%;
     }
-
     #sing-ip{
         text-decoration: none;
         color: #fff;
     }
-
     #signBtn{
         background: #f8a917;     
         border-radius: 10px;
@@ -183,29 +170,24 @@
         width: 40%;
         margin-left: 31%;
     }
-
     .to-signup{
         justify-content: center;
         display: flex;
         margin: 5px;
         width: 100%;
     }
-
     .form-login > form >.to-signup > p {
         color: #f8a917;
         margin-top: 0px;
         font-size: 15px;
     }
-
     .form-login > form >.to-signup > a{
         color: rgb(0, 162, 255);
         font-weight: bold;
         font-size: 15px;
     }
-
     .error{
         text-align: center;
         color: red;
     }
-
 </style>

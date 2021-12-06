@@ -70,6 +70,7 @@
         font-size: 20px;
         background: rgb(255, 255, 255);
     }
+
     .actionBtn{
         display: flex;
         align-items: center;
@@ -77,6 +78,7 @@
         margin-top: -25px;
         margin-right: 1%;
     }
+
     .discard,
     .add{
         width: 100px;
@@ -87,10 +89,12 @@
         border-radius: 5px;
         cursor: pointer;
     }
+
     .discard{
         background: rgb(248, 16, 16);
         color: #fff;
     }
+    
     .add{
         background: rgb(21, 76, 255);
         color: #fff;

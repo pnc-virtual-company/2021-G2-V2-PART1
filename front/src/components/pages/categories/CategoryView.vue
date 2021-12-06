@@ -2,23 +2,9 @@
   <section>
     <div>
       <search @showForm='showFormCategory' @addName="searchName"></search>
-      <forms 
-      :isCreated='isCreated' 
-      :cate='cate' 
-      :cateName="cateName" 
-      v-if="addFormShow" 
-      :isShowForm='addFormShow' 
-      @hideForm="hideCategoryForm" 
-      @addCategory="createCategory"  
-      @editCategory="updateCategory"></forms>
+      <forms :isCreated='isCreated' :cate='cate' :cateName="cateName" v-if="addFormShow" :isShowForm='addFormShow' @hideForm="hideCategoryForm" @addCategory="createCategory" @editCategory="updateCategory"></forms>
       <section>
-        <category 
-        :cate='cate' 
-        :cateName="cateName" 
-        @showFormCate ='showFormForEdit'
-        @editCategory="updateCategory" 
-        :category="categories" 
-        @deleteCategory="removeCategory"></category>
+        <category :cate='cate' :cateName="cateName" @showFormCate ='showFormForEdit' @editCategory="updateCategory" :category="categories" @deleteCategory="removeCategory"></category>
       </section>
     </div>
   </section>
@@ -40,7 +26,6 @@
         categories: [],
         name: "",
         addFormShow: 0,
-        
         message: "",
         cateName:'',
         cate:'',
@@ -114,10 +99,12 @@
 </script>
 
 <style scoped>
+
   form {
     margin-left: 200px;
     margin-top: 30px;
   }
+
   .createCategory{
     cursor: pointer;
   }

@@ -76,7 +76,7 @@
         border: none;
         margin-left: 7%;
     }
-
+    
     #btnSearch{
         height: 60px;
         width: 65px;

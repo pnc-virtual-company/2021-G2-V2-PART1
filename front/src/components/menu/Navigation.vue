@@ -39,10 +39,12 @@
     }
   </script>
 <style scoped> 
+
   nav{
     margin-top: -11px;
     margin-left: -10px;
   }
+
   ul {
     list-style:none;
     background:rgb(0, 0, 0);
@@ -52,6 +54,7 @@
     width: 97.8%;
     align-items: center;
   }
+
   li {
     float:left;
   }
@@ -72,6 +75,7 @@
     margin: 8px;
     font-size:20px;
   }
+
   li h1{
     color: #fff;
     padding: -10px;
@@ -79,9 +83,11 @@
     margin-top: 30px;
     text-transform: uppercase;
   }
+
   li a:active{
     background:#f3381f;
   }
+
   li a:hover {
     background:#f3381f;
     font-weight: bold;

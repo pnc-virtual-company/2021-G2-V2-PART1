@@ -40,9 +40,11 @@ export default {
     align-items: center;
     cursor: pointer;
   }
+
   #card-categories:hover .change #edit-icon{
     display: inline-block;
   }
+
   #card-categories:hover .change #delete-icon{
     display: inline-block;
   }
@@ -50,6 +52,7 @@ export default {
   .c-name{
     justify-content: flex-start;
   }
+
   #edit-icon{
     cursor: pointer;
     color: rgb(21, 76, 255);
@@ -61,6 +64,7 @@ export default {
     text-align: center;
     display: none;
   }
+
   #delete-icon{
     cursor: pointer;
     color:#f3381f;
@@ -72,4 +76,5 @@ export default {
     text-align: center;
     display: none;
   }  
+  
 </style>
