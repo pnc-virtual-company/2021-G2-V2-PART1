@@ -1,12 +1,12 @@
 <template>
   <section>  
-    <div class="card-categories">
+    <div id="card-categories"  v-for="ctr of category" :key="ctr.id">
       <div class="c-name">
-        <h2>{{category.name}}</h2>
+        <h2>{{ ctr.name }}</h2>
       </div>
-      <div class="change">
-        <i id="edit-icon" class="fa fa-pencil"></i>
-        <i id="delete-icon" @click="$emit('deleteCategory', category.id)" class="fa fa-trash"></i>
+      <div class="change" >
+        <i id="edit-icon" class="fa fa-pencil" @click="showFormCategory(ctr)"></i>
+        <i id="delete-icon" @click="$emit('deleteCategory', ctr.id)" class="fa fa-trash"></i>
       </div>
     </div>
   </section>
@@ -14,19 +14,20 @@
 <script>
 export default {
   props: ['category'],
-  emits:['deleteCategory'],
-  methods: {},
-  mounted(){
-    console.log(this.category)
-  }
+  emits:['deleteCategory', 'editCategory', "showFormCate", "showForm"],
+  methods: {
+    showFormCategory(ctr) {
+      this.$emit("showFormCate",ctr);
+    },
+  },
 };
 </script>
 
 <style scoped>
 
-  .card-categories{
-    background: rgb(255, 255, 255);
-    box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.25);
+  #card-categories{
+    background: rgb(218, 218, 218);
+    box-shadow: 0px 2px 8px 2px rgba(196, 196, 196, 0.25);
     width: 50%;
     height: 60px;
     border-radius: 15px;
@@ -39,19 +40,16 @@ export default {
     align-items: center;
     cursor: pointer;
   }
-
-  .card-categories:hover .change #edit-icon{
+  #card-categories:hover .change #edit-icon{
     display: inline-block;
   }
-
-  .card-categories:hover .change #delete-icon{
+  #card-categories:hover .change #delete-icon{
     display: inline-block;
   }
   
   .c-name{
     justify-content: flex-start;
   }
-
   #edit-icon{
     cursor: pointer;
     color: rgb(21, 76, 255);
@@ -63,10 +61,9 @@ export default {
     text-align: center;
     display: none;
   }
-
   #delete-icon{
     cursor: pointer;
-    color:rgb(255, 10, 10);
+    color:#f3381f;
     border: none;
     outline: none;
     width: 53px;
@@ -75,5 +72,4 @@ export default {
     text-align: center;
     display: none;
   }  
-  
 </style>

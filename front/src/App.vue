@@ -29,11 +29,13 @@
       }
     },
     mounted() {
-      let user = localStorage.getItem('username');
+      let user = localStorage.getItem('userdata');
       console.log(user);
       if(user !== null){
         this.islogin = true;
         console.log('LOGIN');
+      }else{
+        this.islogin = false;
       }
     }
   }
@@ -41,7 +43,7 @@
 <style>
 
   body{
-    background: rgb(231, 231, 231);
+    background: rgb(255, 255, 255);
   }
 
 </style>

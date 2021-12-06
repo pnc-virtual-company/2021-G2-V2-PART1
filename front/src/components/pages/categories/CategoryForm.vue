@@ -1,20 +1,20 @@
 <template>
-    <div>
-        <form action="">
-            <div>
-                <input id="create-category" type="text" placeholder="Event title"  v-model="categoryName"/>
-                <div class="changeBtn">
-                    <button class="discard" @click="discard" >DISCARD</button>
-                    <button class="add" @click="create">CREATE</button>
-                </div>
-            </div>
-        </form>
-    </div>
+    <form action="" class="create-category-form">
+        <div>
+            <br>
+            <input class="txt-input-category" type="text" placeholder="Event category"  v-model="categoryName"/>
+        </div>
+        <div class="actionBtn">
+            <button class="add" v-if="this.isCreated" @click="create">CREATE</button>
+            <button class="add" v-else @click.prevent="edit">UPDATE</button>
+            <button class="discard" @click="discard" >DISCARD</button>
+        </div>
+    </form>
 </template>
 <script>
     export default {
-        emit: ['create', 'cancel'],
-        props: ['isShowForm', 'isEditing'],
+        emit: ['create', 'edit', 'discard'],
+        props: ['isShowForm', 'isEditing',"cateName","cate","isCreated"],
         data() {
             return {
                 categoryName: '',
@@ -25,67 +25,74 @@
                 this.$emit('addCategory', this.categoryName);
                 this.categoryName = ""
             },
+            edit() {
+                this.$emit('editCategory',this.categoryName, this.cate.id);
+                console.log(this.cate)
+                this.categoryName = ""
+            },
             discard() {
                 this.$emit('hideForm')
+                this.categoryName =''
             },
         },
+        mounted(){
+        
+            this.categoryName = this.cateName;
+        }
     }
 </script>
 <style scoped>
 
-    form{
+    .create-category-form{
         width: 51.5%;
-        height: 20%;
-        background: rgb(255, 255, 255);
-        box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.25);
+        height: 22vh;
+        background: rgb(218, 218, 218);
+        box-shadow: 0px 2px 8px 2px rgba(223, 223, 223, 0.25);
         margin-left: 25%;
-        border-radius: 15px;
+        border-radius: 10px;
+        margin-top: -10px;
+        box-sizing: border-box;
     }
 
-    #create-category{
-       background: rgb(197, 197, 197);
-       width: 94%;
-       height: 40px;
-       margin-left: 1.5%;
-       margin-top: 10px;
-       border: none;
-       outline: none;
-       padding: 10px;
-       font-size: 20px;
-       border-radius: 15px;
-    }
-
-    .changeBtn{
-        justify-content: flex-end;
-        margin-left: 80%;
+    .txt-input-category{
+        border-radius: 10px;
+        width: 92.5%;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
         display: flex;
+        margin: 25px;
+        margin-left: 2%;
+        margin-top: 0;
+        border: none;
+        outline: none;
+        padding: 10px;
+        font-size: 20px;
+        background: rgb(255, 255, 255);
     }
-
+    .actionBtn{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: -25px;
+        margin-right: 1%;
+    }
     .discard,
     .add{
         width: 100px;
-        height: 35px;
+        height: 30px;
+        border: none;
+        outline: none;
         margin: 10px;
-        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
     }
-
     .discard{
-        background: rgb(243, 36, 36);
-        border-radius: 5px;
-        text-align: center;
-        border: none;
-        outline: none;
+        background: rgb(248, 16, 16);
         color: #fff;
-        cursor: pointer;
     }
-
     .add{
-        background: rgb(36, 91, 243);
-        border-radius: 5px;
-        text-align: center;
-        border: none;
-        outline: none;
+        background: rgb(21, 76, 255);
         color: #fff;
-        cursor: pointer;
     }
 </style>

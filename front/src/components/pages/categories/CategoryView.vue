@@ -1,11 +1,27 @@
 <template>
-  <div class="container">
-    <btn-search @showForm="showFormCategory" @addName="searchName"></btn-search>
-    <forms v-if="addFormShow" :isShowForm="addFormShow" @hideForm="hideCategoryForm" @addCategory="createCategory"></forms>
-    <section>
-      <category v-for="(category, name, index) in categories" :key="index" :category="category" @deleteCategory="removeCategory"></category>
-    </section>
-  </div>
+  <section>
+    <div>
+      <search @showForm='showFormCategory' @addName="searchName"></search>
+      <forms 
+      :isCreated='isCreated' 
+      :cate='cate' 
+      :cateName="cateName" 
+      v-if="addFormShow" 
+      :isShowForm='addFormShow' 
+      @hideForm="hideCategoryForm" 
+      @addCategory="createCategory"  
+      @editCategory="updateCategory"></forms>
+      <section>
+        <category 
+        :cate='cate' 
+        :cateName="cateName" 
+        @showFormCate ='showFormForEdit'
+        @editCategory="updateCategory" 
+        :category="categories" 
+        @deleteCategory="removeCategory"></category>
+      </section>
+    </div>
+  </section>
 </template>
 <script>
   import axios from "axios";
@@ -17,70 +33,92 @@
     components: {
       forms: FormInput,
       category: categoryCard,
-      "btn-search": BtnSearch,
+      search: BtnSearch
     },
     data() {
       return {
         categories: [],
         name: "",
         addFormShow: 0,
-      };
+        
+        message: "",
+        cateName:'',
+        cate:'',
+        isCreated: false,
+      }
     },
     methods: {
+      showFormForEdit(ctr){
+        this.addFormShow = 1;
+        this.isCreated = false;
+        for(let category of this.categories){
+          if(ctr.id === category.id){
+            this.cateName = category.name;
+            this.cate= ctr
+          }
+        }
+      },
       showFormCategory() {
         this.addFormShow = 1;
+        this.isCreated = true;
       },
       hideCategoryForm() {
         this.addFormShow = 0;
+        this.cateName=''
       },
       createCategory(name) {
         axios.post(API_URL + "/category", { name }).then((res) => {
           console.log(res.data);
           this.getCategory();
         }).catch((error) => {
-          this.message = error.response.data.errors.name[0];
+          this.message = error.response;
         });
         this.hideCategoryForm();
-      },
+      },  
       getCategory() {
         axios.get(API_URL + "/category").then((res) => {
           this.categories = res.data;
         });
       },
-      removeCategory(id) {
-        axios.delete(API_URL + "/category/" + id).then(() => {
+      removeCategory(id){
+        axios.delete(API_URL+"/category/"+id).then(()=>{
           this.getCategory();
-          console.log("deleted");
-        });
+          console.log("deleted")
+        })
       },
-      updateCategory(id) {
-        axios.put(API_URL + "/category/" + id).then(() => {
+      updateCategory(name, id){        
+        this.cateName=''
+        this.addFormShow =0;
+        axios.put(API_URL + "/category/" +id, {name} ).then((res) => {
+          console.log(res.data);
           this.getCategory();
-          console.log("updated");
+        }).catch((error) => {
+          console.log(error)
         });
       },
       searchName(name) {
-        if (name !== "") {
-          axios.get(API_URL + "/category/search/" + name).then((res) => {
+        if(name !== '') {
+          axios.get(API_URL + "/category/search/" + name).then(res => {
             this.categories = res.data;
-            console.log(this.createCategory);
-          });
+            console.log(this.createCategory)
+          })
         }else {
           this.getCategory();
         }
-      },
+      }
     },
     mounted() {
-      this.getCategory();
+      this.getCategory()
     },
-  };
+  }
 </script>
 
 <style scoped>
-
-  .container {
-    display: flex;
-    flex-direction: column;
+  form {
+    margin-left: 200px;
+    margin-top: 30px;
   }
-  
+  .createCategory{
+    cursor: pointer;
+  }
 </style>

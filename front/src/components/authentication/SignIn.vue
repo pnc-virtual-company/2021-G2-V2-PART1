@@ -55,8 +55,8 @@
                     password : this.password,
                 }
                 axios.post(URL_API + "login" , login).then(res => {
-                    localStorage.setItem('username', res.data.data.username);
-                    this.$router.push('/navbar');
+                    localStorage.setItem('userID', res.data.data.id);
+                    this.$router.push('/myEvents');
                     this.errorMessage = "";
                     this.$emit('login_user', this.userlogin)
                     console.log(res.data);
@@ -124,7 +124,7 @@
     }
 
     .form-login > form > .txt-signin > h2{
-        color: rgb(255, 174, 0);
+        color: #f8a917;
         text-align: center;
         margin-top: 60px;
         font-size: 40px;
@@ -171,7 +171,7 @@
     }
 
     #signBtn{
-        background: rgb(255, 174, 0);     
+        background: #f8a917;     
         border-radius: 10px;
         margin-top: 15px;
         cursor: pointer;
@@ -192,7 +192,7 @@
     }
 
     .form-login > form >.to-signup > p {
-        color: rgb(255, 174, 0);
+        color: #f8a917;
         margin-top: 0px;
         font-size: 15px;
     }
