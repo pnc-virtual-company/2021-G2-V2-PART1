@@ -17,7 +17,6 @@
         </div>
     </section>
 </template>
-
 <script>
     export default {
     emit: ["showFormCategory", "addName"],
@@ -54,7 +53,7 @@
 
     .search-form{
        display: flex;
-       margin-left: 430px;
+       margin-left: 417px;
     }
     
     .txt-category-right{
@@ -63,11 +62,12 @@
     }
 
     .txt-category-right h1{
-        margin-right: 10px;
+        margin-right: -5px;
+        font-size: 30px;
     }
 
     #search-category{
-        background: rgb(255, 255, 255);
+        background: rgb(218, 218, 218);
         font-size: 20px;
         height: 30px;
         padding: 15px;
@@ -85,12 +85,12 @@
         cursor: pointer;
         padding: 15px;
         border-radius: 10px;
-        background: #00A3FF;
+        background: #f3381f;
         margin-left: -7%;
     }
-
+    
     #btn-add {
-        background: #00A3FF;
+        background: #f3381f;
         color: #fff;
         width: 130px;
         height: 50px;
@@ -99,7 +99,7 @@
         outline: none;
         border-radius: 10px;
         cursor: pointer;
-        margin-left: -1%;
+        margin-left: 0%;
     }
     
 </style>

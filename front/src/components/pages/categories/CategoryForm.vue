@@ -5,9 +5,9 @@
             <input class="txt-input-category" type="text" placeholder="Event category"  v-model="categoryName"/>
         </div>
         <div class="actionBtn">
-            <button class="discard" @click="discard" >DISCARD</button>
             <button class="add" v-if="this.isCreated" @click="create">CREATE</button>
             <button class="add" v-else @click.prevent="edit">UPDATE</button>
+            <button class="discard" @click="discard" >DISCARD</button>
         </div>
     </form>
 </template>
@@ -36,6 +36,7 @@
             },
         },
         mounted(){
+        
             this.categoryName = this.cateName;
         }
     }
@@ -43,12 +44,13 @@
 <style scoped>
 
     .create-category-form{
-        width: 51%;
+        width: 51.5%;
         height: 22vh;
-        background: rgb(255, 255, 255);
+        background: rgb(218, 218, 218);
+        box-shadow: 0px 2px 8px 2px rgba(223, 223, 223, 0.25);
         margin-left: 25%;
         border-radius: 10px;
-        margin-top: -50px;
+        margin-top: -10px;
         box-sizing: border-box;
     }
 
@@ -61,12 +63,12 @@
         display: flex;
         margin: 25px;
         margin-left: 2%;
-        margin-top: 2%;
+        margin-top: 0;
         border: none;
         outline: none;
         padding: 10px;
         font-size: 20px;
-        background: rgb(201, 201, 201);
+        background: rgb(255, 255, 255);
     }
     .actionBtn{
         display: flex;
@@ -90,7 +92,7 @@
         color: #fff;
     }
     .add{
-        background: rgb(14, 243, 82);
+        background: rgb(21, 76, 255);
         color: #fff;
     }
 </style>

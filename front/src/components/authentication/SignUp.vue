@@ -70,9 +70,9 @@
                     password_confirmation: this.password_confirmation
                 }
                 axios.post(URL_API + "register", newUser).then(res => {
-                    localStorage.setItem('username', res.data.data.username);
+                    localStorage.setItem('userID', res.data.data);
                     this.$emit('signup', this.signup);
-                    this.$router.push('/navbar');
+                    this.$router.push('/myEvents');
                     this.userLists.push(res.data.data.username);
                     this.errorMessage = "";
                 })
@@ -112,7 +112,7 @@
     }
 
     .start-page > h1{
-        color: rgb(255, 174, 0);
+        color: #f8a917;
         margin-left: -3%;
         font-size: 50px;
     }
@@ -139,7 +139,7 @@
     }
 
     .form-signup > form > .txt-signup > h2{
-        color: rgb(255, 174, 0);
+        color: #f8a917;
         text-align: center;
         margin-top: 60px;
         font-size: 40px;
@@ -197,7 +197,7 @@
     }
     
     #loginBtn{
-        background: rgb(255, 174, 0);       
+        background: #f8a917;       
         border-radius: 10px;
         margin-top: 15px;
         cursor: pointer;
@@ -218,7 +218,7 @@
     }
 
     .form-signup > form >.to-login > p{
-        color: rgb(255, 174, 0);
+        color: #f8a917;
         margin-top: 0px;
         font-size: 15px;
     }
