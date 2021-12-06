@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div>
     <slot></slot>
   </div>
 </template>
@@ -7,8 +7,6 @@
 <script>
     export default {}
 </script>
-<style>
-  .card{
-    background: #fff;
-  }
+<style scoped>
+
 </style>

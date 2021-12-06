@@ -2,7 +2,7 @@
   <section>  
     <div class="card-categories">
       <div class="c-name">
-        <h2>{{ category.name }}</h2>
+        <h2>{{category.name}}</h2>
       </div>
       <div class="change">
         <i id="edit-icon" class="fa fa-pencil"></i>
@@ -23,12 +23,13 @@ export default {
 </script>
 
 <style scoped>
+
   .card-categories{
     background: rgb(255, 255, 255);
-    box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.25);
     width: 50%;
     height: 60px;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 10px;
     margin: 15px;
     margin-left: 25%;
@@ -38,6 +39,7 @@ export default {
     align-items: center;
     cursor: pointer;
   }
+
   .card-categories:hover .change #edit-icon{
     display: inline-block;
   }
@@ -73,4 +75,5 @@ export default {
     text-align: center;
     display: none;
   }  
+  
 </style>

@@ -92,6 +92,7 @@
 </script>
 
 <style scoped>
+
     .login-page{
        height: 98.6vh;
         width: 216vh;
@@ -104,23 +105,28 @@
         overflow-x: hidden;
         overflow-y: hidden;
     }
+
     .start-page{
         margin-left: 6%;
         margin-top: 9%;
     }
+
     .start-page > h1{
-        color: rgb(255, 153, 0);
+        color: rgb(255, 174, 0);
         margin-left: -3%;
         font-size: 50px;
     }
+
     .start-page > p{
         margin-left: 5%;
         font-size: 25px;
     }
+
     .start-page > #welcome{
         margin-left: 25%;
         font-size: 25px;
     }
+
     .form-signup{
         box-shadow: 0px 8px 8px 5px rgba(0, 0, 0, 0.25);
         box-sizing: border-box;
@@ -131,24 +137,29 @@
         width: 40%; 
         margin-left: 4%;      
     }
+
     .form-signup > form > .txt-signup > h2{
-        color: rgb(255, 153, 0);
+        color: rgb(255, 174, 0);
         text-align: center;
         margin-top: 60px;
         font-size: 40px;
     }
+
     .form-signup > form > p {
         margin-top: 20px;
         margin-left: 47%;
     }
+
     .form-signup > form > .form-input{
         margin: 5px;
         display: flex;
     }
+
     .form-signup > form > .form-input > .left, 
     .form-signup > form > .form-input > .right{
         width: 45%;
     }
+
     input[type="text"],
     input[type="email"],
     input[type="password"]{
@@ -163,6 +174,7 @@
         width: 82%;  
         margin-left: 4%;
     }
+
     #username,
     #email,
     #password,
@@ -171,6 +183,7 @@
         margin-left: 15%;
         margin-top: 0%;
     }
+
     .username,
     .email,
     .password,
@@ -184,7 +197,7 @@
     }
     
     #loginBtn{
-        background: rgb(255, 153, 0);       
+        background: rgb(255, 174, 0);       
         border-radius: 10px;
         margin-top: 15px;
         cursor: pointer;
@@ -196,24 +209,29 @@
         width: 40%;
         margin-left: 31%;
     }
+
     .to-login{
         margin: 5px;
         margin-left: 34%;
         display: flex;
         width: 100%;
     }
+
     .form-signup > form >.to-login > p{
-        color: rgb(255, 153, 0);
+        color: rgb(255, 174, 0);
         margin-top: 0px;
         font-size: 15px;
     }
+
     .form-signup > form >.to-login > a{
         color: rgb(0, 162, 255);
         font-weight: bold;
         font-size: 15px;
     }
+
     .error{
         text-align: center;
         color: red;
     }
+
 </style>

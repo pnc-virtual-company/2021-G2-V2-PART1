@@ -1,7 +1,7 @@
 <template>
   <div>
-    <navbar v-if="islogin" @log_out = "logout"></navbar>
-    <router-view @login_user = "loginUser" @signup = "signup_user"></router-view> 
+    <navbar v-if="islogin" @log_out="logout"></navbar>
+    <router-view @login_user="loginUser" @signup="signup_user"></router-view> 
   </div> 
 </template>
 <script>
@@ -22,7 +22,6 @@
       },
       signup_user(signup){
         this.islogin = signup;
-      
       },
       logout(logout){
         this.islogin = logout;
@@ -36,18 +35,13 @@
         this.islogin = true;
         console.log('LOGIN');
       }
-      
     }
   }
 </script>
-<style scoped>
-  * {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+<style>
+
   body{
-    background: rgba(255, 255, 255, 0.856);
+    background: rgb(231, 231, 231);
   }
+
 </style>

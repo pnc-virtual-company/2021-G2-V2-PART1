@@ -6,7 +6,7 @@
                 <div class="txt-category-right">
                     <h1>Categories</h1>
                      <form class="search-form" @submit.prevent="search">
-                        <input id="search-category" type="text" placeholder="Search.." name="search" v-model="name">
+                        <input id="search-category" type="text" placeholder="Search..." name="search" v-model="name">
                         <button  type="submit" class="fa fa-search" id="btnSearch" style="font-size:25px; color:#fff;"></button>
                     </form>
                 </div>
@@ -32,22 +32,26 @@
             },
             search(){
                 this.$emit('addName', this.name);
+                this.name = "";
             }
         },
     };
 </script>
 
 <style scoped>
+
     .main-container{
         margin: auto;
         width: 80%;
     }
+
     .form-contain{
         width: 100%;
         display: flex;
         flex-direction: column;
         margin-top: 10px;
     }
+
     .search-form{
        display: flex;
        margin-left: 430px;
@@ -63,14 +67,14 @@
     }
 
     #search-category{
-        background: rgb(197, 197, 197);
+        background: rgb(255, 255, 255);
         font-size: 20px;
         height: 30px;
         padding: 15px;
         border-radius: 10px;
         outline: none;
         border: none;
-        margin-left: 3%;
+        margin-left: 7%;
     }
 
     #btnSearch{
@@ -81,19 +85,21 @@
         cursor: pointer;
         padding: 15px;
         border-radius: 10px;
-        background: rgb(35, 105, 255);
+        background: rgb(255, 217, 0);
         margin-left: -7%;
     }
 
     #btn-add {
-        background: rgb(34, 120, 250);
+        background: rgb(255, 217, 0);
         color: #fff;
         width: 130px;
         height: 50px;
-        font-size: 20px;
+        font-size: 25px;
         border: none;
         outline: none;
         border-radius: 10px;
         cursor: pointer;
+        margin-left: -1%;
     }
+    
 </style>

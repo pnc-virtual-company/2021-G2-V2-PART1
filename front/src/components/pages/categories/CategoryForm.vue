@@ -32,25 +32,27 @@
     }
 </script>
 <style scoped>
+
     form{
         width: 51.5%;
-        height: 25%;
-        background: rgb(187, 187, 187);
+        height: 20%;
+        background: rgb(255, 255, 255);
+        box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.25);
         margin-left: 25%;
-        border-radius: 10px;
+        border-radius: 15px;
     }
 
     #create-category{
-       background: rgb(255, 255, 255);
+       background: rgb(197, 197, 197);
        width: 94%;
-       height: 50px;
+       height: 40px;
        margin-left: 1.5%;
        margin-top: 10px;
        border: none;
        outline: none;
        padding: 10px;
        font-size: 20px;
-       border-radius: 5px;
+       border-radius: 15px;
     }
 
     .changeBtn{

@@ -2,7 +2,7 @@
   <nav> 
     <ul> 
       <li> 
-        <p class="fa fa-user" style="font-size:20px" > {{username}}</p> 
+        <p class="fa fa-user" style="font-size:20px">{{username}}</p> 
       </li> 
       <li id="myevent"><router-link :to="{name: 'MyEvent'}">MY EVENTS</router-link></li> 
       <li id="evetns"><router-link :to="{name: 'Event'}">EVENTS</router-link></li> 
@@ -37,7 +37,7 @@
   nav { 
     width: 92%;
     height: 4.5rem;
-    background: rgb(197, 197, 197);
+    background: rgb(0, 0, 0);
     align-items: center;
     justify-content: space-around;
     margin-left: 4%;
@@ -50,6 +50,7 @@
     display: flex; 
     align-items: center; 
     margin: 15px;
+    width: 100%;
   } 
   
   nav > ul > li{
@@ -59,17 +60,18 @@
 
    li > a{
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 248, 248);
   }
 
    li > p { 
-    color: rgb(0, 0, 0); 
+    color: rgb(255, 255, 255); 
     font-size: 18px;
   }
 
   nav > ul > #btnlogout{
-    margin-left: 60%;
+    margin-left: 57%;
     color: #fff;
     font-size: 40px;
   }
+  
 </style>

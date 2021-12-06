@@ -1,19 +1,9 @@
 <template>
   <div class="container">
     <btn-search @showForm="showFormCategory" @addName="searchName"></btn-search>
-    <forms
-      v-if="addFormShow"
-      :isShowForm="addFormShow"
-      @hideForm="hideCategoryForm"
-      @addCategory="createCategory"
-    ></forms>
+    <forms v-if="addFormShow" :isShowForm="addFormShow" @hideForm="hideCategoryForm" @addCategory="createCategory"></forms>
     <section>
-      <category
-        v-for="(category, name, index) in categories"
-        :key="index"
-        :category="category"
-        @deleteCategory="removeCategory"
-      ></category>
+      <category v-for="(category, name, index) in categories" :key="index" :category="category" @deleteCategory="removeCategory"></category>
     </section>
   </div>
 </template>
@@ -44,15 +34,12 @@
         this.addFormShow = 0;
       },
       createCategory(name) {
-        axios
-          .post(API_URL + "/category", { name })
-          .then((res) => {
-            console.log(res.data);
-            this.getCategory();
-          })
-          .catch((error) => {
-            this.message = error.response.data.errors.name[0];
-          });
+        axios.post(API_URL + "/category", { name }).then((res) => {
+          console.log(res.data);
+          this.getCategory();
+        }).catch((error) => {
+          this.message = error.response.data.errors.name[0];
+        });
         this.hideCategoryForm();
       },
       getCategory() {
@@ -90,8 +77,10 @@
 </script>
 
 <style scoped>
+
   .container {
     display: flex;
     flex-direction: column;
   }
+  
 </style>
