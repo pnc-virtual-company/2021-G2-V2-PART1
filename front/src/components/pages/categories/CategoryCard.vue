@@ -4,9 +4,9 @@
       <div class="c-name">
         <h2>{{category.name}}</h2>
       </div>
-      <div class="change">
-        <i id="edit-icon" class="fa fa-pencil"></i>
-        <i id="delete-icon" @click="$emit('deleteCategory', category.id)" class="fa fa-trash"></i>
+      <div class="change" >
+        <button class="edit-icon" @click="showFormCategory(ctr)">Edit</button>
+        <button class="delete-icon" @click="$emit('deleteCategory', ctr.id)">Delete</button>
       </div>
     </div>
   </section>
@@ -15,7 +15,11 @@
 export default {
   props: ['category'],
   emits:['deleteCategory'],
-  methods: {},
+  methods: { 
+    showFormCategory(ctr) {
+      this.$emit("showFormCate",ctr);
+    },
+  },
   mounted(){
     console.log(this.category)
   }

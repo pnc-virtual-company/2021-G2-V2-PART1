@@ -85,12 +85,12 @@
         cursor: pointer;
         padding: 15px;
         border-radius: 10px;
-        background: rgb(255, 217, 0);
+        background: #00A3FF;
         margin-left: -7%;
     }
 
     #btn-add {
-        background: rgb(255, 217, 0);
+        background: #00A3FF;
         color: #fff;
         width: 130px;
         height: 50px;
