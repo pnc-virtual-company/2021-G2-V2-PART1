@@ -1,72 +1,77 @@
 <template> 
-  <header> 
-    <nav> 
-      <ul> 
-        <li> 
-          <router-link to='/myevent'>Username</router-link> 
-        </li> 
-        <li> 
-          <router-link to='/events'>Events</router-link> 
-        </li> 
-        <li> 
-          <router-link to='/myevent'>My events</router-link> 
-        </li> 
-        <li> 
-          <router-link to='/categories'>Categories</router-link> 
-        </li> 
-        <li> 
-          <router-link to='/signout'><span class="glyphicon">&#xe163;</span></router-link> 
-        </li> 
-      </ul> 
-    </nav> 
-  </header> 
+  <nav> 
+    <ul> 
+      <li> 
+        <p class="fa fa-user" style="font-size:20px">{{username}}</p> 
+      </li> 
+      <li id="myevent"><router-link :to="{name: 'MyEvent'}">MY EVENTS</router-link></li> 
+      <li id="evetns"><router-link :to="{name: 'Event'}">EVENTS</router-link></li> 
+      <li id="categories"><router-link :to="{name: 'Category'}">CATEGORIES</router-link></li> 
+      <li id="btnlogout"><router-link :to="{name: 'SignIn'}" class="fa fa-sign-out" @click="Signout"></router-link> </li> 
+    </ul> 
+  </nav>  
 </template> 
- 
+
+<script>
+  export default {
+    data(){
+      return{
+        username: '',
+        islogout: false,
+      }
+    },
+    methods: {
+      Signout(){
+        localStorage.removeItem('username');
+        this.$emit('log_out', this.islogout);
+      }
+    },
+    mounted() {
+      this.username = localStorage.getItem('username');
+    },
+  }
+</script>
+
 <style scoped> 
-  header { 
-    margin: auto; 
-    margin-top: 20px; 
-    width: 90%; 
-    height: 7rem; 
-    border-radius: 12px; 
-    background-color: #f4f4f5; 
-  } 
- 
+  
   nav { 
-    height: 100%; 
+    width: 92%;
+    height: 4.5rem;
+    background: rgb(0, 0, 0);
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 4%;
+    margin-top: 5px;
+    border-radius: 15px;
   } 
  
-  ul { 
+  nav > ul { 
     list-style: none; 
-    height: 100%; 
     display: flex; 
-    justify-content: space-around; 
     align-items: center; 
+    margin: 15px;
+    width: 100%;
   } 
- 
-  li { 
-    margin: 0 0.5rem; 
-  } 
- 
-  a { 
-    text-decoration: none; 
-    background: transparent; 
-    cursor: pointer; 
-    color: rgb(12, 12, 12); 
-    padding: 1.7rem 2rem; 
-    display: inline-block; 
-    font-family: Sans-serif; 
-    font-size: 2.5rem; 
-  } 
- 
-  a:hover, 
-  a:active { 
-    color: #0c0c0c; 
-    border-color: #0c0c0c; 
-    background-color: yellow; 
-  } 
- 
-  span { 
-    font-size: 2.5rem; 
-  } 
+  
+  nav > ul > li{
+    margin: 10px;
+    font-weight: bold;
+  }
+
+   li > a{
+    text-decoration: none;
+    color: rgb(255, 248, 248);
+  }
+
+   li > p { 
+    color: rgb(255, 255, 255); 
+    font-size: 18px;
+  }
+
+  nav > ul > #btnlogout{
+    margin-left: 57%;
+    color: #fff;
+    font-size: 40px;
+  }
+  
 </style>
