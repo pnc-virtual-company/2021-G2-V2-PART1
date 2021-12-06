@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import CategoryForm from './components/categories/CategoryForm';
-import Search from './components/categories/Search';
-import CategoryCard from './components/categories/CategoryCard';
-import CategoryView from './components/categories/CategoryView';
+import CategoryForm from './components/pages/categories/CategoryForm';
+import Search from './components/pages/categories/Search';
+import CategoryCard from './components/pages/categories/CategoryCard';
+import CategoryView from './components/pages/categories/CategoryView';
 
 const app = createApp(App);
 app.component("category-card", CategoryCard);
