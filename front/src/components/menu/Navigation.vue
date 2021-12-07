@@ -1,7 +1,7 @@
 <template> 
   <nav> 
     <ul>
-      <li><h1 class="fa fa-user " style="font-size:20px">{{ username }}</h1></li>
+      <li><h1 class="fa fa-user " style="font-size:15px">{{ username }}</h1></li>
       <li id="myevent"><router-link :to="{name: 'MyEvent'}">MY EVENTS</router-link></li> 
       <li id="evetns"><router-link :to="{name: 'Event'}">EVENTS</router-link></li> 
       <li id="categories"><router-link :to="{name: 'Category'}">CATEGORIES</router-link></li> 
@@ -9,35 +9,36 @@
     </ul> 
   </nav>  
 </template> 
-  <script>
-  import axios from 'axios';
-  const URL_API = "http://127.0.0.1:8000/api/"
-    export default {
-      data(){
-        return{
-          username: '',
-          islogout: false,
-        }
-      },
-      methods: {
-        Signout(){
-          localStorage.removeItem('userID');
-          this.$emit('log_out', this.islogout);
-        }
-      },
-      mounted() {
-        let userid = localStorage.getItem('userID')
-        axios.get(URL_API + "user").then((res) =>{
-          let userInfo = res.data;
-          for(let user of userInfo){
-            if (user.id == userid){
-              this.username = user.username;
-            }
+
+<script>
+  import axios from '../../axios-request.js'
+  export default {
+    data(){
+      return{
+        username: '',
+        islogout: false,
+      }
+    },
+    methods: {
+      Signout(){
+        localStorage.removeItem('userID');
+        this.$emit('log_out', this.islogout);
+      }
+    },
+    mounted() {
+      let userid = localStorage.getItem('userID')
+      axios.get("/user").then((res) =>{
+        let userInfo = res.data;
+        for (let user of userInfo){
+          if (user.id == userid){
+            this.username = user.username;
           }
-        })
-      },
-    }
-  </script>
+        }
+      })
+    },
+  }
+</script>
+
 <style scoped> 
 
   nav{
@@ -50,7 +51,7 @@
     background:rgb(0, 0, 0);
     overflow:hidden;
     margin:0;	
-    height: 12.5vh;
+    height: 11.5vh;
     width: 97.8%;
     align-items: center;
   }
@@ -70,10 +71,9 @@
   li a{
     text-decoration:none;
     padding: 21px;
-    /* display:inline-block; */
     color:#fff;
     margin: 8px;
-    font-size:20px;
+    font-size:15px;
   }
 
   li h1{
@@ -90,7 +90,6 @@
 
   li a:hover {
     background:#f3381f;
-    font-weight: bold;
   }
   
 </style>

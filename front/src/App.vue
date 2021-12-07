@@ -18,7 +18,7 @@
     methods: {
       loginUser(action){
         this.islogin = action;
-        console.log("login successfully!" + action);
+        console.log("Login successfully!" + action);
       },
       signup_user(signup){
         this.islogin = signup;
@@ -29,21 +29,23 @@
       }
     },
     mounted() {
-      let user = localStorage.getItem('userdata');
-      console.log(user);
+      let user = localStorage.getItem('userID');
       if(user !== null){
         this.islogin = true;
         console.log('LOGIN');
       }else{
         this.islogin = false;
       }
+      this.islogin = false;
     }
   }
 </script>
+
 <style>
 
   body{
-    background: rgb(255, 255, 255);
+    background: rgba(218, 208, 208, 0.616);
+    font-family: sans-serif;
   }
   
 </style>

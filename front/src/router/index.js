@@ -1,10 +1,9 @@
 import {createRouter, createWebHistory} from 'vue-router';
-import Categories from '../components/pages/categories/CategoryView.vue';
-import Events from '../components/pages/Event/Event.vue';
-import MyEvent from '../components/pages/myEvent/MyEvent.vue';
-import SignIn from '../components/authentication/SignIn.vue';
-import SignUp from '../components/authentication/SignUp.vue';
-
+import Categories from '../view/CategoryView.vue';
+import Events from '../components/Event/Event.vue';
+import MyEvent from '../components/myEvent/MyEvent.vue';
+import SignIn from '../authentication/SignIn.vue';
+import SignUp from '../authentication/SignUp.vue';
 const routes = [
     {
         path: '/myEvents',

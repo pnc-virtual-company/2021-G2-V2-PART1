@@ -47,8 +47,7 @@
 </template>
 
 <script>
-    import axios from 'axios'
-    const URL_API = "http://127.0.0.1:8000/api/"
+    import axios from '../axios-request.js'
     export default {
         emits: ['signup'],
         data() {
@@ -69,14 +68,13 @@
                     password: this.password,
                     password_confirmation: this.password_confirmation
                 }
-                axios.post(URL_API + "register", newUser).then(res => {
-                    localStorage.setItem('userID', res.data.data);
-                    this.$emit('signup', this.signup);
+                axios.post("/register", newUser).then(res => {
+                    localStorage.setItem('userID', res.data.data.id);
                     this.$router.push('/myEvents');
+                    this.$emit('signup', this.signup);
                     this.userLists.push(res.data.data.username);
                     this.errorMessage = "";
-                })
-                .catch(error => {
+                }).catch(error => {
                     let statusCode = error.response.status;
                     if(statusCode === 422) {
                         this.errorMessage = 'Your input is not valid, please try again!';
@@ -98,7 +96,7 @@
         width: 216vh;
         margin-top: -7px;
         margin-left: -1%;
-        background-image: url('images/Inkedbg_LI.jpg');
+        background-image: url('../assets/Inkedbg_LI.jpg');
         background-size: cover;
         background-position: center;
         display: flex;

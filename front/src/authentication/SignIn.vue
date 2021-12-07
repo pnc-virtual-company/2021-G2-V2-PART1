@@ -35,8 +35,7 @@
 </template>
 
 <script>
-    import axios from 'axios'
-    const URL_API = "http://127.0.0.1:8000/api/"
+    import axios from '../axios-request.js'
     export default {
         emits: ['login_user'],
         data() {
@@ -54,12 +53,12 @@
                     email : this.email,
                     password : this.password,
                 }
-                axios.post(URL_API + "login" , login).then(res => {
+                axios.post("/login" , login).then(res => {
                     localStorage.setItem('userID', res.data.data.id);
                     this.$router.push('/myEvents');
-                    this.errorMessage = "";
                     this.$emit('login_user', this.userlogin)
                     console.log(res.data);
+                    this.errorMessage = "";
                 })
                 .catch(error => {
                     let statusCode = error.response.status;
@@ -72,17 +71,18 @@
             },
         },
         mounted() {
+            localStorage.removeItem('userID');
         },
     }
-    
 </script>
+
 <style scoped>
     .login-page{
         height: 98.6vh;
         width: 216vh;
         margin-top: -7px;
         margin-left: -1%;
-        background-image: url('images/Inkedbg_LI.jpg');
+        background-image: url('../assets/Inkedbg_LI.jpg');
         background-size: cover;
         background-position: center;
         display: flex;
