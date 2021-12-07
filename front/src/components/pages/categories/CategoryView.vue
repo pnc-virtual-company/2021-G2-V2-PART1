@@ -2,32 +2,116 @@
   <section>
     <div>
       <search @showForm='showFormCategory ' @addName="searchName"></search>
-      <category-form :isCreated='isCreated' :cate='cate' :cateName="cateName" v-if="addFormShow" :isShowForm='addFormShow' @hideForm="hideCategoryForm" @addCategory="createCategory"  @editCategory="updateCategory"></category-form>
+      <!-- <category-form :isCreated='isCreated' :cate='cate' :cateName="cateName" v-if="addFormShow" :isShowForm='addFormShow' @hideForm="hideCategoryForm" @addCategory="createCategory"  @editCategory="updateCategory"></category-form> -->
+      <base-dialog
+        v-if="dialogDisplayed"
+        :title="dialogTitle"
+        @close="closeDialog"
+      > 
+        <div v-if="dialogMode !== 'remove' ">
+          <label for="category">Category name</label>
+          <input 
+          type="text"
+          id="category"
+          placeholder="Name"
+          v-model="ctrname"
+          >
+        </div>
+        <div v-else>
+          <h3>Are you sure you want to delete this Item?</h3>
+        </div>
+        <template #actions>
+          <base-button @click="onConfirm" > {{dialogButton}} </base-button>
+        </template>
+      </base-dialog>
+
+      <base-button
+      class="right-man-button"
+      @click="showCreateForm"
+      >
+      + Create
+      </base-button>
       <section>
-        <category-card :cate='cate' :cateName="cateName" @showFormCate ='showFormForEdit' @editCategory="updateCategory" :category="categories" @deleteCategory="removeCategory"></category-card>
-        <!-- <category-card  :hideForm="hideCategoryForm" @isShowForm='addFormShow' @editCategory="updateCategory" ></category-card> -->
-        <!-- @editCategory="updateCategory" -->
+        <category-card 
+        :category="categories"
+        @toEdit="showEditForm"
+        @toDelete="showDleteDailog"
+        ></category-card>
       </section>
     </div>
   </section>
 </template>
 <script>
-  import axios from "axios";
+import axios from "axios";
+import BaseDialog from '../../../ui/BaseDialog.vue';
+import BaseButton from '../../../ui/BaseButton.vue';
   const API_URL = "http://localhost:8000/api";
   export default {
-    // props: ['category',],
+  components: { BaseDialog, BaseButton },
     data() {
       return {
         categories: [],
         cateName:'',
         cate:'',
-        name: "",
+        ctrname: "",
         addFormShow: 0,
         message: "",
         isCreated: false,
+        dialogMode: 'create',
+        dialogDisplayed: false,
+        categoryAction: null,
+      }
+    },
+    computed: {
+      dialogTitle() {
+        // return this.dialogMode === 'create' ? 'Create Category' : 'Edit Category';
+        let message = '';
+        if(this.dialogMode === 'create') {
+          message = "CREATE CATEGORY";
+        } else if(this.dialogMode === 'edit') {
+          message = "EDIT CATEGORY";
+        } else if (this.dialogMode === 'remove') {
+          message = "REMOVE CATEGORY?";
+        }
+        return message
+      },
+      dialogButton() {
+        let message = '';
+        if(this.dialogMode === 'create') {
+          message = "CREATE";
+        } else if(this.dialogMode === 'edit') {
+          message = "UPDATE";
+        } else if (this.dialogMode === 'remove') {
+          message = "REMOVE";
+        }
+        return message      
       }
     },
     methods: {
+      closeDialog() {
+        this.dialogDisplayed = false;
+        this.name = ''
+      },
+      showCreateForm() {
+        this.dialogDisplayed = true;
+        this.dialogMode = 'create';
+      },
+      showEditForm(id, name) {
+        this.dialogDisplayed = true;
+        this.dialogMode = 'edit';
+        this.categoryAction = {
+          id: id,
+          name: name
+        }
+        this.ctrname = this.categoryAction.name;
+      },
+      showDleteDailog(id) {
+        this.dialogDisplayed = true;
+        this.dialogMode = 'remove';
+        this.categoryAction = {
+          id: id,
+        }
+      },
       showFormForEdit(ctr){
         this.addFormShow = 1;
         this.isCreated = false;
@@ -38,8 +122,6 @@
           }
         }
       },
-
-
       showFormCategory() {
         this.addFormShow = 1;
         this.isCreated = true;
@@ -68,13 +150,16 @@
           console.log("deleted")
         })
       },
-      updateCategory(name, id){
+      updateCategory(id){
         // console.log(cate.name)
         
         this.cateName=''
         this.addFormShow =0;
+        let newData = {
+          name: this.ctrname,
+        }
     
-        axios.put(API_URL + "/category/" +id, {name} ).then((res) => {
+        axios.put(API_URL + "/category/" +id, newData ).then((res) => {
           console.log(res.data);
           // res.data.name = cateName;
           this.getCategory();
@@ -95,7 +180,20 @@
         }else {
           this.getCategory();
         }
-      }
+      },
+      onConfirm() {
+        this.closeDialog();
+        if(this.dialogMode === 'create') {
+          this.createCategory(this.ctrname);
+          
+        } else if (this.dialogMode === 'edit') {
+          this.updateCategory(this.categoryAction.id)
+        } else if (this.dialogMode === 'remove') {
+          this.removeCategory(this.categoryAction.id);
+        }
+       }
+
+
     },
     mounted() {
       this.getCategory()
@@ -110,5 +208,39 @@
   }
   .createCategory{
     cursor: pointer;
+  }
+
+  .form-control {
+    margin: 0.5rem 0;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    font: inherit;
+  }
+
+  input:focus,
+  textarea:focus {
+    background-color: #f0e6fd;
+    outline: none;
+    border-color: #3d008d;
+  }
+
+  h3 {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+  .right-main-button {
+    float: right;
+    margin-left: 7px;
   }
 </style>

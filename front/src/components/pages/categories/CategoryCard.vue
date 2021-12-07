@@ -5,8 +5,8 @@
         <h2>{{ ctr.name }}</h2>
       </div>
       <div class="change" >
-        <button class="edit-icon" @click="showFormCategory(ctr)">Edit</button>
-        <button class="delete-icon" @click="$emit('deleteCategory', ctr.id)">Delete</button>
+        <button class="edit-icon" @click="toEditCategory(ctr.id, ctr.name)">Edit</button>
+        <button class="delete-icon" @click="toRemove(ctr.id)">Delete</button>
       </div>
     </div>
   </section>
@@ -14,12 +14,16 @@
 <script>
 export default {
   props: ['category'],
-  emits:['deleteCategory', 'editCategory', "showFormCate", "showForm"],
+  emits: ['toEdit', 'toDelete'],
   methods: {
-            showFormCategory(ctr) {
-            this.$emit("showFormCate",ctr);
-            },
-        },
+    toEditCategory(id, name) {
+      this.$emit('toEdit', id, name)
+    },
+    toRemove(id) {
+      this.$emit('toDelete', id)
+    }
+  },
+
 };
 </script>
 
@@ -65,4 +69,35 @@ export default {
     background: rgb(248, 32, 32);
     text-align: center;
   }
+
+/* // */
+.form-control {
+  margin: 0.5rem 0;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  font: inherit;
+}
+
+input:focus,
+textarea:focus {
+  background-color: #f0e6fd;
+  outline: none;
+  border-color: #3d008d;
+}
+
+h3 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
 </style>
