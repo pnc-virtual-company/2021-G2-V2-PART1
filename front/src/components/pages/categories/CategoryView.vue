@@ -2,7 +2,6 @@
   <section>
     <div>
       <search @showForm='showFormCategory ' @addName="searchName"></search>
-      <!-- <category-form :isCreated='isCreated' :cate='cate' :cateName="cateName" v-if="addFormShow" :isShowForm='addFormShow' @hideForm="hideCategoryForm" @addCategory="createCategory"  @editCategory="updateCategory"></category-form> -->
       <base-dialog
         v-if="dialogDisplayed"
         :title="dialogTitle"
@@ -22,6 +21,7 @@
         </div>
         <template #actions>
           <base-button @click="onConfirm" > {{dialogButton}} </base-button>
+          <!-- <base-button  >  {{dialogButton}}  </base-button> -->
         </template>
       </base-dialog>
 
@@ -83,6 +83,8 @@ import BaseButton from '../../../ui/BaseButton.vue';
           message = "UPDATE";
         } else if (this.dialogMode === 'remove') {
           message = "REMOVE";
+        }else if(this.dialogMode==="close"){
+          message="";
         }
         return message      
       }
@@ -151,14 +153,12 @@ import BaseButton from '../../../ui/BaseButton.vue';
         })
       },
       updateCategory(id){
-        // console.log(cate.name)
         
         this.cateName=''
         this.addFormShow =0;
         let newData = {
           name: this.ctrname,
         }
-    
         axios.put(API_URL + "/category/" +id, newData ).then((res) => {
           console.log(res.data);
           // res.data.name = cateName;

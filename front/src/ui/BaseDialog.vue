@@ -12,7 +12,6 @@
       </section>
       <menu>
         <slot name="actions">
-          
         </slot>
       </menu>
     </dialog>

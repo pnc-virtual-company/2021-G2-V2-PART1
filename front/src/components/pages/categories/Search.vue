@@ -9,9 +9,6 @@
                 <button  type="submit" class="fa fa-search" id="btnSearch"></button>
             </form>
         </div>
-        <!-- <div class="add">
-            <button class="btn-add" @click="showFormCategory">+ Create</button>
-        </div> -->
     </section>
 </template>
 <script>
