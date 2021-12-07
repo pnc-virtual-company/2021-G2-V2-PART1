@@ -26,7 +26,7 @@ export default {
 <style scoped>
 
   #card-categories{
-    background: rgb(218, 218, 218);
+    background: rgb(255, 255, 255);
     box-shadow: 0px 2px 8px 2px rgba(196, 196, 196, 0.25);
     width: 50%;
     height: 60px;

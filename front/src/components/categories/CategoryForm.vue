@@ -46,7 +46,7 @@
     .create-category-form{
         width: 51.5%;
         height: 22vh;
-        background: rgb(218, 218, 218);
+        background: rgb(255, 255, 255);
         box-shadow: 0px 2px 8px 2px rgba(223, 223, 223, 0.25);
         margin-left: 25%;
         border-radius: 10px;
@@ -68,7 +68,7 @@
         outline: none;
         padding: 10px;
         font-size: 20px;
-        background: rgb(255, 255, 255);
+        background: rgb(209, 209, 209);
     }
     .actionBtn{
         display: flex;

@@ -67,7 +67,7 @@
     }
 
     #search-category{
-        background: rgb(218, 218, 218);
+        background: rgb(255, 255, 255);
         font-size: 20px;
         height: 30px;
         padding: 15px;

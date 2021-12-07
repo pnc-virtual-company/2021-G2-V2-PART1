@@ -24,11 +24,10 @@
   </section>
 </template>
 <script>
-  import axios from "axios";
-  import FormInput from "./CategoryForm.vue";
-  import categoryCard from "./CategoryCard.vue";
-  import BtnSearch from "./Search.vue";
-  const API_URL = "http://localhost:8000/api";
+  import axios from '../axios-request.js'
+  import FormInput from "../components/categories/CategoryForm.vue";
+  import categoryCard from "../components/categories/CategoryCard.vue";
+  import BtnSearch from "../components/categories/Search.vue";
   export default {
     components: {
       forms: FormInput,
@@ -48,6 +47,7 @@
       }
     },
     methods: {
+      // show form edit category
       showFormForEdit(ctr){
         this.addFormShow = 1;
         this.isCreated = false;
@@ -67,7 +67,7 @@
         this.cateName=''
       },
       createCategory(name) {
-        axios.post(API_URL + "/category", { name }).then((res) => {
+        axios.post("/category", { name }).then((res) => {
           console.log(res.data);
           this.getCategory();
         }).catch((error) => {
@@ -76,12 +76,12 @@
         this.hideCategoryForm();
       },  
       getCategory() {
-        axios.get(API_URL + "/category").then((res) => {
+        axios.get("/category").then((res) => {
           this.categories = res.data;
         });
       },
       removeCategory(id){
-        axios.delete(API_URL+"/category/"+id).then(()=>{
+        axios.delete("/category/"+id).then(()=>{
           this.getCategory();
           console.log("deleted")
         })
@@ -89,7 +89,7 @@
       updateCategory(name, id){        
         this.cateName=''
         this.addFormShow =0;
-        axios.put(API_URL + "/category/" +id, {name} ).then((res) => {
+        axios.put("/category/" +id, {name} ).then((res) => {
           console.log(res.data);
           this.getCategory();
         }).catch((error) => {
@@ -98,7 +98,7 @@
       },
       searchName(name) {
         if(name !== '') {
-          axios.get(API_URL + "/category/search/" + name).then(res => {
+          axios.get("/category/search/" + name).then(res => {
             this.categories = res.data;
             console.log(this.createCategory)
           })
