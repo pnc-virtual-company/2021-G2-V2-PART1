@@ -71,7 +71,7 @@
             },
         },
         mounted() {
-
+            localStorage.removeItem('userID');
         },
     }
 </script>

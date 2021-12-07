@@ -29,14 +29,14 @@
       }
     },
     mounted() {
-      let user = localStorage.getItem('userdata');
-      console.log(user);
+      let user = localStorage.getItem('userID');
       if(user !== null){
         this.islogin = true;
         console.log('LOGIN');
       }else{
         this.islogin = false;
       }
+      this.islogin = false;
     }
   }
 </script>

@@ -95,7 +95,8 @@
     }
     #myevent-container{
         background: rgb(255, 255, 255);
-        box-shadow: 0px 2px 8px 2px rgba(196, 196, 196, 0.25);
+        box-shadow: 0px 2px 8px 2px rgba(150, 150, 150, 0.25);
+        width: 60%;
         width: 60%;
         height: 25vh;
         border-radius: 10px;
