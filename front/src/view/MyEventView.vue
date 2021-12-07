@@ -1,8 +1,10 @@
 <template>
-    <div>
-        <my-event-card class="event-card"></my-event-card>
-        <my-event></my-event>
-    </div>
+    <section>
+        <div>
+            <my-event-card class="event-card"></my-event-card>
+            <my-event></my-event>
+        </div>
+    </section>
 </template>
 
 <script>

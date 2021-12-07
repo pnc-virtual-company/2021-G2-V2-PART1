@@ -9,34 +9,36 @@
     </ul> 
   </nav>  
 </template> 
-  <script>
+
+<script>
   import axios from '../../axios-request.js'
-    export default {
-      data(){
-        return{
-          username: '',
-          islogout: false,
-        }
-      },
-      methods: {
-        Signout(){
-          localStorage.removeItem('userID');
-          this.$emit('log_out', this.islogout);
-        }
-      },
-      mounted() {
-        let userid = localStorage.getItem('userID')
-        axios.get("/user").then((res) =>{
-          let userInfo = res.data;
-          for(let user of userInfo){
-            if (user.id == userid){
-              this.username = user.username;
-            }
+  export default {
+    data(){
+      return{
+        username: '',
+        islogout: false,
+      }
+    },
+    methods: {
+      Signout(){
+        localStorage.removeItem('userID');
+        this.$emit('log_out', this.islogout);
+      }
+    },
+    mounted() {
+      let userid = localStorage.getItem('userID')
+      axios.get("/user").then((res) =>{
+        let userInfo = res.data;
+        for (let user of userInfo){
+          if (user.id == userid){
+            this.username = user.username;
           }
-        })
-      },
-    }
-  </script>
+        }
+      })
+    },
+  }
+</script>
+
 <style scoped> 
   nav{
     margin-top: -11px;

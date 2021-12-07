@@ -72,10 +72,9 @@
                     localStorage.setItem('userID', res.data.data.id);
                     this.$router.push('/myEvents');
                     this.$emit('signup', this.signup);
-                    // this.userLists.push(res.data.data.username);
+                    this.userLists.push(res.data.data.username);
                     this.errorMessage = "";
-                })
-                .catch(error => {
+                }).catch(error => {
                     let statusCode = error.response.status;
                     if(statusCode === 422) {
                         this.errorMessage = 'Your input is not valid, please try again!';

@@ -5,8 +5,8 @@
             <div class="form-contain">
                 <div class="txt-category-right">
                     <h1>Categories</h1>
-                     <form class="search-form" @submit.prevent="search">
-                        <input id="search-category" type="text" placeholder="Search..." name="search" v-model="name">
+                     <form class="search-form">
+                        <input @keyup="search" id="search-category" type="text" placeholder="Search..." name="search" v-model="name">
                         <button  type="submit" class="fa fa-search" id="btnSearch" style="font-size:25px; color:#fff;"></button>
                     </form>
                 </div>
@@ -31,7 +31,6 @@
             },
             search(){
                 this.$emit('addName', this.name);
-                this.name = "";
             }
         },
     };
@@ -86,7 +85,7 @@
         padding: 15px;
         border-radius: 10px;
         background: #f3381f;
-        margin-left: -7%;
+        margin-left: -12%;
     }
     
     #btn-add {

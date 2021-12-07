@@ -71,10 +71,11 @@
             },
         },
         mounted() {
+
         },
     }
-    
 </script>
+
 <style scoped>
 
     .login-page{

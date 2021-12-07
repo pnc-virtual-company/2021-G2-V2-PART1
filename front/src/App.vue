@@ -18,7 +18,7 @@
     methods: {
       loginUser(action){
         this.islogin = action;
-        console.log("login successfully!" + action);
+        console.log("Login successfully!" + action);
       },
       signup_user(signup){
         this.islogin = signup;
@@ -40,6 +40,7 @@
     }
   }
 </script>
+
 <style>
 
   body{

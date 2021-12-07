@@ -41,6 +41,7 @@
         }
     }
 </script>
+
 <style scoped>
 
     .create-category-form{
