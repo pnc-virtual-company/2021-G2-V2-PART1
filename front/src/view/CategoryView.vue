@@ -4,7 +4,7 @@
       <search @showForm='showFormCategory' @addName="searchName"></search>
       <forms :isCreated='isCreated' :cate='cate' :cateName="cateName" v-if="addFormShow" :isShowForm='addFormShow' @hideForm="hideCategoryForm" @addCategory="createCategory" @editCategory="updateCategory"></forms>
       <section>
-        <category :cate='cate' :cateName="cateName" @showFormCate ='showFormForEdit' @editCategory="updateCategory" :category="categories" @deleteCategory="removeCategory"></category>
+        <category :cate='cate' :cateName="cateName" @showFormCate ='showFormForEdit' @editCategory="updateCategory" :category="categories" @delete="removeCategory"></category>
       </section>
     </div>
   </section>
@@ -66,7 +66,8 @@
         });
       },
       removeCategory(id){
-        axios.delete("/category/"+id).then(()=>{
+        console.log(id);
+        axios.delete("/category/"+parseInt(id)).then(()=>{
           this.getCategory();
           console.log("deleted")
         })
