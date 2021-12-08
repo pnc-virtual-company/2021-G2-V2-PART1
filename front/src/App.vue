@@ -32,11 +32,12 @@
       let user = localStorage.getItem('userID');
       if(user !== null){
         this.islogin = true;
+        this.$router.push('/myEvents');
         console.log('LOGIN');
       }else{
         this.islogin = false;
       }
-      this.islogin = false;
+
     }
   }
 </script>

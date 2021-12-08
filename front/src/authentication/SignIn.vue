@@ -59,8 +59,7 @@
                     this.$emit('login_user', this.userlogin)
                     console.log(res.data);
                     this.errorMessage = "";
-                })
-                .catch(error => {
+                }).catch(error => {
                     let statusCode = error.response.status;
                     if(statusCode === 404) {
                         this.errorMessage = 'Your input is not valid, please try again!';
