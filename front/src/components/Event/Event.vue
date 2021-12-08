@@ -21,8 +21,8 @@
                     <h3>04:30 PM</h3>
                 </div>
                 <div class="event-btn">
-                    <a id="join" class="fa fa-check-circle-o" style="font-size:20px">Join</a>
                     <a id="quit" class="fa fa-times-circle-o" style="font-size:20px">Quit</a>
+                    <a id="join" class="fa fa-check-circle-o" style="font-size:20px">Join</a>
                 </div>
             </div> 
         </div>
@@ -38,13 +38,14 @@
 </script> 
  
 <style scoped> 
+
     #timetable{
         margin-left: 20%;
     }
+
     #myevent-container{
         background: rgb(255, 255, 255);
         box-shadow: 0px 2px 8px 2px rgba(150, 150, 150, 0.25);
-        width: 60%;
         width: 60%;
         height: 25vh;
         border-radius: 10px;

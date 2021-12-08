@@ -1,11 +1,10 @@
 <template>
     <section>
-        <br>
         <div class="main-container">
             <div class="form-contain">
                 <div class="txt-category-right">
                     <h1>Categories</h1>
-                     <form class="search-form">
+                    <form class="search-form">
                         <input @keyup="search" id="search-category" type="text" placeholder="Search..." name="search" v-model="name">
                         <button  type="submit" class="fa fa-search" id="btnSearch" style="font-size:25px; color:#fff;"></button>
                     </form>
@@ -27,7 +26,7 @@
         },
         methods: {
             showFormCategory() {
-            this.$emit("showForm");
+                this.$emit("showForm");
             },
             search(){
                 this.$emit('addName', this.name);
@@ -58,11 +57,13 @@
     .txt-category-right{
         display: flex;
         align-items: center;
+        margin-left: 1%;
+
     }
 
     .txt-category-right h1{
-        margin-right: -5px;
-        font-size: 30px;
+        font-size: 25px;
+        margin-left: -1%;
     }
 
     #search-category{
@@ -73,19 +74,19 @@
         border-radius: 10px;
         outline: none;
         border: none;
-        margin-left: 7%;
+        margin-left: 11%;
     }
 
     #btnSearch{
         height: 60px;
-        width: 65px;
+        width: 67px;
         outline: none;
         border: none;
         cursor: pointer;
         padding: 15px;
         border-radius: 10px;
         background: #f3381f;
-        margin-left: -12%;
+        margin-left: -10%;
     }
     
     #btn-add {

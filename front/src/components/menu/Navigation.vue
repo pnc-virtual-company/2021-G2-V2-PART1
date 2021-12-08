@@ -3,7 +3,7 @@
     <ul>
       <li><h1 class="fa fa-user " style="font-size:15px">{{ username }}</h1></li>
       <li id="myevent"><router-link :to="{name: 'MyEvent'}">MY EVENTS</router-link></li> 
-      <li id="evetns"><router-link :to="{name: 'Event'}">EVENTS</router-link></li> 
+      <li id="evetns"><router-link :to="{name: 'Events'}"> FIND EVENT</router-link></li> 
       <li id="categories"><router-link :to="{name: 'Category'}">CATEGORIES</router-link></li> 
       <a id="btnlogout"><router-link :to="{name: 'SignIn'}" class="fa fa-sign-out" @click="Signout"></router-link> </a> 
     </ul> 
@@ -40,6 +40,7 @@
 </script>
 
 <style scoped> 
+
   nav{
     margin-top: -11px;
     margin-left: -10px;
@@ -85,5 +86,7 @@
   li a:hover {
     background:#f3381f;
   }
-  
+  .router-link-active{
+    background: #f3381f;
+  }
 </style>

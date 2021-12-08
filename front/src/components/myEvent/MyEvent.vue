@@ -21,60 +21,8 @@
                     <h3>01:00 PM</h3>
                 </div>
                 <div class="event-btn">
-                    <a id="edit" class="fa fa-pencil" style="font-size:20px"></a>
                     <a id="cancel" class="fa fa-times" style="font-size:20px"></a>
-                </div>
-            </div> 
-
-            <!-- ================== -->
-            <p id="timetable">Wednesday, 08, December</p>
-            <div id="myevent-container"> 
-                <div class="event-img">
-                    <img src="" alt="">
-                </div>
-                <div class="event-description">
-                    <div class="category-name">
-                        <label for="">Sport</label>
-                    </div>
-                    <div class="event-title">
-                        <h1>Football</h1>
-                    </div>
-                    <div class="description">
-                        <label for="">Cambodia VS Vitnam</label>
-                    </div>
-                </div>
-                <div class="event-time">
-                    <h3>04:30 PM</h3>
-                </div>
-                <div class="event-btn">
                     <a id="edit" class="fa fa-pencil" style="font-size:20px"></a>
-                    <a id="cancel" class="fa fa-times" style="font-size:20px"></a>
-                </div>
-            </div> 
-
-            <!-- ================== -->
-            <p id="timetable">Monday, 06, December</p>
-            <div id="myevent-container"> 
-                <div class="event-img">
-                    <img src="" alt="">
-                </div>
-                <div class="event-description">
-                    <div class="category-name">
-                        <label for="">Workshop</label>
-                    </div>
-                    <div class="event-title">
-                        <h1>IT life</h1>
-                    </div>
-                    <div class="description">
-                        <label for="">talking about IT life</label>
-                    </div>
-                </div>
-                <div class="event-time">
-                    <h3>07:30 AM</h3>
-                </div>
-                <div class="event-btn">
-                    <a id="edit" class="fa fa-pencil" style="font-size:20px"></a>
-                    <a id="cancel" class="fa fa-times" style="font-size:20px"></a>
                 </div>
             </div> 
         </div>
@@ -84,6 +32,17 @@
 <script> 
 
     export default {
+    emit: ["showFormMyEvent"],
+        data() {
+            return {
+                
+            }
+        },
+        methods: {
+            showFormMyEvent(){
+                this.$emit("")
+            }
+        },
 
     } 
     
@@ -205,7 +164,7 @@
     }
 
     #edit:hover{
-        color: rgb(9, 95, 255);
+        color: rgb(9, 136, 255);
     }
 
 </style>

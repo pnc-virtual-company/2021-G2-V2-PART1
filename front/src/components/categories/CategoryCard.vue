@@ -2,11 +2,11 @@
   <section>  
     <div id="card-categories"  v-for="ctr of category" :key="ctr.id">
       <div class="c-name">
-        <h2>{{ ctr.name }}</h2>
+        <h3>{{ ctr.name }}</h3>
       </div>
       <div class="change" >
-        <i id="edit-icon" class="fa fa-pencil" @click="showFormCategory(ctr)"></i>
         <i id="delete-icon" @click="$emit('deleteCategory', ctr.id)" class="fa fa-trash"></i>
+        <i id="edit-icon" class="fa fa-pencil" @click="showFormCategory(ctr)"></i>
       </div>
     </div>
   </section>

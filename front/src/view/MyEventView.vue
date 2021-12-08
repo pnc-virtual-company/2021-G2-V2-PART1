@@ -1,19 +1,18 @@
 <template>
     <section>
-        <div>
-            <my-event-card class="event-card"></my-event-card>
-            <my-event></my-event>
-        </div>
+        <my-event-form></my-event-form>
+        <myevent-card></myevent-card>
     </section>
 </template>
 
 <script>
-    import Myevents from '../components/myEvent/myEventForm.vue';
+
     import MyeventCard from '../components/myEvent/MyEvent.vue';
+    import MyEventForm from '../components/myEvent/myEventForm.vue';
     export default {
         components: {
-            myevents: Myevents,
-            myeventCard: MyeventCard
+            myeventCard: MyeventCard,
+                MyEventForm,
         },
     }
 </script>

@@ -1,13 +1,12 @@
 <template>
     <form action="" class="create-category-form">
-        <div>
-            <br>
+        <div><br>
             <input class="txt-input-category" type="text" placeholder="Event category"  v-model="categoryName"/>
         </div>
         <div class="actionBtn">
+            <button class="discard" @click="discard" >DISCARD</button>
             <button class="add" v-if="this.isCreated" @click="create">CREATE</button>
             <button class="add" v-else @click.prevent="edit">UPDATE</button>
-            <button class="discard" @click="discard" >DISCARD</button>
         </div>
     </form>
 </template>
@@ -56,7 +55,7 @@
     }
 
     .txt-input-category{
-        border-radius: 10px;
+        border-radius: 5px;
         width: 92.5%;
         height: 50px;
         justify-content: center;
