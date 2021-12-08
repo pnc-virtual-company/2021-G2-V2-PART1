@@ -1,16 +1,21 @@
 <template>
-    <form action="" class="create-category-form">
-        <div><br>
-            <input class="txt-input-category" type="text" placeholder="Event category"  v-model="categoryName"/>
-        </div>
-        <div class="actionBtn">
-            <button class="discard" @click="discard" >DISCARD</button>
-            <button class="add" v-if="this.isCreated" @click="create">CREATE</button>
-            <button class="add" v-else @click.prevent="edit">UPDATE</button>
-        </div>
-    </form>
+    <div>
+        <form action="" class="create-category-form">
+            <div><br>
+                <input class="txt-input-category" type="text" placeholder="Event category"  v-model="categoryName"/>
+            </div>
+            <div class="actionBtn">
+                <button class="discard" @click="discard" >DISCARD</button>
+                <button class="add" v-if="this.isCreated" @click="create">CREATE</button>
+                <button class="add" v-else @click.prevent="edit">UPDATE</button>
+            </div>
+        </form>
+        <br>
+    </div> 
 </template>
+
 <script>
+
     export default {
         emit: ['create', 'edit', 'discard'],
         props: ['isShowForm', 'isEditing',"cateName","cate","isCreated"],
@@ -39,6 +44,7 @@
             this.categoryName = this.cateName;
         }
     }
+
 </script>
 
 <style scoped>
@@ -47,9 +53,9 @@
         width: 51.5%;
         height: 22vh;
         background: rgb(255, 255, 255);
-        box-shadow: 0px 2px 8px 2px rgba(223, 223, 223, 0.25);
+        box-shadow: 0px 2px 8px 2px rgba(99, 99, 99, 0.25);
         margin-left: 25%;
-        border-radius: 10px;
+        border-radius: 5px;
         margin-top: -10px;
         box-sizing: border-box;
     }
@@ -77,6 +83,7 @@
         margin-top: -25px;
         margin-right: 1%;
     }
+
     .discard,
     .add{
         width: 100px;
@@ -87,12 +94,15 @@
         border-radius: 5px;
         cursor: pointer;
     }
+
     .discard{
         background: rgb(248, 16, 16);
         color: #fff;
     }
+
     .add{
         background: rgb(21, 76, 255);
         color: #fff;
     }
+
 </style>

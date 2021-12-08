@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div>
+    <div class="category-container">
       <search @showForm='showFormCategory' @addName="searchName"></search>
       <forms :isCreated='isCreated' :cate='cate' :cateName="cateName" v-if="addFormShow" :isShowForm='addFormShow' @hideForm="hideCategoryForm" @addCategory="createCategory" @editCategory="updateCategory"></forms>
       <section>
@@ -9,7 +9,9 @@
     </div>
   </section>
 </template>
+
 <script>
+
   import axios from '../axios-request.js'
   import FormInput from "../components/categories/CategoryForm.vue";
   import categoryCard from "../components/categories/CategoryCard.vue";
@@ -32,8 +34,7 @@
       }
     },
     methods: {
-      // show form edit category
-      showFormForEdit(ctr){
+        showFormForEdit(ctr){
         this.addFormShow = 1;
         this.isCreated = false;
         for(let category of this.categories){
@@ -97,6 +98,7 @@
       this.getCategory()
     },
   }
+
 </script>
 
 <style scoped>
@@ -107,6 +109,11 @@
   }
   .createCategory{
     cursor: pointer;
+  }
+
+  .category-container{
+    width: 100%;
+    height: 100%;
   }
   
 </style>

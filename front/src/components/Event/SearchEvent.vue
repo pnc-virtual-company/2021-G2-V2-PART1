@@ -1,49 +1,73 @@
 <template>
     <section>
         <br>
-        <h3>Find event...</h3>
-        <div class="find-event-container">
-            <form class="search-form">
-                <input type="text" placeholder="Search..." class="search-event">
-                <button type="submit" class="fa fa-search" id="btnSearch" style="font-size:25px; color:#fff;"></button>
-            </form>
-            <input type="text" placeholder="City..." class="search-city">
+        <h3>Find event</h3>
+        <div class="event-city">
+            <div class="search-and-city">
+                <input type="text" placeholder="Search...">
+                <button class="fa fa-close"></button>
+                <input type="text" placeholder="City...">
+                <button class="fa fa-close"></button>
+            </div>
         </div>
     </section>
 </template>
 
 <script>
+
     export default {
         
     }
+
 </script>
 
 <style scoped>
 
     h3{
-        margin-left: 20%;
+        margin-left: 20.3%;
     }
 
-    .find-event-container{
+    .event-city{
+        margin-left: 20%;
         width: 60%;
-        border-radius: 10px;
+        height: 10vh;
+    }
+    
+    .search-and-city{
         display: flex;
-        padding: 0px;
+    }
+
+    input[type="text"]{
+        background: rgb(255, 255, 255);
+        box-shadow: 0px 2px 8px 2px rgba(150, 150, 150, 0.25);
+        border-radius: 5px;
+        font-size: 18px;
+        height: 50px;
+        padding: 8px;
+        width: 50%;
+        margin: 5px;
         box-sizing: border-box;
-        margin-left: 20%;
-    }
-
-    .search-form{
         display: flex;
+        outline: none;
+        border: none;
     }
 
-    .search-city{
-        margin-right: 0%;
+    button{
+        background: #f3381f;
+        font-size:25px; 
+        color:rgb(255, 255, 255); 
+        box-shadow: 0px 2px 8px 2px rgba(150, 150, 150, 0.25);
+        height: 50px; 
+        margin-top: 5px; 
+        width: 7%;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
     }
 
-    .search-form > .search-event{
-        margin-left: 0%;
-        width: 40%;
-        background: #888;
+    button:hover{
+        background: #cf240d;
     }
+
 </style>

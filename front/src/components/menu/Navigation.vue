@@ -1,16 +1,18 @@
 <template> 
   <nav> 
     <ul>
-      <li><h1 class="fa fa-user " style="font-size:15px">{{ username }}</h1></li>
-      <li id="myevent"><router-link :to="{name: 'MyEvent'}">MY EVENTS</router-link></li> 
-      <li id="evetns"><router-link :to="{name: 'Events'}"> FIND EVENT</router-link></li> 
-      <li id="categories"><router-link :to="{name: 'Category'}">CATEGORIES</router-link></li> 
-      <a id="btnlogout"><router-link :to="{name: 'SignIn'}" class="fa fa-sign-out" @click="Signout"></router-link> </a> 
+      <li><h1 class="fa fa-user" style="font-size:15px">{{ username }}</h1></li>
+      <li id="myevent"><router-link :to="{name: 'Home'}">Home</router-link></li> 
+      <li id="myevent"><router-link :to="{name: 'MyEvent'}">My Events</router-link></li> 
+      <li id="evetns"><router-link :to="{name: 'Events'}"> Find Event</router-link></li> 
+      <li id="categories"><router-link :to="{name: 'Category'}">Categories</router-link></li> 
+      <a id="btnlogout"><router-link :to="{name: 'SignIn'}" @click="Signout" class="fa fa-sign-out" >Sign out</router-link> </a> 
     </ul> 
   </nav>  
 </template> 
 
 <script>
+
   import axios from '../../axios-request.js'
   export default {
     data(){
@@ -37,6 +39,7 @@
       })
     },
   }
+
 </script>
 
 <style scoped> 
@@ -45,6 +48,7 @@
     margin-top: -11px;
     margin-left: -10px;
   }
+
   ul {
     list-style:none;
     background:rgb(0, 0, 0);
@@ -54,6 +58,7 @@
     width: 97.8%;
     align-items: center;
   }
+
   li {
     float:left;
   }
@@ -62,8 +67,12 @@
     float: right;
     text-decoration: none;
     padding: 10px;
-    font-size: 40px;
+    font-size: 20px;
+    margin-top: 4px;
     color: #fff;
+    align-items: center;
+    justify-content: center;
+    display: flex;
   }
   
   li a{
@@ -73,6 +82,7 @@
     margin: 8px;
     font-size:15px;
   }
+  
   li h1{
     color: #fff;
     padding: -10px;
@@ -80,13 +90,23 @@
     margin-top: 30px;
     text-transform: uppercase;
   }
-  li a:active{
-    background:#f3381f;
-  }
+
   li a:hover {
-    background:#f3381f;
+    background: #f3381f;
   }
+
   .router-link-active{
     background: #f3381f;
   }
+
+  /* li a:hover {
+    border-bottom: 8px solid #f3381f;
+    margin-top: 5px;
+  }
+
+  .router-link-active{
+    border-bottom: 8px solid #f3381f;
+    margin-top: 5px;
+  } */
+
 </style>

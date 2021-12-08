@@ -43,22 +43,23 @@
                 this.$emit("")
             }
         },
-
     } 
     
 </script> 
  
 <style scoped> 
+
     #timetable{
         margin-left: 20%;
     }
+
     #myevent-container{
         background: rgb(255, 255, 255);
-        box-shadow: 0px 2px 8px 2px rgba(150, 150, 150, 0.25);
+        box-shadow: 0px 2px 8px 2px rgba(99, 99, 99, 0.25);
         width: 60%;
         width: 60%;
         height: 25vh;
-        border-radius: 10px;
+     border-radius: 5px;   
         margin: 15px;
         margin-left: 20%;
         display: flex;
@@ -109,8 +110,9 @@
     }
 
     .event-title h1{
-        padding: 8px;
+        padding: 10px;
     }
+
     .event-time{
         margin-left: 50px;
         text-align: center;
@@ -118,6 +120,7 @@
         justify-content: center;
         display: flex;
     }
+
     .event-btn{
         display: flex;
         align-items: center;
@@ -148,6 +151,7 @@
         cursor: pointer;
         border-radius: 5px;
     }
+    
     #edit{
         border: none;
         outline: none;

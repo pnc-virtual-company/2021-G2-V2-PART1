@@ -35,6 +35,7 @@
 </template>
 
 <script>
+
     import axios from '../axios-request.js'
     export default {
         emits: ['login_user'],
@@ -55,7 +56,7 @@
                 }
                 axios.post("/login" , login).then(res => {
                     localStorage.setItem('userID', res.data.data.id);
-                    this.$router.push('/myEvents');
+                    this.$router.push('/home');
                     this.$emit('login_user', this.userlogin)
                     console.log(res.data);
                     this.errorMessage = "";
@@ -73,6 +74,7 @@
             localStorage.removeItem('userID');
         },
     }
+    
 </script>
 
 <style scoped>
@@ -112,7 +114,7 @@
     }
 
     .form-login{
-        box-shadow: 0px 8px 8px 5px rgba(0, 0, 0, 0.25);
+        box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.25);
         box-sizing: border-box;
         border-radius:20px;
         background: #fff;
@@ -141,7 +143,7 @@
     input[type="email"],
     input[type="password"]{
         background: #d1d1d1;
-        border-radius: 10px;
+        border-radius: 7px;
         margin-top: 15px;
         font-size: 20px;
         padding: 15px;
@@ -171,7 +173,7 @@
 
     #signBtn{
         background: #f8a917;     
-        border-radius: 10px;
+        border-radius: 7px;
         margin-top: 15px;
         cursor: pointer;
         font-size: 30px;

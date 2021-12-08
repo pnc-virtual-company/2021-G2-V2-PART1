@@ -4,7 +4,9 @@
     <router-view @login_user="loginUser" @signup="signup_user"></router-view> 
   </div> 
 </template>
+
 <script>
+
   import Navbar from './components/menu/Navigation.vue';
   export default {
     components: {
@@ -32,14 +34,14 @@
       let user = localStorage.getItem('userID');
       if(user !== null){
         this.islogin = true;
-        this.$router.push('/myEvents');
+        this.$router.push('/home');
         console.log('LOGIN');
       }else{
         this.islogin = false;
       }
-
     }
   }
+  
 </script>
 
 <style>

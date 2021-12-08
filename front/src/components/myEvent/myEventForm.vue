@@ -10,21 +10,21 @@
                     <div class="form-input">
                         <label for="">CREATE AN EVENT</label><br>
                         <input type="text" placeholder="Title"><br>
-                        <select name="cars" id="cars">
-                            <option value="volvo">Travel</option>
-                            <option value="saab">Hiking</option>
-                            <option value="mercedes">Camping</option>
-                            <option value="audi">Sleep at home</option>
+                        <select name="categories" id="categories">
+                            <option value="">Categories</option>
                         </select><br>
-                        <select name="cars" id="cars">
-                            <option value="volvo">Cambodia</option>
-                            <option value="saab">Thai</option>
-                            <option value="mercedes">Vietnam</option>
-                            <option value="audi">China</option>
+                        <select name="cities" id="cities">
+                            <option value="">City</option>
                         </select><br>
                         <div class="date-and-time">
-                            <input type="datetime-local" placeholder="Start date">
-                            <input type="datetime-local" placeholder="End date">
+                            <div class="date-detail">
+                                <label for="start-date"  id="start-date" class="start-date">Start date:</label><br>
+                                <label for="end-date" id="end-date" class="end-date">End date:</label><br>
+                            </div>
+                            <div class="specifice-time-and-date">
+                                <input id="start-date" type="datetime-local" placeholder="Start date">
+                                <input id="end-date" type="datetime-local" placeholder="End date">
+                            </div>
                         </div>
                         <textarea name="" id="" cols="30" rows="10" placeholder="Description..."></textarea>
                     </div>
@@ -37,6 +37,7 @@
                                 <input type="file" ref="file" id="up" @change = "getImage" hidden>
                             </div>
                         </div>
+                        <p>Choose image</p>
                         <div></div>
                         <div class="form-btn">
                             <button class="discard-btn">DISCARD</button>
@@ -50,9 +51,11 @@
 </template>
 
 <script>
+
     export default {
         
     }
+
 </script>
 
 <style scoped>
@@ -61,11 +64,11 @@
         width: 100%;
     }
     .text-and-btn{
-        margin-left: 10%;
+        margin-left: 9%;
     }
 
     .text-and-btn h1{
-        margin-left: 0.5%;
+        margin-left: 0%;
         font-size: 25px;
     }
     #btn-add {
@@ -76,17 +79,23 @@
         font-size: 25px;
         border: none;
         outline: none;
-        border-radius: 10px;
+        border-radius: 5px;
         cursor: pointer;
     }
 
+    #btn-add:hover{
+        background: #cf240d;
+    }
+
     form{
-        width: 50%;
-        height: 62vh;
+        width: 45%;
+        height: 65vh;
         background: rgb(255, 255, 255);
-        box-shadow: 0px 2px 8px 2px rgba(158, 158, 158, 0.25);
-        margin-left: 25%;
-        border-radius: 10px;
+        box-shadow: 0px 2px 8px 2px rgba(99, 99, 99, 0.25);
+        margin-left: 27%;
+        border-radius: 5px;
+        align-items: center;
+        justify-content: center;
     }
 
     form .form-container{
@@ -129,6 +138,7 @@
         font-size: 15px;
         background: rgb(209, 209, 209);
     }
+
     select{
         width: 88%;
         margin: 15px;
@@ -156,8 +166,22 @@
         background: rgb(209, 209, 209);
     }
 
-    .date-and-time{
+    .date-detail,
+    .specifice-time-and-date{
         display: flex;
+    }
+
+    #start-date,
+    #end-date{
+        margin-top: -4px;
+    }
+
+    .start-date{
+        margin-left: 18px;
+    }
+
+    .end-date{
+        margin-left: -5px;
     }
 
     input[type="datetime-local"]{
@@ -169,8 +193,7 @@
         border-radius: 3px;
         margin: 5px;
         margin-left: 5%;
-        font-size: 15px;
-        
+        font-size: 15px;   
     }
 
     .choose-img{
@@ -179,21 +202,21 @@
         align-items: center;
         justify-content: center;
         display: flex;
-        margin-left: 5%;
+        margin-left: 6%;
         margin-top: 40px;
         border-radius: 5px;
         box-sizing: border-box;
     }
 
     .form-btn{
-        margin-top: 35%;
+        margin-top: 40%;
         margin-left: -8%;
     }
 
     .submit-btn,
     .discard-btn{
-        width: 80px;
-        height: 30px;
+        width: 95px;
+        height: 40px;
         justify-content: space-around;
         align-items: center;
         margin: 10px;
@@ -204,12 +227,20 @@
     }
 
     .submit-btn{
-        background: rgb(20, 153, 255);
+        background: rgb(9, 136, 255);
         color: #fff;
     }
 
     .discard-btn{
-        background: rgb(255, 0, 0);
+        background: #f3381f;
         color: #fff;
+    }
+
+    .submit-btn:hover{
+        background: rgb(8, 111, 207);
+    }
+
+    .discard-btn:hover{
+        background: #cf240d;
     }
 </style>

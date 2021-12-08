@@ -14,21 +14,21 @@
                     <div class="left">
                         <div> 
                             <label for="username" class="username">Username</label><br>
-                            <input type="text" id="username" v-model="username">
+                            <input type="text" id="username" v-model="username" required>
                         </div><br>
                         <div>
                             <label for="email" class="email">Email</label>
-                            <input type="text" id="email" v-model="email">
+                            <input type="text" id="email" v-model="email" required>
                         </div>
                     </div>
                     <div class="right">
                         <div>
                             <label for="password" class="password">Password</label><br>
-                            <input type="password" id="password" v-model="password">
+                            <input type="password" id="password" v-model="password" required>
                         </div><br>
                         <div >
                             <label for="c-password" class="c-password" >Confirm Password</label><br>
-                            <input type="password" id="c-password" v-model="password_confirmation">
+                            <input type="password" id="c-password" v-model="password_confirmation" required>
                         </div>   
                     </div>
                 </div>
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+
     import axios from '../axios-request.js'
     export default {
         emits: ['signup'],
@@ -70,7 +71,7 @@
                 }
                 axios.post("/register", newUser).then(res => {
                     localStorage.setItem('userID', res.data.data.id);
-                    this.$router.push('/myEvents');
+                    this.$router.push('/home');
                     this.$emit('signup', this.signup);
                     this.userLists.push(res.data.data.username);
                     this.errorMessage = "";
@@ -87,6 +88,7 @@
             }
         },       
     }
+    
 </script>
 
 <style scoped>
@@ -126,7 +128,7 @@
     }
 
     .form-signup{
-        box-shadow: 0px 8px 8px 5px rgba(0, 0, 0, 0.25);
+        box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.25);
         box-sizing: border-box;
         border-radius:20px;
         background: #fff;
@@ -162,7 +164,7 @@
     input[type="email"],
     input[type="password"]{
         background: #d1d1d1;
-        border-radius: 10px;
+        border-radius: 7px;
         margin-top: 15px;
         font-size: 20px;
         padding: 15px;
@@ -196,7 +198,7 @@
     
     #loginBtn{
         background: #f8a917;       
-        border-radius: 10px;
+        border-radius: 7px;
         margin-top: 15px;
         cursor: pointer;
         font-size: 30px;
