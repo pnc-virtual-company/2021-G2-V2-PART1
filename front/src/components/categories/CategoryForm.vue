@@ -76,6 +76,7 @@
         font-size: 20px;
         background: rgb(209, 209, 209);
     }
+
     .actionBtn{
         display: flex;
         align-items: center;
@@ -99,7 +100,6 @@
         background: rgb(248, 16, 16);
         color: #fff;
     }
-
     .add{
         background: rgb(21, 76, 255);
         color: #fff;

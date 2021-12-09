@@ -50,5 +50,5 @@
     background: rgba(218, 208, 208, 0.616);
     font-family: sans-serif;
   }
-
+  
 </style>

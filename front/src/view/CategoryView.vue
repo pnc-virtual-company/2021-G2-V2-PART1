@@ -107,6 +107,7 @@
     margin-left: 200px;
     margin-top: 30px;
   }
+
   .createCategory{
     cursor: pointer;
   }
