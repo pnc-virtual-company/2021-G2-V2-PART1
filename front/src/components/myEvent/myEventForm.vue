@@ -1,10 +1,7 @@
 <template>
     <section>
         <div class="myevent-container">
-            <div class="text-and-btn">
-                <h1>My Events</h1>
-                <button id="btn-add" class="fa fa-plus"> Create</button>
-            </div>
+            
             <form action="">
                 <div class="form-container">
                     <div class="form-input">
@@ -40,7 +37,7 @@
                         <p>Choose image</p>
                         <div></div>
                         <div class="form-btn">
-                            <button class="discard-btn">DISCARD</button>
+                            <button class="discard-btn" @click.prevent="hideForm">DISCARD</button>
                             <button class="submit-btn">SUBMIT</button>
                         </div>
                     </div>
@@ -53,7 +50,15 @@
 <script>
 
     export default {
-        
+        emits: ['hideForm'],
+        data() {
+            
+        },
+        methods: {
+            hideForm() {
+                this.$emit('hideForm');
+            }
+        },
     }
 
 </script>
@@ -63,29 +68,7 @@
     .myevent-container{
         width: 100%;
     }
-    .text-and-btn{
-        margin-left: 9%;
-    }
-
-    .text-and-btn h1{
-        margin-left: 0%;
-        font-size: 25px;
-    }
-    #btn-add {
-        background: #f3381f;
-        color: #fff;
-        width: 130px;
-        height: 50px;
-        font-size: 25px;
-        border: none;
-        outline: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    #btn-add:hover{
-        background: #cf240d;
-    }
+    
 
     form{
         width: 45%;
