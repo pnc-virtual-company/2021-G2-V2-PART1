@@ -3,7 +3,7 @@
         <div class="myevent-container">
             <div class="text-and-btn">
                 <h1>My Events</h1>
-                <button id="btn-add" @click="showFormCategory" class="fa fa-plus"> Create</button>
+                <button id="btn-add" class="fa fa-plus"> Create</button>
             </div>
             <form action="">
                 <div class="form-container">

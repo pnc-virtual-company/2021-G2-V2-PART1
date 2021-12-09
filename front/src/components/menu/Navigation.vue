@@ -92,14 +92,6 @@
   }
 
   li a:hover {
-    background: #f3381f;
-  }
-
-  .router-link-active{
-    background: #f3381f;
-  }
-
-  /* li a:hover {
     border-bottom: 8px solid #f3381f;
     margin-top: 5px;
   }
@@ -107,6 +99,6 @@
   .router-link-active{
     border-bottom: 8px solid #f3381f;
     margin-top: 5px;
-  } */
+  }
 
 </style>
