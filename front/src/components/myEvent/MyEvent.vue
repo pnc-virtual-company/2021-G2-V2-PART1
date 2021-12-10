@@ -1,28 +1,29 @@
 <template> 
     <section>
         <div class="container">
-            <p id="timetable">Monday, 06, December</p>
-            <div id="myevent-container"> 
+            <h2>My Events</h2>
+            <div id="myevent-container" v-for="event of allMyEventData" :key="event.id"> 
                 <div class="event-img">
-                    <img src="" alt="">
+                    <img :src="url + event.image" alt="">
                 </div>
                 <div class="event-description">
                     <div class="category-name">
-                        <label for="">Stay home</label>
+                        <label for="">{{event.category.name}}</label>
                     </div>
                     <div class="event-title">
-                        <h1>Sleep</h1>
+                        <h1>{{event.title}}</h1>
                     </div>
                     <div class="description">
-                        <label for="">have music and eat</label>
+                        <label for="">{{event.description}}</label>
                     </div>
                 </div>
                 <div class="event-time">
-                    <h3>01:00 PM</h3>
+                    <h5>Start-date: {{event.start_date}}</h5>
+                    <h5>End-date: {{event.end_date}}</h5>
                 </div>
                 <div class="event-btn">
-                    <a id="cancel" class="fa fa-times" style="font-size:20px"></a>
                     <a id="edit" class="fa fa-pencil" style="font-size:20px"></a>
+                    <a id="cancel" class="fa fa-times" style="font-size:20px"></a>
                 </div>
             </div> 
         </div>
@@ -31,17 +32,28 @@
  
 <script> 
 
+    import axios from '../../axios-request.js'
     export default {
-    emit: ["showFormMyEvent"],
+        props:["allMyEventData"],
+        emit: ["showFormMyEvent"],
         data() {
             return {
-                
+                eventLists: [],
+                url: "http://127.0.0.1:8000/storage/images/"
             }
         },
         methods: {
             showFormMyEvent(){
                 this.$emit("")
-            }
+            },
+            getEvent(){
+                axios.get("/myevents").then(res => {
+                    this.eventLists = res.data;
+                })
+            },
+        },
+        mounted() {
+            this.getEvent(); 
         },
     } 
     
@@ -49,8 +61,13 @@
  
 <style scoped> 
 
-    #timetable{
+    .container{
+        margin-top: 3%;
+    }
+
+    .container h2{
         margin-left: 20%;
+        
     }
 
     #myevent-container{
@@ -70,12 +87,13 @@
     .event-img{
         height: 94%;
         margin: 5px;
-        padding: 5px;
         width: 25%;
-        background: #000;
         box-sizing: border-box;
     }
-
+    img{
+        width: 100%;
+        height: 100%;
+    }
     .event-description{
         height: 100%;
         width: auto;
@@ -114,11 +132,11 @@
     }
 
     .event-time{
+        margin-top: 20px;
         margin-left: 50px;
         text-align: center;
         align-items: center;
         justify-content: center;
-        display: flex;
     }
 
     .event-btn{

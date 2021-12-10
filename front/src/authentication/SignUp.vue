@@ -14,21 +14,21 @@
                     <div class="left">
                         <div> 
                             <label for="username" class="username">Username</label><br>
-                            <input type="text" id="username" v-model="username" required>
+                            <input type="text" id="username" v-model="username">
                         </div><br>
                         <div>
                             <label for="email" class="email">Email</label>
-                            <input type="text" id="email" v-model="email" required>
+                            <input type="text" id="email" v-model="email">
                         </div>
                     </div>
                     <div class="right">
                         <div>
                             <label for="password" class="password">Password</label><br>
-                            <input type="password" id="password" v-model="password" required>
+                            <input type="password" id="password" v-model="password">
                         </div><br>
                         <div >
                             <label for="c-password" class="c-password" >Confirm Password</label><br>
-                            <input type="password" id="c-password" v-model="password_confirmation" required>
+                            <input type="password" id="c-password" v-model="password_confirmation">
                         </div>   
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                 }
                 axios.post("/register", newUser).then(res => {
                     localStorage.setItem('userID', res.data.data.id);
-                    this.$router.push('/home');
+                    this.$router.push('/myEvents');
                     this.$emit('signup', this.signup);
                     this.userLists.push(res.data.data.username);
                     this.errorMessage = "";
@@ -94,13 +94,11 @@
 <style scoped>
 
     .login-page{
-       height: 98.6vh;
-        width: 216vh;
-        margin-top: -7px;
-        margin-left: -1%;
+        height: 98.6vh;
+        width: 100%;
         background-image: url('../assets/Inkedbg_LI.jpg');
-        background-size: cover;
         background-position: center;
+        background-size: cover;
         display: flex;
         overflow-x: hidden;
         overflow-y: hidden;

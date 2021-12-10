@@ -1,28 +1,29 @@
 <template> 
     <section>
-        <div class="container">
-            <p id="timetable">Monday, 06, December</p>
-            <div id="myevent-container"> 
+        <h2>All Events</h2>
+        <div class="container" v-for="event of allEvents" :key="event.id">
+            <div id="myevent-container">  
                 <div class="event-img">
-                    <img src="" alt="">
+                    <img :src="url+event.image" alt="">
                 </div>
                 <div class="event-description">
                     <div class="category-name">
-                        <label for="">Sport</label>
+                        <label for="">{{event.category.name}}</label>
                     </div>
                     <div class="event-title">
-                        <h1>Football</h1>
+                        <h1>{{event.title}}</h1>
                     </div>
                     <div class="event-member">
                         <label for="">11 members joined</label>
                     </div>
                 </div>
                 <div class="event-time">
-                    <h3>04:30 PM</h3>
+                    <h5>Start-date: {{event.end_date}}</h5>
+                    <h5>End-date: {{event.end_date}}</h5>
                 </div>
                 <div class="event-btn">
-                    <a id="quit" class="fa fa-times-circle-o" style="font-size:20px">Quit</a>
                     <a id="join" class="fa fa-check-circle-o" style="font-size:20px">Join</a>
+                    <a id="quit" class="fa fa-times-circle-o" style="font-size:20px">Quit</a>
                 </div>
             </div> 
         </div>
@@ -31,15 +32,33 @@
  
 <script> 
 
+    import axios from '../../axios-request.js'
     export default {
 
+        data() {
+            return {
+                allEvents: [],  
+                url: "http://127.0.0.1:8000/storage/images/" 
+            }
+        },
+        methods: {
+            getEvents(){
+                axios.get('/myevents').then(res =>{
+                    console.log(res.data);
+                    this.allEvents = res.data;
+                });
+            }
+        },
+        mounted() {
+            this.getEvents();
+        },
     } 
     
 </script> 
  
 <style scoped> 
 
-    #timetable{
+    section h2{
         margin-left: 20%;
     }
 
@@ -59,10 +78,13 @@
     .event-img{
         height: 94%;
         margin: 5px;
-        padding: 5px;
         width: 25%;
-        background: #000;
         box-sizing: border-box;
+    }
+
+    img{
+        width: 100%;
+        height: 100%;
     }
 
     .event-description{
@@ -99,11 +121,11 @@
     }
     
     .event-time{
+        margin-top: 20px;
         margin-left: 50px;
         text-align: center;
         align-items: center;
         justify-content: center;
-        display: flex;
     }
     .event-btn{
         display: flex;

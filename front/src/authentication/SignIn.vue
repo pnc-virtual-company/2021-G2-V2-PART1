@@ -2,7 +2,7 @@
     <div class="login-page">
         <div class="start-page">
             <h1>Welcome to Event Me!</h1>
-            <p id="welcome">Login to continue</p>
+            <p id="welcome">Sign in to continue</p>
             <p>©Copyright by PNC 2021 VC Team 2</p>
         </div>
         <div class="form-login">
@@ -56,7 +56,7 @@
                 }
                 axios.post("/login" , login).then(res => {
                     localStorage.setItem('userID', res.data.data.id);
-                    this.$router.push('/home');
+                    this.$router.push('/myEvents');
                     this.$emit('login_user', this.userlogin)
                     console.log(res.data);
                     this.errorMessage = "";
@@ -80,12 +80,10 @@
 <style scoped>
     .login-page{
         height: 98.6vh;
-        width: 216vh;
-        margin-top: -7px;
-        margin-left: -1%;
+        width: 100%;
         background-image: url('../assets/Inkedbg_LI.jpg');
-        background-size: cover;
         background-position: center;
+        background-size: cover;
         display: flex;
         overflow-x: hidden;
         overflow-y: hidden;

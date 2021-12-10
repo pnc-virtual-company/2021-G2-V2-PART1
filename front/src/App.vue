@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar v-if="islogin" @log_out="logout"></navbar>
+    <navbar v-if="islogin" @log_out="logout" class="navigation"></navbar>
     <router-view @login_user="loginUser" @signup="signup_user"></router-view> 
   </div> 
 </template>
@@ -34,7 +34,7 @@
       let user = localStorage.getItem('userID');
       if(user !== null){
         this.islogin = true;
-        this.$router.push('/home');
+        this.$router.push('/myEvents');
         console.log('LOGIN');
       }else{
         this.islogin = false;
@@ -49,6 +49,14 @@
   body{
     background: rgba(218, 208, 208, 0.616);
     font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .navigation{
+    position: fixed;
+    width: 100%;
   }
   
 </style>

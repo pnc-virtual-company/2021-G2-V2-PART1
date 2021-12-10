@@ -1,12 +1,12 @@
 <template>
   <section>  
-    <div id="card-categories" class="hvr-grow" v-for="ctr of category" :key="ctr.id">
+    <div id="card-categories" class="hvr-grow"  v-for="ctr of category" :key="ctr.id">
       <div class="c-name">
         <p>{{ ctr.name }}</p>
       </div>
       <div class="change" >
-        <i id="delete-icon" class="fa fa-trash" @click="showDeleteRessource(ctr.id)"></i>
         <i id="edit-icon" class="fa fa-pencil" @click="showEditRessource(ctr.name, ctr.id)"></i>
+        <i id="delete-icon" class="fa fa-trash" @click="showDeleteRessource(ctr.id)"></i>
       </div>
     </div>
     <base-dialog v-if="dialogDisplayed" :title="dialogTitle" @close="closeDialog">
@@ -76,6 +76,13 @@
 
 <style scoped>
 
+  body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+
   #card-categories{
     background: rgb(255, 255, 255);
     box-shadow: 0px 2px 8px 2px rgba(150, 150, 150, 0.25);
@@ -83,8 +90,8 @@
     height: 60px;
     border-radius: 5px;
     padding: 10px;
-    margin: 15px;
-    margin-left: 25%;
+    margin: auto;
+    margin-bottom: 15px;
     color: #000;
     display: flex;
     justify-content: space-between;

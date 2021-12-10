@@ -5,9 +5,9 @@
                 <input class="txt-input-category" type="text" placeholder="Event category"  v-model="categoryName"/>
             </div>
             <div class="actionBtn">
-                <button class="discard" @click="discard" >DISCARD</button>
                 <button class="add" v-if="this.isCreated" @click="create">CREATE</button>
                 <button class="add" v-else @click.prevent="edit">UPDATE</button>
+                <button class="discard" @click="discard" >DISCARD</button>
             </div>
         </form>
         <br>
@@ -32,7 +32,7 @@
             edit() {
                 this.$emit('editCategory',this.categoryName, this.cate.id);
                 console.log(this.cate)
-                this.categoryName = ""
+                this.categoryName = "";
             },
             discard() {
                 this.$emit('hideForm')
@@ -40,7 +40,6 @@
             },
         },
         mounted(){
-        
             this.categoryName = this.cateName;
         }
     }
@@ -54,7 +53,7 @@
         height: 22vh;
         background: rgb(255, 255, 255);
         box-shadow: 0px 2px 8px 2px rgba(99, 99, 99, 0.25);
-        margin-left: 25%;
+        margin: auto;
         border-radius: 5px;
         margin-top: -10px;
         box-sizing: border-box;

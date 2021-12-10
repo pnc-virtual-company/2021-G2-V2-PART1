@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="category-container">
-      <search @showForm='showFormCategory' @addName="searchName"></search>
+      <search @showForm='showFormCategory' @addName="searchName" @get-categories='getCategory'></search>
       <forms :isCreated='isCreated' :cate='cate' :cateName="cateName" v-if="addFormShow" :isShowForm='addFormShow' @hideForm="hideCategoryForm" @addCategory="createCategory" @editCategory="updateCategory"></forms>
       <section>
         <category :cate='cate' :cateName="cateName" @showFormCate ='showFormForEdit' @editCategory="updateCategory" :category="categories" @delete="removeCategory"></category>
@@ -34,7 +34,7 @@
       }
     },
     methods: {
-        showFormForEdit(ctr){
+      showFormForEdit(ctr){
         this.addFormShow = 1;
         this.isCreated = false;
         for(let category of this.categories){
@@ -102,6 +102,13 @@
 </script>
 
 <style scoped>
+  body{
+    margin: 0%;
+    padding: 0%;
+    font-family: sans-serif;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
 
   form {
     margin-left: 200px;
