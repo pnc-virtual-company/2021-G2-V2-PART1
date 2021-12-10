@@ -71,7 +71,7 @@
                 }
                 axios.post("/register", newUser).then(res => {
                     localStorage.setItem('userID', res.data.data.id);
-                    this.$router.push('/home');
+                    this.$router.push('/myEvents');
                     this.$emit('signup', this.signup);
                     this.userLists.push(res.data.data.username);
                     this.errorMessage = "";

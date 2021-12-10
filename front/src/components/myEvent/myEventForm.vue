@@ -1,20 +1,16 @@
 <template>
     <section>
         <div class="myevent-container">
-            <div class="text-and-btn">
-                <h1>My Events</h1>
-                <button id="btn-add" class="fa fa-plus"> Create</button>
-            </div>
-            <form action="">
+            <form action="#">
                 <div class="form-container">
                     <div class="form-input">
                         <label for="">CREATE AN EVENT</label><br>
-                        <input type="text" placeholder="Title"><br>
-                        <select name="categories" id="categories">
-                            <option value="">Categories</option>
+                        <input type="text" placeholder="Title" v-model="title"><br>
+                        <select  name="categories" id="categories" v-model="category">
+                            <option v-for="category of categoryList" :key="category.id" :value = category.id placeholder="Categories" >{{category.name}}</option>
                         </select><br>
-                        <select name="cities" id="cities">
-                            <option value="">City</option>
+                        <select name="cities" id="cities" v-model="city">
+                            <option value="Bangkork">Bangkork</option>
                         </select><br>
                         <div class="date-and-time">
                             <div class="date-detail">
@@ -22,11 +18,11 @@
                                 <label for="end-date" id="end-date" class="end-date">End date:</label><br>
                             </div>
                             <div class="specifice-time-and-date">
-                                <input id="start-date" type="datetime-local" placeholder="Start date">
-                                <input id="end-date" type="datetime-local" placeholder="End date">
+                                <input id="start-date" type="datetime-local" placeholder="Start date" v-model="startdate">
+                                <input id="end-date" type="datetime-local" placeholder="End date" v-model="enddate">
                             </div>
                         </div>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Description..."></textarea>
+                        <textarea name="" id="" cols="30" rows="10" placeholder="Description..." v-model="description"></textarea>
                     </div>
                     <div class="form-contain">
                         <div class="choose-img">
@@ -34,14 +30,13 @@
                                 <img src="../../assets/gallery-icon.png" alt="" style=" width: 130%; margin-left: -13%; cursor: pointer;">
                             </label>
                             <div>
-                                <input type="file" ref="file" id="up" @change = "getImage" hidden>
+                                <input type="file" ref="file" id="up" @change = "onFileSelect" hidden>
                             </div>
                         </div>
-                        <p>Choose image</p>
-                        <div></div>
+                        <p>Choose an image</p>
                         <div class="form-btn">
                             <button class="discard-btn">DISCARD</button>
-                            <button class="submit-btn">SUBMIT</button>
+                            <button class="submit-btn" @click="sendMyeventData">SUBMIT</button>
                         </div>
                     </div>
                 </div>
@@ -52,8 +47,49 @@
 
 <script>
 
+    import axios from '../../axios-request.js'
     export default {
-        
+        data() {
+            return{
+                title: '',
+                city: '',
+                startdate: '',
+                enddate: '',
+                description: '',
+                image: null,
+                categoryList: [],
+             }
+        },
+        methods: {
+            hideForm() {
+                this.$emit('hideForm');
+            },
+            onFileSelect(event){
+                this.image = event.target.files[0];   
+            },
+            sendMyeventData(){
+                let user_id = localStorage.getItem('userID');
+                const newEvent = new FormData();
+                newEvent.append('category_id', this.category);
+                newEvent.append('user_id', user_id);
+                newEvent.append('title', this.title);
+                newEvent.append('start_date', this.startdate);
+                newEvent.append('end_date', this.enddate);
+                newEvent.append('city', this.cities);
+                newEvent.append('description', this.description);
+                newEvent.append('image', this.image);
+                this.$emit('createMyNewEvent',newEvent)
+            },
+            getCategories(){
+                axios.get('/category').then(res => {
+                    this.categoryList = res.data;
+                    console.log(this.categoryList);
+                });
+            },            
+        },
+        mounted() {
+            this.getCategories();
+        },
     }
 
 </script>
@@ -62,31 +98,13 @@
 
     .myevent-container{
         width: 100%;
-    }
-    .text-and-btn{
-        margin-left: 9%;
+        margin-top: 5%;
     }
 
-    .text-and-btn h1{
-        margin-left: 0%;
-        font-size: 25px;
+    p{
+        margin-left: -15px;
     }
-    #btn-add {
-        background: #f3381f;
-        color: #fff;
-        width: 130px;
-        height: 50px;
-        font-size: 25px;
-        border: none;
-        outline: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    #btn-add:hover{
-        background: #cf240d;
-    }
-
+    
     form{
         width: 45%;
         height: 65vh;
@@ -197,12 +215,11 @@
     }
 
     .choose-img{
-        width: 80%;
+        width: 90%;
         height: 37%;
         align-items: center;
         justify-content: center;
         display: flex;
-        margin-left: 6%;
         margin-top: 40px;
         border-radius: 5px;
         box-sizing: border-box;
@@ -243,4 +260,5 @@
     .discard-btn:hover{
         background: #cf240d;
     }
+
 </style>

@@ -2,10 +2,7 @@
   <nav> 
     <ul>
       <li><h1 class="fa fa-user" style="font-size:15px">{{ username }}</h1></li>
-      <li id="myevent"><router-link :to="{name: 'Home'}">Home</router-link></li> 
       <li id="myevent"><router-link :to="{name: 'MyEvent'}">My Events</router-link></li> 
-      <li id="evetns"><router-link :to="{name: 'Events'}"> Find Event</router-link></li> 
-      <li id="categories"><router-link :to="{name: 'Category'}">Categories</router-link></li> 
       <a id="btnlogout"><router-link :to="{name: 'SignIn'}" @click="Signout" class="fa fa-sign-out" >Sign out</router-link> </a> 
     </ul> 
   </nav>  

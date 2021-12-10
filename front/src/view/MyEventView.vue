@@ -1,23 +1,101 @@
 <template>
     <section>
-        <my-event-form></my-event-form>
-        <myevent-card></myevent-card>
+        <div class="text-and-btn">
+            <button id="btn-add"  class="kc_fab_main_btn"  @click="showCreateForm">+</button>
+        </div>
+        <br>
+        <br>
+        <my-event-form v-if="isShowForm" @hideForm="discard" @saveForm="discard" @createMyNewEvent='createEvent'></my-event-form>
+        <myevent-card :allMyEventData='allMyEventData'></myevent-card>
     </section>
 </template>
 
 <script>
-
+    import axios from '../axios-request.js'
     import MyeventCard from '../components/myEvent/MyEvent.vue';
     import MyEventForm from '../components/myEvent/myEventForm.vue';
-    export default {
-        components: {
-            myeventCard: MyeventCard,
-                MyEventForm,
+
+    export default{
+        components: {'myevent-card':MyeventCard, MyEventForm},
+        data() {
+            return {
+                title: '',
+                city: '',
+                startdate: '',
+                enddate: '',
+                description: '',
+                image: null,
+                categoryList: [],
+                isShowForm:false,
+                allMyEventData:[],
+                url: "http://127.0.0.1:8000/storage/images/",
+            }
+        },
+        methods: {
+            showCreateForm(){
+                this.isShowForm = true
+            },
+            hideForm() {
+                this.$emit('hideForm');
+            },
+            onFileSelect(event){
+                this.image = event.target.files[0];   
+            },
+            createEvent(myEventData){
+                this.isShowForm = false;
+                console.log(myEventData);
+                axios.post("/myevents", myEventData).then(res => {
+                    console.log(res.data)
+                    this.allMyEventData.unshift(res.data.data)
+                })
+            },
+            getCategories(){
+                axios.get('/category').then(res => {
+                    this.categoryList = res.data;
+                    console.log(this.categoryList);
+                });
+            },            
+        },
+        mounted() {
+            axios.get('/myevents').then(res => {
+                    this.allMyEventData = res.data;
+                });
         },
     }
     
 </script>
 
 <style scoped>
-  
+
+    body{
+        margin: 0%;
+        padding: 0%;
+        font-family: sans-serif;
+        scrollbar-width: hidden;
+    }
+
+    .kc_fab_main_btn {
+        background-color: #F44336;
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        background: #F44336;
+        border: none;
+        outline: none;
+        color: #FFF;
+        font-size: 36px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        transition: .3s;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        position: fixed;
+        left: 200vh;
+        top: 87vh;
+    }
+
+    .kc_fab_main_btn:focus {
+        transform: scale(1.1);
+        transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    }
 </style>

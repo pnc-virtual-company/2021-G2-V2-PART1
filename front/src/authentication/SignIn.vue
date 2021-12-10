@@ -56,7 +56,7 @@
                 }
                 axios.post("/login" , login).then(res => {
                     localStorage.setItem('userID', res.data.data.id);
-                    this.$router.push('/home');
+                    this.$router.push('/myEvents');
                     this.$emit('login_user', this.userlogin)
                     console.log(res.data);
                     this.errorMessage = "";

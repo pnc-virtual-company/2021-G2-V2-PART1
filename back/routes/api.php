@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MyeventController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CategoryController;
 
 // Get user
@@ -12,6 +14,7 @@ Route::get('/user', [UserController::class, 'index']);
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 
+// Category
 Route::get('/category', [CategoryController::class, 'index']);
 Route::get('/category/{id}', [CategoryController::class, 'show']);
 Route::get('/category/search/{id}', [CategoryController::class ,'search']);
@@ -19,3 +22,14 @@ Route::get('/category/search/{id}', [CategoryController::class ,'search']);
 Route::post('/category', [CategoryController::class, 'store']);
 Route::put('/category/{id}', [CategoryController::class, 'update']);
 Route::delete('/category/{id}', [CategoryController::class, 'destroy']);
+
+// My event
+Route::get('/myevents', [MyeventController::class, 'index']);
+Route::get('/myevents/{id}', [MyeventController::class, 'show']);
+Route::post('/myevents', [MyeventController::class, 'store']);
+Route::delete('/myevents/{id}', [MyeventController::class, 'destroy']);
+Route::put('/myevents/{id}', [MyeventController::class, 'update']);
+Route::get('/myevents/search/{title}', [MyeventController::class, 'search']);
+
+// Country
+Route::get('countries', [CountryController::class, 'getCountries']);
