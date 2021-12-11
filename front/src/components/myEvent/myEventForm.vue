@@ -4,18 +4,26 @@
             <form action="#">
                 <div class="form-container">
                     <div class="form-input">
-                        <label for="">CREATE AN EVENT</label><br>
-                        <input type="text" placeholder="Title" v-model="title"><br>
+                        <label for="">CREATE AN EVENT</label>
+                        <input type="text" placeholder="Title" v-model="title">
                         <select  name="categories" id="categories" v-model="category">
-                            <option v-for="category of categoryList" :key="category.id" :value = category.id placeholder="Categories" >{{category.name}}</option>
-                        </select><br>
-                        <select name="cities" id="cities" v-model="city">
-                            <option value="Bangkork">Bangkork</option>
-                        </select><br>
+                            <option value="" disabled>Select category</option>
+                            <option v-for="category of categoryList" :key="category.id" :value = category.id>{{category.name}}</option>
+                        </select>
+                        <div class="select-city-and-country">
+                            <select name="country"  id="country" v-model="country">
+                                <option value="" disabled>Select Country</option>
+                                <option v-for="country in countries" :key="country"> {{country}} </option>
+                            </select>
+                            <select name="cities" id="cities" v-model="city">
+                                <option value="" disabled>Select City</option>
+                                <option v-for="city of allCountry[country]" :key="city" >{{city}}</option>
+                            </select>
+                        </div><br>
                         <div class="date-and-time">
                             <div class="date-detail">
-                                <label for="start-date"  id="start-date" class="start-date">Start date:</label><br>
-                                <label for="end-date" id="end-date" class="end-date">End date:</label><br>
+                                <label for="start-date"  id="start-date" class="start-date">Start date:</label>
+                                <label for="end-date" id="end-date" class="end-date">End date:</label>
                             </div>
                             <div class="specifice-time-and-date">
                                 <input id="start-date" type="datetime-local" placeholder="Start date" v-model="startdate">
@@ -53,11 +61,14 @@
             return{
                 title: '',
                 city: '',
+                country: '',
                 startdate: '',
                 enddate: '',
                 description: '',
                 image: null,
                 categoryList: [],
+                allCountry: [],
+                countries: [],
              }
         },
         methods: {
@@ -89,6 +100,16 @@
         },
         mounted() {
             this.getCategories();
+            
+            axios.get('/countries').then(res =>{
+               this.allCountry = res.data;
+               for(let country in this.allCountry) {
+                this.countries.push(country);
+                console.log(country)
+                
+               }
+           });
+           
         },
     }
 
@@ -155,6 +176,23 @@
         margin-left: 5%;
         font-size: 15px;
         background: rgb(209, 209, 209);
+    }
+
+    .select-city-and-country{
+        display: block;
+    }
+
+    #cities,
+    #country{
+         background: rgb(209, 209, 209);
+        width: 40.5%;
+        height: 40px;
+        border: none;
+        outline: none;
+        border-radius: 3px;
+        margin: 5px;
+        margin-left: 5%;
+        font-size: 15px;   
     }
 
     select{

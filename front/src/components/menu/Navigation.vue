@@ -1,7 +1,7 @@
 <template> 
   <nav> 
     <ul>
-      <li><h1 style="font-size:15px">{{ username }}</h1></li>
+      <li><h1>{{ username }}</h1></li>
       <li id="myevent"><router-link :to="{name: 'MyEvent'}">My Events</router-link></li> 
       <li id="evetns"><router-link :to="{name: 'Events'}"> Find Event</router-link></li> 
       <li id="categories"><router-link :to="{name: 'Category'}">Categories</router-link></li> 
@@ -79,15 +79,16 @@
     padding: 21px;
     color:#fff;
     margin: 8px;
-    font-size:17px;
+    font-size:16px;
   }
   
   li h1{
-    color: #fff;
+    color: rgb(255, 255, 255);
     padding: -10px;
     margin: 20px;
-    margin-top: 31px;
+    margin-top: 29px;
     font-size: 18px;
+    text-transform: uppercase;
   }
 
   .router-link-active{

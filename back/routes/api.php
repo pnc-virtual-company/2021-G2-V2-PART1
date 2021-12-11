@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MyeventController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\JoinController;
 use App\Http\Controllers\CategoryController;
 
 // Get user
@@ -33,3 +34,11 @@ Route::get('/myevents/search/{title}', [MyeventController::class, 'search']);
 
 // Country
 Route::get('countries', [CountryController::class, 'getCountries']);
+
+
+Route::get('/joins', [JoinController::class, 'getJoins']);
+Route::post('/joins', [JoinController::class, 'store']);
+Route::delete('/joins/{id}', [JoinController::class, 'delete']);
+
+// Join event
+Route::get('/events/search/{title}', [EventController::class, 'search']);

@@ -1,22 +1,22 @@
 <template>
   <section>  
-    <div id="card-categories" class="hvr-grow"  v-for="ctr of category" :key="ctr.id">
-      <div class="c-name">
-        <p>{{ ctr.name }}</p>
+      <div id="card-categories" class="hvr-grow"  v-for="ctr of category" :key="ctr.id">
+        <div class="c-name">
+          <p>{{ ctr.name }}</p>
+        </div>
+        <div class="change" >
+          <i id="edit-icon" class="fa fa-pencil" @click="showEditRessource(ctr.name, ctr.id)"></i>
+          <i id="delete-icon" class="fa fa-trash" @click="showDeleteRessource(ctr.id)"></i>
+        </div>
       </div>
-      <div class="change" >
-        <i id="edit-icon" class="fa fa-pencil" @click="showEditRessource(ctr.name, ctr.id)"></i>
-        <i id="delete-icon" class="fa fa-trash" @click="showDeleteRessource(ctr.id)"></i>
-      </div>
-    </div>
-    <base-dialog v-if="dialogDisplayed" :title="dialogTitle" @close="closeDialog">
-      <label for="description" v-if="dialogMode === 'edit'">Category Name</label>
-      <textarea v-model="dialogTextField" id="description" name="description" rows="3" ref="descInput" v-if="dialogMode === 'edit'"></textarea>
-      <h2 id="ask" v-if="dialogMode !== 'edit' "><i class="fa fa-exclamation-triangle" ></i> Do you want to delete this category?</h2>
-      <template #actions>
-        <button @click="onConfirm">{{ dialogButtton }}</button>
-      </template>
-    </base-dialog>
+      <base-dialog v-if="dialogDisplayed" :title="dialogTitle" @close="closeDialog">
+        <label for="description" v-if="dialogMode === 'edit'">Category Name</label>
+        <textarea v-model="dialogTextField" id="description" name="description" rows="3" ref="descInput" v-if="dialogMode === 'edit'"></textarea>
+        <h2 id="ask" v-if="dialogMode !== 'edit' "><i class="fa fa-exclamation-triangle" ></i> Do you want to delete this category?</h2>
+        <template #actions>
+          <button @click="onConfirm">{{ dialogButtton }}</button>
+        </template>
+      </base-dialog>
   </section>
 </template>
 
@@ -181,7 +181,6 @@
     border-radius: 10px;
     font-size: 20px;
   }
-
 
   .fa-exclamation-triangle{
     color: rgb(255, 21, 21);

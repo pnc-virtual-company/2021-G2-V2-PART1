@@ -1,8 +1,7 @@
 <template> 
     <section>
-        <h2>All Events</h2>
-        <div class="container" v-for="event of allEvents" :key="event.id" >
-            <div id="myevent-container">  
+        <div class="container" >
+            <div id="myevent-container"  v-for="event of events" :key="event.id">  
                 <div class="event-img">
                     <img :src="url + event.image" alt="">
                 </div>
@@ -21,10 +20,9 @@
                     <h5>Start-date: {{event.end_date}}</h5>
                     <h5>End-date: {{event.end_date}}</h5>
                 </div>
-                <div class="event-btn">
-                    <a id="join" class="fa fa-check-circle-o" style="font-size:20px">Join</a>
-                    <a id="quit" class="fa fa-times-circle-o" style="font-size:20px">Quit</a>
-                </div>
+
+                <slot></slot>
+
             </div> 
         </div>
     </section>
@@ -34,6 +32,7 @@
 
      import axios from '../../axios-request.js'
     export default {
+        props:['events'],
         data() {
             return {
                 allEvents: [],  

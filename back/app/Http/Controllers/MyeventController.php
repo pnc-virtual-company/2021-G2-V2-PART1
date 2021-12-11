@@ -15,7 +15,7 @@ class MyeventController extends Controller
      */
     public function index()
     {
-        return Myevent::with('category')->latest()->get();
+        return Myevent::with('category','join')->latest()->get();
     }
 
     /**
@@ -111,7 +111,7 @@ class MyeventController extends Controller
      */
     public function destroy($id)
     {
-        $isDeleted = Category::destroy($id);
+        $isDeleted = Myevent::destroy($id);
         if($isDeleted == 1){
             return response()->json(['massage'=>'Deleted'], 200);
         }else{

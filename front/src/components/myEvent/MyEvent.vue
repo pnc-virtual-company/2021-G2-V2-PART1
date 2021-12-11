@@ -23,39 +23,66 @@
                 </div>
                 <div class="event-btn">
                     <a id="edit" class="fa fa-pencil" style="font-size:20px"></a>
-                    <a id="cancel" class="fa fa-times" style="font-size:20px"></a>
+                    <a id="cancel" class="fa fa-times" style="font-size:20px"  @click="showDeleteRessource(event.id)"></a>
                 </div>
             </div> 
+            <base-dialog v-if="dialogDisplayed" :title="dialogTitle" @close="closeDialog">
+                <h2 id="ask" v-if="dialogMode == 'delete' "><i class="fa fa-exclamation-triangle" ></i> Do you want to delete this event?</h2>
+                <template #actions>
+                    <button @click="onConfirm">{{ dialogButtton }}</button>
+                </template>
+            </base-dialog>
         </div>
     </section>
 </template> 
  
 <script> 
 
-    import axios from '../../axios-request.js'
+    import BaseDialog from '../UI/BasDialog.vue';
     export default {
         props:["allMyEventData"],
-        emit: ["showFormMyEvent"],
+        emit: ["showFormMyEvent", "delete"],
+        components:{BaseDialog},
         data() {
             return {
-                eventLists: [],
-                url: "http://127.0.0.1:8000/storage/images/"
+                allEventLists: [],
+                url: "http://127.0.0.1:8000/storage/images/",
+                dialogDisplayed: false,
+                dialogTextField: '',
+                eventId: null,
             }
         },
+         computed: {
+            dialogTitle() {
+                return this.dialogMode === 'edit' ? 'EDIT RESSOURCE' : 'DELETE RESSOURCE';
+            },
+            dialogButtton() {
+                return this.dialogMode ===  'edit' ? 'EDIT' : 'DELETE';
+            },
+        },
         methods: {
+            
             showFormMyEvent(){
-                this.$emit("")
+                this.$emit("");
             },
-            getEvent(){
-                axios.get("/myevents").then(res => {
-                    this.eventLists = res.data;
-                })
+            closeDialog() {
+                this.dialogDisplayed = false;
+                this.eventId = null;
+            },
+            showDeleteRessource(id) {
+                this.dialogMode = 'delete';
+                this.dialogDisplayed = true;
+                this.eventId = id;
+            },
+            onConfirm() {
+                if (this.dialogMode === 'delete') {
+                    console.log(this.eventId);
+                    this.$emit('delete', this.eventId);
+                } 
+                this.closeDialog(); 
             },
         },
-        mounted() {
-            this.getEvent(); 
-        },
-    } 
+    }   
     
 </script> 
  
@@ -98,7 +125,7 @@
         height: 100%;
         width: auto;
         margin-left: 15px;
-        width: 20%;
+        width: 25%;
         align-items: center;
         justify-content: center;
         box-sizing: border-box;
@@ -119,7 +146,7 @@
 
     .event-title{
         border-radius: 5px;
-        width: 100%;
+        width: auto;
         height: 7vh;
         align-items: center;
         justify-content: center;
@@ -128,7 +155,7 @@
     }
 
     .event-title h1{
-        padding: 10px;
+        padding: 10px;    
     }
 
     .event-time{
@@ -187,6 +214,28 @@
 
     #edit:hover{
         color: rgb(9, 136, 255);
+    }
+
+    .fa-exclamation-triangle{
+        color: rgb(255, 21, 21);
+        margin-right: 10px;
+        font-size: 30px;
+    }
+
+    #ask{
+        text-align: center;
+    }
+
+    button{
+        padding: 15px;
+        border: none;
+        font-weight: bold;
+        background: #f3381f;
+        color: white;
+        outline: none;
+        width: 20%;
+        border-radius: 10px;
+        font-size: 20px;
     }
 
 </style>
