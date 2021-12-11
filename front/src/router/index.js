@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router';
-import MyEvent from '../view/MyEventView.vue';
+import Categories from '../view/CategoryView.vue';
 import Events from '../view/EventView.vue';
+import MyEvent from '../view/MyEventView.vue';
 import SignIn from '../authentication/SignIn.vue';
 import SignUp from '../authentication/SignUp.vue';
 const routes = [
@@ -8,6 +9,11 @@ const routes = [
         path: '/myEvents',
         name: 'MyEvent',
         component: MyEvent
+    },
+    {
+        path: '/category',
+        name: 'Category',
+        component: Categories
     },
     {
         path: '/events',
