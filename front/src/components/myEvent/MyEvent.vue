@@ -37,7 +37,6 @@
 </template> 
  
 <script> 
-
     import BaseDialog from '../UI/BasDialog.vue';
     export default {
         props:["allMyEventData"],
@@ -96,7 +95,6 @@
         margin-left: 20%;
         
     }
-
     #myevent-container{
         background: rgb(255, 255, 255);
         box-shadow: 0px 2px 8px 2px rgba(99, 99, 99, 0.25);
@@ -110,7 +108,6 @@
         padding: 0px;
         box-sizing: border-box;
     }
-
     .event-img{
         height: 94%;
         margin: 5px;
@@ -130,7 +127,6 @@
         justify-content: center;
         box-sizing: border-box;
     }
-
     .category-name,
     .event-title{
         margin: 23px;
@@ -138,12 +134,10 @@
         justify-content: center;
         margin-left: -10px;
     }
-
     .description{
         width: 100%;
         margin-left: -10px;
     }
-
     .event-title{
         border-radius: 5px;
         width: auto;
@@ -153,11 +147,9 @@
         margin-top: -10px;
         background: rgb(194, 194, 194);
     }
-
     .event-title h1{
         padding: 10px;    
     }
-
     .event-time{
         margin-top: 20px;
         margin-left: 50px;
@@ -165,7 +157,6 @@
         align-items: center;
         justify-content: center;
     }
-
     .event-btn{
         display: flex;
         align-items: center;
@@ -175,7 +166,6 @@
         width: 20%;
         margin-left: 100px;
     }
-
     .event-btn a{
         margin: 10px;
         width: 80px;
@@ -185,7 +175,6 @@
         display: flex;
         margin-right: 10px;
     }
-
     #cancel{
         background: rgb(194, 194, 194);
         border: none;
@@ -207,15 +196,12 @@
         border-radius: 5px;
         background: rgb(194, 194, 194);
     }
-
     #cancel:hover{
         color: rgb(255, 21, 68);
     }
-
     #edit:hover{
         color: rgb(9, 136, 255);
     }
-
     .fa-exclamation-triangle{
         color: rgb(255, 21, 21);
         margin-right: 10px;
@@ -237,5 +223,4 @@
         border-radius: 10px;
         font-size: 20px;
     }
-
 </style>

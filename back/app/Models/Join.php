@@ -20,4 +20,3 @@ class Join extends Model
         return $this->belongsTo(Myevent::class, 'myevent_id');
     }
 }
-

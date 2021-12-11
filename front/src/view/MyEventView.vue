@@ -62,7 +62,6 @@
                     console.log(this.categoryList);
                 });
             },
-
             getEvent(){
                 let userid = localStorage.getItem('userID');
                 this.allMyEvent = [];
@@ -84,14 +83,12 @@
 </script>
 
 <style scoped>
-
     body{
         margin: 0%;
         padding: 0%;
         font-family: sans-serif;
         scrollbar-width: hidden;
     }
-
     .kc_fab_main_btn {
         background-color: #F44336;
         width: 60px;
@@ -109,14 +106,12 @@
         left: 200vh;
         top: 87vh;
     }
-
     .kc_fab_main_btn:focus {
         transform: scale(1.1);
         transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
     }
-
     .event-btn a{
         margin: 10px;
         width: 80px;
