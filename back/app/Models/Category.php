@@ -11,4 +11,7 @@ class Category extends Model
     protected $fillable = [
         'name'
     ];
+    public function myevent(){
+        return $this->hasMany(Myevent::class);
+    }
 }

@@ -1,9 +1,10 @@
 <template> 
   <nav> 
     <ul>
-      <li><h1 class="fa fa-user" style="font-size:15px">{{ username }}</h1></li>
+      <li><h1>{{ username }}</h1></li>
       <li id="myevent"><router-link :to="{name: 'MyEvent'}">My Events</router-link></li> 
-      <a id="btnlogout"><router-link :to="{name: 'SignIn'}" @click="Signout" class="fa fa-sign-out" >Sign out</router-link> </a> 
+      <li id="evetns"><router-link :to="{name: 'Events'}"> Find Event</router-link></li> 
+      <a id="btnlogout"><router-link :to="{name: 'SignIn'}" @click="Signout">Sign out</router-link> </a> 
     </ul> 
   </nav>  
 </template> 
@@ -64,7 +65,7 @@
     float: right;
     text-decoration: none;
     padding: 10px;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 4px;
     color: #fff;
     align-items: center;
@@ -77,20 +78,16 @@
     padding: 21px;
     color:#fff;
     margin: 8px;
-    font-size:15px;
+    font-size:16px;
   }
   
   li h1{
-    color: #fff;
+    color: rgb(255, 255, 255);
     padding: -10px;
     margin: 20px;
-    margin-top: 30px;
+    margin-top: 29px;
+    font-size: 18px;
     text-transform: uppercase;
-  }
-
-  li a:hover {
-    border-bottom: 8px solid #f3381f;
-    margin-top: 5px;
   }
 
   .router-link-active{
