@@ -86,9 +86,11 @@
 </script> 
  
 <style scoped> 
+
     .container{
         margin-top: 3%;
     }
+
     .container h2{
         margin-left: 20%;
         
@@ -205,9 +207,11 @@
         margin-right: 10px;
         font-size: 30px;
     }
+
     #ask{
         text-align: center;
     }
+
     button{
         padding: 15px;
         border: none;

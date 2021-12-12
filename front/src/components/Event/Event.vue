@@ -1,29 +1,28 @@
 <template> 
-    <section>
-        <h2>All Events</h2>
-        <div class="container" v-for="event of allEventList" :key="event.id" >
+    <section>    
+        <div class="container">
             <div id="myevent-container">  
                 <div class="event-img">
-                    <img :src="url + event.image" alt="">
+                    <img :src="url + allEventList.image" alt="">
                 </div>
                 <div class="event-description">
                     <div class="category-name">
-                        <label for="">{{event.category.name}}</label>
+                        <label for="">{{allEventList.category.name}}</label>
                     </div>
                     <div class="event-title">
-                        <h1>{{event.title}}</h1>
+                        <h1>{{allEventList.title}}</h1>
                     </div>
                     <div class="event-member">
-                        <label for="">{{event.join.length}} members</label>
+                        <label for="">{{allEventList.join.length}} members</label>
                     </div>
                 </div>
                 <div class="event-time">
-                    <h5>Start-date: {{event.end_date}}</h5>
-                    <h5>End-date: {{event.end_date}}</h5>
+                    <h5>Start-date: {{allEventList.end_date}}</h5>
+                    <h5>End-date: {{allEventList.end_date}}</h5>
                 </div>
                 <div class="event-btn">
-                    <a id="join" @click="join(event.id)" v-if="isJoinEvent" class="fa fa-check-circle-o" style="font-size:20px">Join</a>
-                    <a id="quit" @click="quit(event.id)" v-else class="fa fa-times-circle-o" style="font-size:20px">Quit</a>
+                    <a id="join" @click="join(allEventList.id)" v-if="isJoinEvent" class="fa fa-check-circle-o" style="font-size:20px">Join</a>
+                    <a id="quit" @click="quit(allEventList.id)" v-else class="fa fa-times-circle-o" style="font-size:20px">Quit</a>
                 </div>
             </div> 
         </div>
@@ -47,7 +46,7 @@
             join(id) {
                 let eventjoin = {
                     user_id: this.userid,
-                    event_id: id,
+                    myevent_id : id,
                 }
                 axios.post("/joins", eventjoin).then(res => {
                     console.log(res.data);
@@ -58,7 +57,7 @@
             quit(id) {
                 let eventid = "";
                 for(let join of this.joinList){
-                    if(join.event_id == id){
+                    if(join.myevent_id == id){
                         eventid = join.id;
                     }
                 }
@@ -77,11 +76,11 @@
         mounted() {
             this.getJoinslist()
             this.userid = localStorage.getItem('userID');
-            if(this.Event != null){
+            if(this.allEventList != null){
                 this.showFind = true;
-                for(let join of this.Event.join){
+                for(let join of this.allEventList.join){
                     if(this.userid == join.user_id){
-                        this.joinEventisVisible = false
+                        this.isJoinEvent = false
                     }
                 }
             }
@@ -91,10 +90,6 @@
 </script> 
  
 <style scoped> 
-
-    section h2{
-        margin-left: 20%;
-    }
 
     #myevent-container{
         background: rgb(255, 255, 255);

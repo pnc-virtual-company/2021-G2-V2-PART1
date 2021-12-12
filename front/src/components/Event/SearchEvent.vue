@@ -4,9 +4,9 @@
         <h3>Find event</h3>
         <div class="event-city">
             <div class="search-and-city">
-                <input type="text" placeholder="Search...">
+                <input @keyup="searchTitle" type="text" v-model="title" placeholder="Search..." >
                 <button class="fa fa-close"></button>
-                <input type="text" placeholder="City...">
+                <input @keyup="searchCity" type="text" v-model="city" placeholder="City...">
                 <button class="fa fa-close"></button>
             </div>
         </div>
@@ -16,7 +16,20 @@
 <script>
 
     export default {
-        
+        emit: ["addTitle", "addCity"],
+        data() {
+            return {
+                title: '',
+            }
+        },
+        methods: {
+            searchTitle(){
+                this.$emit('addTitle', this.title);
+            },
+            searchCity(){
+                this.$emit('addCity', this.city);
+            }
+        },
     }
 
 </script>

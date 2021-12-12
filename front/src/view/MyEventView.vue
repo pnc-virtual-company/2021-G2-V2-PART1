@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="text-and-btn">
-            <button id="btn-add"  class="kc_fab_main_btn"  @click="showCreateForm">+</button>
+            <button id="btn-add"  class="kc_fab_main_btn"  @click="showCreateForm" >+</button>
         </div>
         <br>
         <br>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+
     import axios from '../axios-request.js'
     import MyeventCard from '../components/myEvent/MyEvent.vue';
     import MyEventForm from '../components/myEvent/myEventForm.vue';
@@ -28,11 +29,17 @@
                 isShowForm:false,
                 allMyEvent:[],
                 url: "http://127.0.0.1:8000/storage/images/",  
+                number: 0
             }
         },
         methods: {
             showCreateForm(){
-                this.isShowForm = true
+                this.number += 1
+                if(this.number %2 !== 0){
+                    this.isShowForm = true
+                }else{
+                    this.isShowForm = false;
+                } 
             },
             hideForm() {
                 this.$emit('hideForm');
@@ -142,4 +149,5 @@
     #edit:hover{
         color: rgb(9, 136, 255);
     }
+
 </style>
