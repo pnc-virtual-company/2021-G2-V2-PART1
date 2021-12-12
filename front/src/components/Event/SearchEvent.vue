@@ -5,9 +5,9 @@
         <div class="event-city">
             <div class="search-and-city">
                 <input @keyup="searchTitle" type="text" v-model="title" placeholder="Search..." >
-                <button class="fa fa-close"></button>
+                <button class="fa fa-close" @click="clearTitle"></button>
                 <input @keyup="searchCity" type="text" v-model="city" placeholder="City...">
-                <button class="fa fa-close"></button>
+                <button class="fa fa-close" @click="clearCity"></button>
             </div>
         </div>
     </section>
@@ -20,15 +20,24 @@
         data() {
             return {
                 title: '',
+                city: '',
             }
         },
         methods: {
             searchTitle(){
                 this.$emit('addTitle', this.title);
             },
+            clearTitle(){
+                this.$emit('allEventList')
+                this.title = "";           
+            },
             searchCity(){
                 this.$emit('addCity', this.city);
-            }
+            },
+            clearCity(){
+                this.$emit('allEventList')
+                this.city = "";           
+            },
         },
     }
 

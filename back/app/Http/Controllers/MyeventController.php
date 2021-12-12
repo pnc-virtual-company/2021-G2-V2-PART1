@@ -118,12 +118,12 @@ class MyeventController extends Controller
             return response()->json(['massage'=>'Not Found'], 404);
         }
     }
-    public function search($name)
+    public function search($title)
     {
-        return MyEvent::where('name','like', '%'.$name.'%')->with(["category"])->get();
+        return MyEvent::where('title','like', '%'.$title.'%')->with(["category", "join"])->get();
     }
     public function searchCity($city)
     {
-        return MyEvent::where('city','like', '%'.$city.'%')->with(["category"])->get();
+        return MyEvent::where('city','like', '%'.$city.'%')->with(["category", "join"])->get();
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <section>
-        <search-event @addTitle="searchTitle" @addCity="searchCity"></search-event>
+        <search-event @addTitle="searchTitle" @addCity="searchCity" @allEventList='getEvents'></search-event>
         <h2>All Events</h2>
         <event v-for="event of allEvents" :key="event.id" :allEventList="event" ></event>
     </section>
@@ -38,7 +38,6 @@
           }else {
             this.getEvents();
           }
-          console.log(title);
         },
         searchCity(city){
           if(city !== ''){
@@ -46,7 +45,7 @@
               this.allEvents = res.data;
             })
           }else{
-            this.getEvents
+            this.getEvents();
           }
         }
       },

@@ -13,7 +13,7 @@
                         <h1>{{allEventList.title}}</h1>
                     </div>
                     <div class="event-member">
-                        <label for="">{{allEventList.join.length}} members</label>
+                        <label for="">{{allEventList.join.length}} joined </label>
                     </div>
                 </div>
                 <div class="event-time">
@@ -48,6 +48,7 @@
                     user_id: this.userid,
                     myevent_id : id,
                 }
+                console.log(eventjoin);
                 axios.post("/joins", eventjoin).then(res => {
                     console.log(res.data);
                     this.getJoinslist();
@@ -77,7 +78,6 @@
             this.getJoinslist()
             this.userid = localStorage.getItem('userID');
             if(this.allEventList != null){
-                this.showFind = true;
                 for(let join of this.allEventList.join){
                     if(this.userid == join.user_id){
                         this.isJoinEvent = false
