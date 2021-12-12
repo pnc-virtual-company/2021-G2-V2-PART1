@@ -72,9 +72,6 @@
              }
         },
         methods: {
-            hideForm() {
-                this.$emit('hideForm');
-            },
             onFileSelect(event){
                 this.image = event.target.files[0];   
             },
@@ -103,8 +100,8 @@
             axios.get('/countries').then(res =>{
                 this.allCountry = res.data;
                 for(let country in this.allCountry) {
-                        this.countries.push(country);
-                        console.log(country)
+                    this.countries.push(country);
+                    console.log(country)
                 }
            });
         },

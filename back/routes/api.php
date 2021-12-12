@@ -31,6 +31,7 @@ Route::post('/myevents', [MyeventController::class, 'store']);
 Route::delete('/myevents/{id}', [MyeventController::class, 'destroy']);
 Route::put('/myevents/{id}', [MyeventController::class, 'update']);
 Route::get('/myevents/search/{title}', [MyeventController::class, 'search']);
+Route::get('/myevents/searchCity/{city}', [MyeventController::class, 'searchCity']);
 
 // Country
 Route::get('countries', [CountryController::class, 'getCountries']);
@@ -39,6 +40,3 @@ Route::get('countries', [CountryController::class, 'getCountries']);
 Route::get('/joins', [JoinController::class, 'getJoins']);
 Route::post('/joins', [JoinController::class, 'store']);
 Route::delete('/joins/{id}', [JoinController::class, 'delete']);
-
-// Join event
-Route::get('/events/search/{title}', [EventController::class, 'search']);

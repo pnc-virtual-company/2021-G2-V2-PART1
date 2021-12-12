@@ -1,6 +1,6 @@
 <template>
     <section>
-        <search-event></search-event>
+        <search-event @addTitle="searchTitle" @addCity="searchCity" @allEventList='getEvents'></search-event>
         <h2>All Events</h2>
         <event v-for="event of allEvents" :key="event.id" :allEventList="event" ></event>
     </section>
@@ -29,6 +29,24 @@
               }
             }  
           });
+        },
+        searchTitle(title) {
+          if(title !== '') {
+            axios.get("/myevents/search/" + title).then(res => {
+              this.allEvents = res.data;
+            })
+          }else {
+            this.getEvents();
+          }
+        },
+        searchCity(city){
+          if(city !== ''){
+            axios.get("/myevents/search/" + city).then(res => {
+              this.allEvents = res.data;
+            })
+          }else{
+            this.getEvents();
+          }
         }
       },
       mounted() {
