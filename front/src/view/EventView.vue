@@ -1,7 +1,8 @@
 <template>
     <section>
         <search-event></search-event>
-        <event :allEventList="allEvents"></event>
+        <h2>All Events</h2>
+        <event v-for="event of allEvents" :key="event.id" :allEventList="event" ></event>
     </section>
 </template>
 
@@ -19,8 +20,8 @@
       },
       methods: {
         getEvents(){
+          let userID = localStorage.getItem('userID');
           axios.get('/myevents').then(res =>{
-            let userID = localStorage.getItem('userID');
             for(let event of res.data){
               if (event.user_id != userID){
                 console.log(event);
@@ -38,5 +39,7 @@
 </script>
     
 <style scoped>
-  
+  h2{
+    margin-left: 20%;
+  }
 </style>
