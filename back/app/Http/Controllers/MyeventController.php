@@ -120,6 +120,6 @@ class MyeventController extends Controller
     }
     public function search($title)
     {
-        return Category::where('name', 'like', '%'.$title.'%')->get();
+        return Myevent::where('name', 'like', '%'.$title.'%')->get();
     }
 }
