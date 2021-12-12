@@ -28,8 +28,7 @@
                 categoryList: [],
                 isShowForm:false,
                 allMyEvent:[],
-                url: "http://127.0.0.1:8000/storage/images/",
-                
+                url: "http://127.0.0.1:8000/storage/images/",  
             }
         },
         methods: {
@@ -75,20 +74,21 @@
             }         
         },
         mounted() {
-           this.getEvent();
-           
+           this.getEvent();  
         },
     }
     
 </script>
 
 <style scoped>
+
     body{
         margin: 0%;
         padding: 0%;
         font-family: sans-serif;
         scrollbar-width: hidden;
     }
+
     .kc_fab_main_btn {
         background-color: #F44336;
         width: 60px;
@@ -106,12 +106,14 @@
         left: 200vh;
         top: 87vh;
     }
+
     .kc_fab_main_btn:focus {
         transform: scale(1.1);
         transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
     }
+
     .event-btn a{
         margin: 10px;
         width: 80px;
@@ -121,6 +123,7 @@
         display: flex;
         margin-right: 10px;
     }
+
     #cancel,
     #edit{
         background: rgb(194, 194, 194);
