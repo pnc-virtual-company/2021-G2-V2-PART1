@@ -42,3 +42,4 @@ Route::delete('/joins/{id}', [JoinController::class, 'delete']);
 
 // Join event
 Route::get('/events/search/{title}', [EventController::class, 'search']);
+Route::get('/events/search/{city}', [EventController::class, 'searchCity']);
