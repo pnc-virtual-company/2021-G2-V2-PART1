@@ -52,8 +52,8 @@
                 console.log(myEventData);
                 axios.post("/myevents", myEventData).then(res => {
                    this.getEvent();
-                   return res.data;
-                })
+                   return res.data; 
+                }) 
             },
             removeEvent(id){
                 axios.delete("/myevents/" + parseInt(id)).then(()=>{

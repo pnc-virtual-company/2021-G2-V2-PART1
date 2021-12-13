@@ -46,6 +46,7 @@
   nav{
     margin-top: -11px;
     margin-left: -10px;
+    z-index: 99;
   }
 
   ul {

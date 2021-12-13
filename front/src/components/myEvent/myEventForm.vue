@@ -6,16 +6,16 @@
                     <div class="form-input">
                         <label for="">CREATE AN EVENT</label>
                         <input type="text" placeholder="Title" v-model="title">
-                        <select  name="categories" id="categories" v-model="category" required>
+                        <select  name="categories" id="categories" v-model="category" >
                             <option value="" disabled>Select category</option>
                             <option v-for="category of categoryList" :key="category.id" :value = category.id>{{category.name}}</option>
                         </select>
                         <div class="select-city-and-country">
-                            <select name="country"  id="country" v-model="country" required>
+                            <select name="country"  id="country" v-model="country">
                                 <option value="" disabled>Select Country</option>
                                 <option v-for="country in countries" :key="country"> {{country}} </option>
                             </select>
-                            <select name="cities" id="cities" v-model="city" required>
+                            <select name="cities" id="cities" v-model="city">
                                 <option value="" disabled>Select City</option>
                                 <option v-for="city of allCountry[country]" :key="city" >{{city}}</option>
                             </select>
@@ -26,11 +26,11 @@
                                 <label for="end-date" id="end-date" class="end-date">End date:</label>
                             </div>
                             <div class="specifice-time-and-date">
-                                <input id="start-date" type="datetime-local" placeholder="Start date" v-model="startdate" required>
-                                <input id="end-date" type="datetime-local" placeholder="End date" v-model="enddate" required>
+                                <input id="start-date" type="datetime-local" placeholder="Start date" v-model="startdate">
+                                <input id="end-date" type="datetime-local" placeholder="End date" v-model="enddate">
                             </div>
                         </div>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Description..." v-model="description" required></textarea>
+                        <textarea name="" id="" cols="30" rows="10" placeholder="Description..." v-model="description"></textarea>
                     </div>
                     <div class="form-contain">
                         <div id="choose-img">
@@ -84,7 +84,7 @@
                 newEvent.append('title', this.title);
                 newEvent.append('start_date', this.startdate);
                 newEvent.append('end_date', this.enddate);
-                newEvent.append('city', this.cities);
+                newEvent.append('city', this.city);
                 newEvent.append('description', this.description);
                 newEvent.append('image', this.image);
                 this.$emit('createMyNewEvent',newEvent)
@@ -251,6 +251,8 @@
         height: 39.5%;
         margin-top: 39.5px;
         border-radius: 5px;
+        align-content: center;
+        justify-content: center;
         box-sizing: border-box;
         background: rgb(209, 209, 209);
         border: 2px solid rgb(184, 184, 184);
