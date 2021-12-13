@@ -41,7 +41,7 @@
         },
         searchCity(city){
           if(city !== ''){
-            axios.get("/myevents/search/" + city).then(res => {
+            axios.get("/myevents/searchCity/" + city).then(res => {
               this.allEvents = res.data;
             })
           }else{

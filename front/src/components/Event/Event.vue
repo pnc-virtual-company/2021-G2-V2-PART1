@@ -13,11 +13,12 @@
                         <h1>{{allEventList.title}}</h1>
                     </div>
                     <div class="event-member">
+                        <label for="">{{allEventList.city}}, {{allEventList.country}}</label><br>
                         <label for="">{{allEventList.join.length}} joined </label>
                     </div>
                 </div>
                 <div class="event-time">
-                    <h5>Start-date: {{allEventList.end_date}}</h5>
+                    <h5>Start-date: {{allEventList.start_date}}</h5>
                     <h5>End-date: {{allEventList.end_date}}</h5>
                 </div>
                 <div class="event-btn">
@@ -128,10 +129,15 @@
     .category-name,
     .event-title,
     .event-member{
-        margin: 23px;
+        margin: 20px;
         align-items: center;
         justify-content: center;
-        margin-left: -10px;
+        margin-left: -10px;   
+    }   
+
+    .event-member{
+        margin-top: -5px;
+        width: 120%;
     }
 
     .event-title{
@@ -140,7 +146,7 @@
         height: 7vh;
         align-items: center;
         justify-content: center;
-        margin-top: -10px;
+        margin-top: -5px;
         background: rgb(194, 194, 194);
     }
 

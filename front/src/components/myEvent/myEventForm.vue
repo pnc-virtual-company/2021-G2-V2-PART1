@@ -85,6 +85,7 @@
                 newEvent.append('start_date', this.startdate);
                 newEvent.append('end_date', this.enddate);
                 newEvent.append('city', this.city);
+                newEvent.append('country', this.country);
                 newEvent.append('description', this.description);
                 newEvent.append('image', this.image);
                 this.$emit('createMyNewEvent',newEvent)

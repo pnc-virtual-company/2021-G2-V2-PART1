@@ -16,6 +16,7 @@ class Myevent extends Model
         'end_date',
         'description',
         'city',
+        'country',
         'image'
     ];
     public function join(){
