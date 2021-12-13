@@ -58,6 +58,6 @@
     
 <style scoped>
   h2{
-    margin-left: 20%;
+    margin-left: 20.2%;
   }
 </style>

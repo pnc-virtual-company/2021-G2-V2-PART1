@@ -94,7 +94,7 @@
 <style scoped>
 
     .login-page{
-        height: 98.6vh;
+        height: 100vh;
         width: 100%;
         background-image: url('../assets/Inkedbg_LI.jpg');
         background-position: center;

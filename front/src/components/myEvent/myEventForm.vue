@@ -6,16 +6,16 @@
                     <div class="form-input">
                         <label for="">CREATE AN EVENT</label>
                         <input type="text" placeholder="Title" v-model="title">
-                        <select  name="categories" id="categories" v-model="category">
+                        <select  name="categories" id="categories" v-model="category" required>
                             <option value="" disabled>Select category</option>
                             <option v-for="category of categoryList" :key="category.id" :value = category.id>{{category.name}}</option>
                         </select>
                         <div class="select-city-and-country">
-                            <select name="country"  id="country" v-model="country">
+                            <select name="country"  id="country" v-model="country" required>
                                 <option value="" disabled>Select Country</option>
                                 <option v-for="country in countries" :key="country"> {{country}} </option>
                             </select>
-                            <select name="cities" id="cities" v-model="city">
+                            <select name="cities" id="cities" v-model="city" required>
                                 <option value="" disabled>Select City</option>
                                 <option v-for="city of allCountry[country]" :key="city" >{{city}}</option>
                             </select>
@@ -26,22 +26,17 @@
                                 <label for="end-date" id="end-date" class="end-date">End date:</label>
                             </div>
                             <div class="specifice-time-and-date">
-                                <input id="start-date" type="datetime-local" placeholder="Start date" v-model="startdate">
-                                <input id="end-date" type="datetime-local" placeholder="End date" v-model="enddate">
+                                <input id="start-date" type="datetime-local" placeholder="Start date" v-model="startdate" required>
+                                <input id="end-date" type="datetime-local" placeholder="End date" v-model="enddate" required>
                             </div>
                         </div>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Description..." v-model="description"></textarea>
+                        <textarea name="" id="" cols="30" rows="10" placeholder="Description..." v-model="description" required></textarea>
                     </div>
                     <div class="form-contain">
-                        <div class="choose-img">
-                            <label for="up" class="btn btn-primary">
-                                <img src="../../assets/gallery-icon.png" alt="" style=" width: 130%; margin-left: -13%; cursor: pointer;">
-                            </label>
-                            <div>
-                                <input type="file" ref="file" id="up" @change = "onFileSelect" hidden>
-                            </div>
+                        <div id="choose-img">
+                            <img :src="previewimage" alt="">
+                            <input type="file" ref="file" id="up" @change = "onFileSelect" >
                         </div>
-                        <p>Choose an image</p>
                         <div class="form-btn">
                             <button class="discard-btn">DISCARD</button>
                             <button class="submit-btn" @click="sendMyeventData">SUBMIT</button>
@@ -69,11 +64,17 @@
                 categoryList: [],
                 allCountry: [],
                 countries: [],
+                previewimage: null,
              }
         },
         methods: {
             onFileSelect(event){
-                this.image = event.target.files[0];   
+                this.image = event.target.files[0];
+                let reader = new FileReader();
+                reader.readAsDataURL(this.image);
+                reader.onload = event => {
+                    this.previewimage = event.target.result;
+                } 
             },
             sendMyeventData(){
                 let user_id = localStorage.getItem('userID');
@@ -177,7 +178,7 @@
 
     #cities,
     #country{
-         background: rgb(209, 209, 209);
+        background: rgb(209, 209, 209);
         width: 40.5%;
         height: 40px;
         border: none;
@@ -245,19 +246,33 @@
         font-size: 15px;   
     }
 
-    .choose-img{
+    #choose-img{
         width: 90%;
-        height: 37%;
+        height: 39.5%;
+        margin-top: 39.5px;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background: rgb(209, 209, 209);
+        border: 2px solid rgb(184, 184, 184);
+    }
+
+    #up{
+        margin-top: 10%;
+        margin-left: 10%;
+        box-sizing: border-box;
+    }
+
+    #choose-img > img{
+        width: 100%;
+        height: 100%;
         align-items: center;
         justify-content: center;
         display: flex;
-        margin-top: 40px;
-        border-radius: 5px;
         box-sizing: border-box;
     }
 
     .form-btn{
-        margin-top: 40%;
+        margin-top: 48%;
         margin-left: -8%;
     }
 
